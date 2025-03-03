@@ -1,0 +1,325 @@
+[tool.poetry]
+name = "saritasa-drf-tools"
+version = "0.1.0"
+description = "Tools For DRF Used By Saritasa"
+authors = [
+  "Saritasa <pypi@saritasa.com>",
+]
+maintainers = [
+    "Stanislav Khlud <stanislav.khlud@saritasa.com>",
+]
+homepage = "https://pypi.org/project/saritasa-drf-tools/"
+repository = "https://github.com/saritasa-nest/saritasa-drf-tools/"
+keywords = [
+  "python",
+  "django",
+  "drf"
+]
+license = "MIT"
+readme = "README.md"
+packages = [
+  { include = "saritasa_drf_tools" },
+]
+
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "License :: OSI Approved :: MIT License",
+  "Natural Language :: English",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Framework :: Django",
+  "Framework :: Django :: 4.2",
+  "Framework :: Django :: 5.0",
+  "Framework :: Django :: 5.1",
+  "Framework :: Pytest",
+]
+
+[tool.poetry.plugins.pytest11]
+saritasa_drf_tools = "saritasa_drf_tools.pytest_plugin"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+# Django framework
+# https://www.djangoproject.com/
+django = "<6"
+# Django REST Framework
+# https://www.django-rest-framework.org/
+djangorestframework = "<4"
+# Filter querysets dynamically
+# https://django-filter.readthedocs.io/en/stable/
+django-filter = {version = "<25", optional = true}
+# OpenApi auto specs generator
+# https://drf-spectacular.readthedocs.io/en/latest/
+drf-spectacular = {version = "<1", optional = true}
+
+[tool.poetry.extras]
+filter = [
+  "django-filter",
+]
+openapi = [
+  "drf-spectacular",
+]
+all = [
+  "django-filter",
+  "drf-spectacular",
+]
+
+[tool.poetry.group.dev.dependencies]
+# Exports functions to access the IPython debugger, which features tab completion, syntax highlighting, better tracebacks
+# https://github.com/gotcha/ipdb
+ipdb = "^0.13.13"
+# Provides a rich toolkit to help you make the most of using Python interactively
+# https://ipython.readthedocs.io/en/stable/
+ipython = "^8.27.0"
+# A framework for managing and maintaining multi-language pre-commit hooks.
+# https://pre-commit.com/
+pre-commit = "^3.8.0"
+# Collection of invoke commands used by Saritasa
+# Invoke is a Python (2.7 and 3.4+) task execution tool & library,
+# drawing inspiration from various sources to arrive at a powerful & clean feature set.
+# http://www.pyinvoke.org/
+# https://github.com/saritasa-nest/saritasa-python-invocations/
+saritasa_invocations = "^1.2.1"
+
+[tool.poetry.group.linters.dependencies]
+# Mypy is a static type checker for Python.
+# https://mypy.readthedocs.io/en/stable/
+mypy = "^1.11.2"
+
+[tool.poetry.group.test.dependencies]
+# Makes it easy to write small tests, yet scales to support complex functional testing
+# https://github.com/pytest-dev/pytest/
+pytest = "^8.3.2"
+# To prettify pytest output
+# https://github.com/Teemu/pytest-sugar
+pytest-sugar = "^1.0.0"
+# Allows you to use fixtures in @pytest.mark.parametrize.
+# https://pypi.org/project/pytest-lazy-fixtures/
+pytest-lazy-fixtures = "^1.1.1"
+# This plugin produces coverage reports.
+# https://pytest-cov.readthedocs.io/en/latest/index.html
+pytest-cov = "^5.0.0"
+# Django related stuff
+# Provides useful tools for testing Django apps
+# Docs https://pytest-django.readthedocs.io/en/latest/
+pytest-django = "^4.8.0"
+# Provide management command to check if primary database is ready to accept
+# connections
+# https://github.com/painless-software/django-probes
+django-probes = "^1.7.0"
+# Different useful Django utils
+# https://django-extensions.readthedocs.io/en/latest/
+django-extensions = "^3.2.3"
+# Standardize DRF API error responses with drf-spectacular support
+# https://drf-standardized-errors.readthedocs.io/en/latest/
+drf-standardized-errors = "^0.14.0"
+# Psycopg 3 is a modern implementation of a PostgreSQL adapter for Python.
+# https://psycopg.org/
+psycopg = {extras = ["binary"], version = "^3.2.1" }
+# Fast creating of model instances. May be used in tests
+# https://factoryboy.readthedocs.io/en/stable/
+factory-boy = "^3.3.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 79
+indent-width = 4
+target-version = "py311"
+
+[tool.ruff.lint]
+extend-select = [
+  # https://docs.astral.sh/ruff/rules/#pycodestyle-e-w
+  "W",
+  "E",
+  # https://docs.astral.sh/ruff/rules/#mccabe-c90
+  "C90",
+  # https://docs.astral.sh/ruff/rules/#isort-i
+  "I",
+  # https://docs.astral.sh/ruff/rules/#pep8-naming-n
+  "N",
+  # https://docs.astral.sh/ruff/rules/#pydocstyle-d
+  "D",
+  # https://docs.astral.sh/ruff/rules/#pyupgrade-up
+  "UP",
+  # https://docs.astral.sh/ruff/rules/#flake8-annotations-ann
+  "ANN",
+  # https://docs.astral.sh/ruff/rules/#flake8-bandit-s
+  "S",
+  # https://docs.astral.sh/ruff/rules/#flake8-bugbear-b
+  "B",
+  # https://docs.astral.sh/ruff/rules/#flake8-builtins-a
+  "A",
+  # https://docs.astral.sh/ruff/rules/#flake8-commas-com
+  "COM",
+  # https://docs.astral.sh/ruff/rules/#flake8-comprehensions-c4
+  "C4",
+  # https://docs.astral.sh/ruff/rules/#flake8-datetimez-dtz
+  "DTZ",
+  # https://docs.astral.sh/ruff/rules/#flake8-debugger-t10
+  "T10",
+  # https://docs.astral.sh/ruff/rules/#flake8-django-dj
+  "DJ",
+  # https://docs.astral.sh/ruff/rules/#flake8-print-t20
+  "T20",
+  # https://docs.astral.sh/ruff/rules/#flake8-pytest-style-pt
+  "PT",
+  # https://docs.astral.sh/ruff/rules/#flake8-simplify-sim
+  "SIM",
+  # https://docs.astral.sh/ruff/rules/#flake8-use-pathlib-pth
+  "PTH",
+  # https://docs.astral.sh/ruff/rules/#flake8-todos-td
+  "TD",
+  # https://docs.astral.sh/ruff/rules/#eradicate-era
+  "ERA",
+  # https://docs.astral.sh/ruff/rules/#ruff-specific-rules-ruf
+  "RUF"
+]
+ignore = [
+  # https://docs.astral.sh/ruff/rules/ANN401
+  "ANN401",
+  # https://docs.astral.sh/ruff/rules/ANN003
+  "ANN003",
+  # https://docs.astral.sh/ruff/rules/D100
+  "D100",
+  # https://docs.astral.sh/ruff/rules/D104
+  "D104",
+  # https://docs.astral.sh/ruff/rules/D106
+  "D106",
+  # https://docs.astral.sh/ruff/rules/D107
+  "D107",
+]
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = [
+  # https://docs.astral.sh/ruff/rules/F401
+  "F401",
+]
+"**/tests/*" = [
+  # https://docs.astral.sh/ruff/rules/S101
+  "S101",
+  # https://docs.astral.sh/ruff/rules/S106
+  "S106",
+  # https://docs.astral.sh/ruff/rules/S311
+  "S311",
+]
+"**/test_*" = [
+  # https://docs.astral.sh/ruff/rules/ANN201
+  "ANN201",
+]
+[tool.ruff.lint.isort]
+force-wrap-aliases = true
+split-on-trailing-comma = true
+section-order = [
+    "future",
+    "standard-library",
+    "third-party",
+    "boto3",
+    "first-party",
+    "local-folder",
+]
+[tool.ruff.lint.isort.sections]
+django = [
+  "django",
+  "rest_framework",
+  "django_filters",
+]
+
+[tool.ruff.lint.flake8-pytest-style]
+fixture-parentheses = false
+parametrize-names-type = "list"
+parametrize-values-type = "list"
+parametrize-values-row-type = "list"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.mypy]
+plugins = []
+# https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+ignore_missing_imports = true
+strict = false
+warn_no_return = false
+check_untyped_defs = true
+disallow_any_generics = true
+exclude = [
+  "venv",
+  ".venv",
+]
+
+[[tool.mypy.overrides]]
+module = "tests/*"
+disable_error_code = [
+  "attr-defined",
+  "operator",
+  "valid-type",
+  "name-defined",
+  "misc",
+]
+
+[tool.pyright]
+ignore = [
+  # Disabled for tests because of dynamic nature of pytest
+  "**/*test_*.py",
+  "invocations/**"
+]
+
+[tool.pytest.ini_options]
+# --reuse-db
+#   allow saving DB tables between test sessions (like --keepdb)
+# --capture=no
+#   allow use of ipdb during tests
+# --ff
+#   run last failed tests first
+# --verbose
+#   Extend pytest output
+# The last configs are for coverage
+addopts = [
+    "--reuse-db",
+    "--ff",
+    "--capture=no",
+    "--verbose",
+    "--cov-config=pyproject.toml",
+    "--junitxml=pytest.xml",
+]
+# skip all files inside following dirs
+norecursedirs = [
+    "venv",
+    ".venv",
+]
+# set Django settings
+DJANGO_SETTINGS_MODULE = "example.settings"
+
+[tool.coverage.run]
+omit = [
+  "**/testing/plugin.py",
+  "**/*test_*.py",
+  "**/invocations/**",
+  "**/example/**",
+  "tasks.py",
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+skip_empty = true
+exclude_also = [
+  "def __repr__",
+  "def __str__",
+  "raise NotImplementedError",
+]
+
+[tool.coverage.xml]
+output = "coverage.xml"
+
+# https://docformatter.readthedocs.io/en/latest/configuration.html#
+[tool.docformatter]
+wrap-descriptions=0
+in-place=true
+blank=true
+black=true
