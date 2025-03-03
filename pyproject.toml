@@ -48,7 +48,7 @@ django = "<6"
 djangorestframework = "<4"
 # Filter querysets dynamically
 # https://django-filter.readthedocs.io/en/stable/
-django-filter = {version = "<25", optional = true}
+django-filter = {version = "<26", optional = true}
 # OpenApi auto specs generator
 # https://drf-spectacular.readthedocs.io/en/latest/
 drf-spectacular = {version = "<1", optional = true}
@@ -71,10 +71,10 @@ all = [
 ipdb = "^0.13.13"
 # Provides a rich toolkit to help you make the most of using Python interactively
 # https://ipython.readthedocs.io/en/stable/
-ipython = "^8.27.0"
+ipython = "^9.0.1"
 # A framework for managing and maintaining multi-language pre-commit hooks.
 # https://pre-commit.com/
-pre-commit = "^3.8.0"
+pre-commit = "^4.1.0"
 # Collection of invoke commands used by Saritasa
 # Invoke is a Python (2.7 and 3.4+) task execution tool & library,
 # drawing inspiration from various sources to arrive at a powerful & clean feature set.
@@ -99,7 +99,7 @@ pytest-sugar = "^1.0.0"
 pytest-lazy-fixtures = "^1.1.1"
 # This plugin produces coverage reports.
 # https://pytest-cov.readthedocs.io/en/latest/index.html
-pytest-cov = "^5.0.0"
+pytest-cov = "^6.0.0"
 # Django related stuff
 # Provides useful tools for testing Django apps
 # Docs https://pytest-django.readthedocs.io/en/latest/
