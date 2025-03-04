@@ -9,15 +9,18 @@
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/saritasa-drf-tools)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
-Tools For DRF Used By Saritasa
+Tools For [DRF](https://www.django-rest-framework.org/) Used By Saritasa
 
 ## Table of contents
 
 * [Installation](#installation)
 * [Features](#features)
+* [Optional dependencies](#optional-dependencies)
 * [Serializers](#serializers)
 * [Views](#views)
+* [Pagination](#pagination)
 * [Filters](#filters)
+* [Renderers](#renderers)
 * [OpenAPI](#openapi)
 * [Tester](#tester)
 
@@ -25,6 +28,12 @@ Tools For DRF Used By Saritasa
 
 ```bash
 pip install saritasa-drf-tools
+```
+
+or if you are using [uv](https://docs.astral.sh/uv/)
+
+```bash
+uv add saritasa-drf-tools
 ```
 
 or if you are using [poetry](https://python-poetry.org/)
@@ -45,6 +54,11 @@ poetry add saritasa-drf-tools
 
 For examples and to just check it out in action you can use [example folder](/example).
 
+## Optional dependencies
+
+* `[filters]` - Add this to enable `django-filters` support
+* `[openapi]` - Add this to enable `drf-spectacular` support
+
 ## Views
 
 ### Views mixins
@@ -60,8 +74,8 @@ For examples and to just check it out in action you can use [example folder](/ex
   ):
     """CRUD view."""
     base_permission_classes = (permissions.AllowAny,)
-    extra_permission_classes = (permissions.IsAuthenticated,) #
-    extra_permissions_map = {  # noqa: RUF012
+    extra_permission_classes = (permissions.IsAuthenticated,)
+    extra_permissions_map = {
         "create": (permissions.IsAdminUser,),
         "update": (permissions.IsAdminUser,),
         "destroy": (permissions.IsAdminUser,),
@@ -70,7 +84,7 @@ For examples and to just check it out in action you can use [example folder](/ex
 
   * `base_permission_classes` - Will be applied to any action (Usually you want this in base class of your project)
   * `extra_permission_classes` - Will be added to `base_permission_classes`
-  * `extra_permission_classes` - Will be added to (`base_permission_classes` + `extra_permission_classes`) on
+  * `extra_permission_map` - Will be added to (`base_permission_classes` + `extra_permission_classes`) on
     action you specify in mapping
 
   To learn more read class docs.
@@ -106,6 +120,11 @@ For examples and to just check it out in action you can use [example folder](/ex
 * `BaseViewSet`: Viewset with `ActionPermissionsMixin` and `ActionSerializerMixin`
 * `CRUDViewSet`: Viewset with crud endpoint based on BaseViewSet
 * `ReadOnlyViewSet`: Viewset with read endpoint based on BaseViewSet
+
+## Pagination
+
+* `LimitOffsetPagination`: Customized paginator class to limit max objects in list APIs.
+  Use `SARITASA_DRF_MAX_PAGINATION_SIZE` to set default max for whole project.
 
 ## Serializers
 
@@ -161,6 +180,13 @@ Needs `filters` and `openapi` to be included to work properly.
 
   Performed on this fields: text_field, related_model__text_field.
   ```
+
+* `DjangoFilterBackend`: Customized `DjangoFilterBackend` to reduce queries count when viewing api requests via browser
+
+## Renderers
+
+* `BrowsableAPIRenderer`: Customization over drf's BrowsableAPIRenderer.
+  Custom renderer to remove all extra forms which results in extra SQL queries.
 
 ## OpenAPI
 
