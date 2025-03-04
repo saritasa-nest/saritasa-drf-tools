@@ -108,7 +108,7 @@ REST_FRAMEWORK = {
         "saritasa_drf_tools.renderers.BrowsableAPIRenderer",
     ),
     "DEFAULT_FILTER_BACKENDS": (
-        "saritasa_drf_tools.django_filters.DjangoFilterBackend",
+        "saritasa_drf_tools.filters.DjangoFilterBackend",
         "saritasa_drf_tools.filters.OrderingFilterBackend",
         "saritasa_drf_tools.filters.SearchFilterBackend",
     ),
