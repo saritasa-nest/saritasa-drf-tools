@@ -71,7 +71,7 @@ all = [
 ipdb = "^0.13.13"
 # Provides a rich toolkit to help you make the most of using Python interactively
 # https://ipython.readthedocs.io/en/stable/
-ipython = "^9.0.1"
+ipython = "^9.0.2"
 # A framework for managing and maintaining multi-language pre-commit hooks.
 # https://pre-commit.com/
 pre-commit = "^3.8.0"
