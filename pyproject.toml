@@ -116,7 +116,7 @@ django-extensions = "^3.2.3"
 drf-standardized-errors = "^0.14.0"
 # Psycopg 3 is a modern implementation of a PostgreSQL adapter for Python.
 # https://psycopg.org/
-psycopg = {extras = ["binary"], version = "^3.2.1" }
+psycopg = {extras = ["binary"], version = "^3.2.6" }
 # Fast creating of model instances. May be used in tests
 # https://factoryboy.readthedocs.io/en/stable/
 factory-boy = "^3.3.1"
