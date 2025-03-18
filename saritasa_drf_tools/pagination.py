@@ -3,7 +3,12 @@ from rest_framework import pagination
 
 
 class LimitOffsetPagination(pagination.LimitOffsetPagination):
-    """Customized paginator class to limit max objects in list APIs."""
+    """Customized paginator class to limit max objects in list APIs.
+
+    Will become deprecated once this is merged
+    https://github.com/encode/django-rest-framework/pull/9107
+
+    """
 
     @property
     def max_limit(self) -> int | None:
