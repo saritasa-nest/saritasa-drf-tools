@@ -186,7 +186,9 @@ Needs `filters` and `openapi` to be included to work properly.
 ## Renderers
 
 * `BrowsableAPIRenderer`: Customization over drf's BrowsableAPIRenderer.
-  Custom renderer to remove all extra forms which results in extra SQL queries.
+  With `SARITASA_DRF_BROWSABLE_API_ENABLE_HTML_FORM`(Default: `True`) or
+  setting `enable_browsable_api_rendered_html_form`(If not present will use global setting)
+  in view you can disable all extra forms which results in extra SQL queries.
 
 ## OpenAPI
 
