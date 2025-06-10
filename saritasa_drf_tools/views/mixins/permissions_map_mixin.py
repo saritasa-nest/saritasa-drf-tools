@@ -17,12 +17,12 @@ class ActionPermissionsMixin:
 
     Attributes
     ----------
-        `base_permissions_classes` - Base permissions which are supposed to be
+        `base_permission_classes` - Base permissions which are supposed to be
             defined in base class and typically should not be overridden.
             If define `base_permission_classes` without any extra permissions
-            (`extra_permissions_classes`, `extra_permissions_map`) then it acts
+            (`extra_permission_classes`, `extra_permissions_map`) then it acts
             exactly like `permission_classes` from drf.
-        `extra_permissions_classes` - Extra permissions which are supposed to
+        `extra_permission_classes` - Extra permissions which are supposed to
             be overridden if needed. This attribute allows to set extra
             permissions in child classes.
         `extra_permissions_map` - Mapping which allows to set specific
@@ -31,16 +31,16 @@ class ActionPermissionsMixin:
             `base_permission_classes` + specific permission for the action from
             this map.
             If permissions for the action were not found in this map then
-            `base_permissions_classes` with `extra_permissions_classes` will be
+            `base_permission_classes` with `extra_permission_classes` will be
             used the same way it would work as if `extra_permissions_map` was
             not provided at all.
 
     It can be used both ways:
 
-    1) With providing `base_permissions_classes` + `extra_permissions_classes`:
+    1) With providing `base_permission_classes` + `extra_permission_classes`:
     ```
     class BaseViewSet(ActionPermissionsMixin, viewsets.ModelViewSet):
-        base_permissions_classes = (
+        base_permission_classes = (
             IsAuthenticated,
         )
 
@@ -49,7 +49,7 @@ class ActionPermissionsMixin:
         # In order to access this viewset user should have `IsAuthenticated`
         # permission from base viewset and `CanSayWoof` permission
         # from this viewset
-        extra_permissions_classes = (
+        extra_permission_classes = (
             CanSayWoof,
         )
     ```
