@@ -113,7 +113,7 @@ django-probes = "^1.7.0"
 django-extensions = ">=3.2.3,<5.0.0"
 # Standardize DRF API error responses with drf-spectacular support
 # https://drf-standardized-errors.readthedocs.io/en/latest/
-drf-standardized-errors = "^0.14.0"
+drf-standardized-errors = ">=0.14,<0.16"
 # Psycopg 3 is a modern implementation of a PostgreSQL adapter for Python.
 # https://psycopg.org/
 psycopg = {extras = ["binary"], version = "^3.2.6" }

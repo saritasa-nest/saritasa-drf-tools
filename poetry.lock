@@ -179,14 +179,14 @@ files = [
 
 [[package]]
 name = "django"
-version = "5.2.2"
+version = "5.2.3"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 optional = false
 python-versions = ">=3.10"
 groups = ["main", "test"]
 files = [
-    {file = "django-5.2.2-py3-none-any.whl", hash = "sha256:997ef2162d04ead6869551b22cde4e06da1f94cf595f4af3f3d3afeae1f3f6fe"},
-    {file = "django-5.2.2.tar.gz", hash = "sha256:85852e517f84435e9b13421379cd6c43ef5b48a9c8b391d29a26f7900967e952"},
+    {file = "django-5.2.3-py3-none-any.whl", hash = "sha256:c517a6334e0fd940066aa9467b29401b93c37cec2e61365d663b80922542069d"},
+    {file = "django-5.2.3.tar.gz", hash = "sha256:335213277666ab2c5cac44a792a6d2f3d58eb79a80c14b6b160cd4afc3b75684"},
 ]
 
 [package.dependencies]
@@ -283,14 +283,14 @@ sidecar = ["drf-spectacular-sidecar"]
 
 [[package]]
 name = "drf-standardized-errors"
-version = "0.14.1"
+version = "0.15.0"
 description = "Standardize your API error responses."
 optional = false
 python-versions = ">=3.8"
 groups = ["test"]
 files = [
-    {file = "drf_standardized_errors-0.14.1-py3-none-any.whl", hash = "sha256:4941e0f81be94eb0904549999cf221988a5b0f524041c3877530e24f70328ed8"},
-    {file = "drf_standardized_errors-0.14.1.tar.gz", hash = "sha256:0610dcd0096b75365102d276022a22e59a1f8db8825bb0bff05e1b7194ba145d"},
+    {file = "drf_standardized_errors-0.15.0-py3-none-any.whl", hash = "sha256:75dcfec11433a16c81f8c5948a5cd2932cd5b02f426f64ca82020a78c155b263"},
+    {file = "drf_standardized_errors-0.15.0.tar.gz", hash = "sha256:83112d072e751eb444c2f16ab4618273b912cffc07f12b81998060fdfa2eb655"},
 ]
 
 [package.dependencies]
@@ -300,7 +300,7 @@ djangorestframework = ">=3.12"
 [package.extras]
 dev = ["pre-commit"]
 doc = ["myst-parser", "sphinx (!=5.2.0.post0)", "sphinx-autobuild", "sphinx-rtd-theme (>=1.1.0)"]
-openapi = ["drf-spectacular (>=0.27.0)", "inflection"]
+openapi = ["drf-spectacular (>=0.27.1)", "inflection"]
 release = ["flit", "keyring", "tbump"]
 test = ["tox", "tox-gh-actions"]
 
@@ -965,19 +965,20 @@ dev = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "requests
 
 [[package]]
 name = "pytest-cov"
-version = "6.1.1"
+version = "6.2.1"
 description = "Pytest plugin for measuring coverage."
 optional = false
 python-versions = ">=3.9"
 groups = ["test"]
 files = [
-    {file = "pytest_cov-6.1.1-py3-none-any.whl", hash = "sha256:bddf29ed2d0ab6f4df17b4c55b0a657287db8684af9c42ea546b21b1041b3dde"},
-    {file = "pytest_cov-6.1.1.tar.gz", hash = "sha256:46935f7aaefba760e716c2ebfbe1c216240b9592966e7da99ea8292d4d3e2a0a"},
+    {file = "pytest_cov-6.2.1-py3-none-any.whl", hash = "sha256:f5bc4c23f42f1cdd23c70b1dab1bbaef4fc505ba950d53e0081d0730dd7e86d5"},
+    {file = "pytest_cov-6.2.1.tar.gz", hash = "sha256:25cc6cc0a5358204b8108ecedc51a9b57b34cc6b8c967cc2c01a4e00d8a67da2"},
 ]
 
 [package.dependencies]
 coverage = {version = ">=7.5", extras = ["toml"]}
-pytest = ">=4.6"
+pluggy = ">=1.2"
+pytest = ">=6.2.5"
 
 [package.extras]
 testing = ["fields", "hunter", "process-tests", "pytest-xdist", "virtualenv"]
@@ -1417,4 +1418,4 @@ openapi = ["drf-spectacular"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.12"
-content-hash = "240d8c6bc3de5cfaf49e97b83ab14ac023de57f60b0be8cd46ba62e33bc6117c"
+content-hash = "17b1ac9d65520b413526c40dacef3ad79c92c919db6189e32614add1a4b46d5a"
