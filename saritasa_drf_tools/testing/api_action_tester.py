@@ -13,55 +13,32 @@ import rest_framework.serializers
 import rest_framework.status
 import rest_framework.test
 
-DjangoUserModelT = typing.TypeVar(
-    "DjangoUserModelT",
-    bound=django.contrib.auth.models.AbstractBaseUser,
-)
-DjangoModelT = typing.TypeVar(
-    "DjangoModelT",
-    bound=django.db.models.Model,
-)
-RestAPIViewT = typing.TypeVar(
-    "RestAPIViewT",
-    bound=rest_framework.generics.GenericAPIView,
-)
-DjangoUserModelParam = typing.TypeVar(
-    "DjangoUserModelParam",
-    bound=django.contrib.auth.models.AbstractBaseUser,
-)
-DjangoModelParam = typing.TypeVar(
-    "DjangoModelParam",
-    bound=django.db.models.Model,
-)
-RestAPIViewParam = typing.TypeVar(
-    "RestAPIViewParam",
-    bound=rest_framework.generics.GenericAPIView,
-)
 
-
-class ApiActionTester(
-    typing.Generic[
-        DjangoModelT,
-        DjangoUserModelT,
-        RestAPIViewT,
-    ],
-):
+class ApiActionTester[
+    DjangoModel: django.db.models.Model,
+    DjangoUserModel: django.contrib.auth.models.AbstractBaseUser,
+    RestAPIView: rest_framework.generics.GenericAPIView,
+]:
     """Class helper for testing api."""
 
     url_basename: str
     type factory_type = type[
-        factory_boy.django.DjangoModelFactory[DjangoModelT]  # type: ignore
+        factory_boy.django.DjangoModelFactory[DjangoModel]  # type: ignore
     ]
     factory: factory_type
-    type model_type = type[DjangoModelT]  # type: ignore
+    type model_type = type[DjangoModel]  # type: ignore
     model: model_type
-    type user_model_type = type[DjangoUserModelT]  # type: ignore
+    type user_model_type = type[DjangoUserModel]  # type: ignore
     user_model: user_model_type
-    type api_view_type = type[RestAPIViewT]  # type: ignore
+    type api_view_type = type[RestAPIView]  # type: ignore
     api_view: api_view_type
 
     @classmethod
-    def init_subclass(
+    def init_subclass[
+        DjangoModelInit: django.db.models.Model,
+        DjangoUserModelInit: django.contrib.auth.models.AbstractBaseUser,
+        RestAPIViewInit: rest_framework.generics.GenericAPIView,
+    ](
         cls: type[
             """ApiActionTester[
                 typing.Any,
@@ -70,17 +47,17 @@ class ApiActionTester(
             ]
             """
         ],
-        factory: type[factory_boy.django.DjangoModelFactory[DjangoModelParam]],
-        model: type[DjangoModelParam],
-        user_model: type[DjangoUserModelParam],
-        api_view: type[RestAPIViewParam],
+        factory: type[factory_boy.django.DjangoModelFactory[DjangoModelInit]],
+        model: type[DjangoModelInit],
+        user_model: type[DjangoUserModelInit],
+        api_view: type[RestAPIViewInit],
         url_basename: str,
         mixins: collections.abc.Sequence[type] = (),
     ) -> type[
         """ApiActionTester[
-            DjangoModelParam,
-            DjangoUserModelParam,
-            RestAPIViewParam
+            DjangoModelInit,
+            DjangoUserModelInit,
+            RestAPIViewInit
         ]
         """
     ]:
@@ -142,7 +119,7 @@ class ApiActionTester(
     def serialize_data(
         self,
         action: str,
-        data: DjangoModelT | dict[str, typing.Any],
+        data: DjangoModel | dict[str, typing.Any],
     ) -> rest_framework.serializers.ReturnDict:
         """Serialize data by using view's action serializer."""
         return self.get_serializer(action=action)(instance=data).data  # type: ignore
@@ -172,11 +149,11 @@ class ApiActionTester(
         )
         assert errors == set(expected_errors), errors ^ set(expected_errors)  # noqa: S101
 
-    def invoke_factory(self, **kwargs) -> DjangoModelT:
+    def invoke_factory(self, **kwargs) -> DjangoModel:
         """Generate instance."""
         return self.factory.create(**kwargs)
 
-    def invoke_factory_build(self, **kwargs) -> DjangoModelT:
+    def invoke_factory_build(self, **kwargs) -> DjangoModel:
         """Build instance."""
         return self.factory.build(**kwargs)
 
@@ -184,7 +161,7 @@ class ApiActionTester(
         self,
         size: int = 5,
         **kwargs,
-    ) -> list[DjangoModelT]:
+    ) -> list[DjangoModel]:
         """Generate instances."""
         return self.factory.create_batch(
             size=size,
@@ -202,7 +179,7 @@ class ApiActionTester(
         data: dict[str, typing.Any] | list[typing.Any] | None = None,
         expected_status: int | None = None,
         api_client: rest_framework.test.APIClient | None = None,
-        user: DjangoModelT | None = None,
+        user: DjangoModel | None = None,
         **kwargs,
     ) -> rest_framework.response.Response:
         """Make api request."""
@@ -238,7 +215,7 @@ class ApiActionTester(
     def instance(
         self,
         instance_kwargs: dict[str, typing.Any],
-    ) -> DjangoModelT:
+    ) -> DjangoModel:
         """Generate instance."""
         return self.factory(**instance_kwargs)  # type: ignore
 
@@ -251,7 +228,7 @@ class ApiActionTester(
     def instance_batch(
         self,
         instance_batch_kwargs: dict[str, typing.Any],
-    ) -> list[DjangoModelT]:
+    ) -> list[DjangoModel]:
         """Create instances batch for testing."""
         instance_batch_kwargs.setdefault("size", 5)
         return self.factory.create_batch(**instance_batch_kwargs)

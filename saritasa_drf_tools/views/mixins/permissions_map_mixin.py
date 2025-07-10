@@ -4,12 +4,10 @@ import typing
 from django.core import exceptions
 from rest_framework import permissions
 
-PermissionType: typing.TypeAlias = (
+type PermissionType = (
     type[permissions.BasePermission] | permissions.OperandHolder
 )
-PermissionsTypesSequence: typing.TypeAlias = collections.abc.Sequence[
-    PermissionType
-]
+type PermissionsTypesSequence = collections.abc.Sequence[PermissionType]
 
 
 class ActionPermissionsMixin:
