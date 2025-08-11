@@ -183,14 +183,14 @@ files = [
 
 [[package]]
 name = "django"
-version = "5.2.4"
+version = "5.2.5"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 optional = false
 python-versions = ">=3.10"
 groups = ["main", "test"]
 files = [
-    {file = "django-5.2.4-py3-none-any.whl", hash = "sha256:60c35bd96201b10c6e7a78121bd0da51084733efa303cc19ead021ab179cef5e"},
-    {file = "django-5.2.4.tar.gz", hash = "sha256:a1228c384f8fa13eebc015196db7b3e08722c5058d4758d20cb287503a540d8f"},
+    {file = "django-5.2.5-py3-none-any.whl", hash = "sha256:2b2ada0ee8a5ff743a40e2b9820d1f8e24c11bac9ae6469cd548f0057ea6ddcd"},
+    {file = "django-5.2.5.tar.gz", hash = "sha256:0745b25681b129a77aae3d4f6549b62d3913d74407831abaa0d9021a03954bae"},
 ]
 
 [package.dependencies]
@@ -247,14 +247,14 @@ files = [
 
 [[package]]
 name = "djangorestframework"
-version = "3.16.0"
+version = "3.16.1"
 description = "Web APIs for Django, made easy."
 optional = false
 python-versions = ">=3.9"
 groups = ["main", "test"]
 files = [
-    {file = "djangorestframework-3.16.0-py3-none-any.whl", hash = "sha256:bea7e9f6b96a8584c5224bfb2e4348dfb3f8b5e34edbecb98da258e892089361"},
-    {file = "djangorestframework-3.16.0.tar.gz", hash = "sha256:f022ff46613584de994c0c6a4aebbace5fd700555fbe9d33b865ebf173eba6c9"},
+    {file = "djangorestframework-3.16.1-py3-none-any.whl", hash = "sha256:33a59f47fb9c85ede792cbf88bde71893bcda0667bc573f784649521f1102cec"},
+    {file = "djangorestframework-3.16.1.tar.gz", hash = "sha256:166809528b1aced0a17dc66c24492af18049f2c9420dbd0be29422029cfc3ff7"},
 ]
 
 [package.dependencies]
@@ -1305,14 +1305,14 @@ files = [
 
 [[package]]
 name = "saritasa-invocations"
-version = "1.5.0"
+version = "1.6.0"
 description = "Collection of invoke commands used by Saritasa"
 optional = false
 python-versions = "<4.0,>=3.10"
 groups = ["dev"]
 files = [
-    {file = "saritasa_invocations-1.5.0-py3-none-any.whl", hash = "sha256:00ca334009a0d6f80fb5ea30ec64319e3ba0590ee094f28e880a282df7a0a4f3"},
-    {file = "saritasa_invocations-1.5.0.tar.gz", hash = "sha256:433b63ac5bb515b9327f923d84ef49726a8ef2e02ab9c2597d757ff9cba4fc73"},
+    {file = "saritasa_invocations-1.6.0-py3-none-any.whl", hash = "sha256:06eaf9b469476ec4d0946f411551b99c1f5b133f08447080fa7f430f2c92c4aa"},
+    {file = "saritasa_invocations-1.6.0.tar.gz", hash = "sha256:ebfe2b6920f6d29a89e8e8b20c5e8cfd8995d8f7ae4a0cf2b43d70379eb3f304"},
 ]
 
 [package.dependencies]
