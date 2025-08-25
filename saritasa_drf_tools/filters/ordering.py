@@ -64,8 +64,9 @@ class OrderingFilterBackend(filters.OrderingFilter):
         except exceptions.FieldError as error:  # pragma: no cover
             from drf_spectacular import drainage
 
+            view_action = getattr(view, "action", "list")
             drainage.warn(
                 "`ordering_fields` contains non-existent"
-                " or non-related fields."
+                f" or non-related fields for action {view_action}."
                 f" {error}",
             )

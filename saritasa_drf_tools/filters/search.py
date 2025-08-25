@@ -68,7 +68,9 @@ class SearchFilterBackend(filters.SearchFilter):
         except exceptions.FieldError as error:  # pragma: no cover
             from drf_spectacular import drainage
 
+            view_action = getattr(view, "action", "list")
             drainage.warn(
-                "`search_fields` contains non-existent or non-related fields."
+                "`search_fields` contains non-existent or"
+                f" non-related fields for action {view_action}."
                 f" {error}",
             )
