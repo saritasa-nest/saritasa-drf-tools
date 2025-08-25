@@ -145,12 +145,14 @@ For examples and to just check it out in action you can use [example folder](/ex
 
 * `UserAndRequestFromContextMixin`: Extracts user and request from context
   and sets it as attr of serializer instance.
+* `DataFieldsMixin`: Allows to define data fields for serializers via `Meta` class.
 
 ### Serializers classes
 
 * `BaseSerializer`: Serializer with `UserAndRequestFromContextMixin`
 * `ModelBaseSerializer`: ModelSerializer with `mixins.FieldMappingOverride`,
-  `mixins.CleanValidationMixin`, `mixins.UserAndRequestFromContextMixin`.
+  `mixins.CleanValidationMixin`, `mixins.UserAndRequestFromContextMixin`,
+  `mixins.DataFieldsMixin`.
 
 ## Filters
 
