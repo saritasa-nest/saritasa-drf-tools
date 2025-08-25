@@ -8,7 +8,7 @@ class TestModelFilter(rest_framework.FilterSet):
 
     class Meta:
         model = models.TestModel
-        fields = {  # noqa: RUF012
+        fields = {
             "text_field": (
                 "exact",
                 "icontains",

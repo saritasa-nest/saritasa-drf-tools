@@ -10,11 +10,11 @@ from django.db import migrations, models
 class Migration(migrations.Migration):  # noqa: D101
     initial = True
 
-    dependencies = [  # noqa: RUF012
+    dependencies = [
         ("auth", "0012_alter_user_first_name_max_length"),
     ]
 
-    operations = [  # noqa: RUF012
+    operations = [
         migrations.CreateModel(
             name="TestRelatedModel",
             fields=[
