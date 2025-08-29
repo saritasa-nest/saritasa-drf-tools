@@ -1,3 +1,4 @@
 from .clean_validation_mixin import CleanValidationMixin
+from .data_fields import DataFieldsMixin
 from .field_mapping_override_mixin import FieldMappingOverride
 from .user_and_request_from_request_mixin import UserAndRequestFromContextMixin

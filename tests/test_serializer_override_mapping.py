@@ -1,7 +1,18 @@
 from example.app import api
 
 
-def test_custom_fields__override():
-    """Check that custom field will be used instead of CharField."""
+def test_data_fields_generation():
+    """Check that data field is correctly generated."""
     fields = api.serializers.TestModelDetailSerializer().get_fields()
-    assert isinstance(fields["text_field"], api.fields.CustomCharField)
+    assert isinstance(
+        fields["related_model_data"],
+        api.serializers.RelatedTestModelSerializer,
+    )
+    assert fields["related_model_data"].read_only
+    assert (
+        fields["related_model_data"].allow_null
+        == fields["related_model"].allow_null
+    )
+    fields = api.serializers.RelatedTestModelWithManyRelatedSerializer().get_fields()  # noqa: E501
+    assert fields["test_models_data"].read_only
+    assert fields["test_models_data"].many

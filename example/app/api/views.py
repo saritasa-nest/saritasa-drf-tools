@@ -61,6 +61,21 @@ class ReadOnlyView(saritasa_drf_tools.views.ReadOnlyViewSet):
     )
 
 
+class ReadOnlyViewForRelatedModel(saritasa_drf_tools.views.ReadOnlyViewSet):
+    """Read only view."""
+
+    queryset = models.TestRelatedModel.objects.prefetch_related(
+        "test_models",
+    ).all()
+    serializer_class = serializers.RelatedTestModelWithManyRelatedSerializer
+    base_permission_classes = (permissions.IsAuthenticated,)
+    search_fields = ("text_field",)
+    ordering_fields = (
+        "id",
+        "text_field",
+    )
+
+
 class APIView(views.APIView):
     """Simple API view."""
 
