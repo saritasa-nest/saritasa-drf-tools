@@ -31,8 +31,14 @@ class CRUDView(saritasa_drf_tools.views.CRUDViewSet):
     ordering_fields = (
         "id",
         "text_field",
+        "int_field",
         "related_model__text_field",
     )
+    ordering_fields_extra_kwargs = {
+        "int_field": {
+            "nulls_first": True,
+        },
+    }
     filterset_class = filters.TestModelFilter
 
 

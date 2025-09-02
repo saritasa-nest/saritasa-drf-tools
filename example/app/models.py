@@ -10,6 +10,10 @@ class User(AbstractUser):
 class TestModel(models.Model):
     """Test model."""
 
+    int_field = models.IntegerField(
+        null=True,
+    )
+
     text_field = models.TextField(
         default="",
         blank=True,

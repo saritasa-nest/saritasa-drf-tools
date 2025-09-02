@@ -211,6 +211,12 @@ ignore = [
   # https://docs.astral.sh/ruff/rules/ANN201
   "ANN201",
 ]
+"**/migrations/*" = [
+  # https://docs.astral.sh/ruff/rules/undocumented-public-class
+  "D101",
+  # https://docs.astral.sh/ruff/rules/line-too-long
+  "E501",
+]
 [tool.ruff.lint.isort]
 force-wrap-aliases = true
 split-on-trailing-comma = true
