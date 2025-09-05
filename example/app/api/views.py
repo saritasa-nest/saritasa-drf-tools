@@ -12,13 +12,13 @@ class CRUDView(saritasa_drf_tools.views.CRUDViewSet):
     """CRUD view."""
 
     queryset = models.TestModel.objects.select_related("related_model").all()
-    serializers_map = {  # noqa: RUF012
+    serializers_map = {
         "default": serializers.TestModelDetailSerializer,
         "list": serializers.TestModelListSerializer,
     }
     base_permission_classes = (permissions.AllowAny,)
     extra_permission_classes = (permissions.IsAuthenticated,)
-    extra_permissions_map = {  # noqa: RUF012
+    extra_permissions_map = {
         "create": (permissions.IsAdminUser,),
         "update": (permissions.IsAdminUser,),
         "destroy": (permissions.IsAdminUser,),
@@ -58,6 +58,21 @@ class ReadOnlyView(saritasa_drf_tools.views.ReadOnlyViewSet):
         "id",
         "text_field",
         "related_model__text_field",
+    )
+
+
+class ReadOnlyViewForRelatedModel(saritasa_drf_tools.views.ReadOnlyViewSet):
+    """Read only view."""
+
+    queryset = models.TestRelatedModel.objects.prefetch_related(
+        "test_models",
+    ).all()
+    serializer_class = serializers.RelatedTestModelWithManyRelatedSerializer
+    base_permission_classes = (permissions.IsAuthenticated,)
+    search_fields = ("text_field",)
+    ordering_fields = (
+        "id",
+        "text_field",
     )
 
 

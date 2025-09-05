@@ -18,7 +18,7 @@ class ActionSerializerMixin:
     """
 
     action: str
-    serializers_map: dict[str, type[serializers.Serializer]] = {}  # noqa: RUF012
+    serializers_map: dict[str, type[serializers.Serializer]] = {}
 
     def get_serializer_class(self) -> type[serializers.Serializer]:
         """Get serializer for view's action.

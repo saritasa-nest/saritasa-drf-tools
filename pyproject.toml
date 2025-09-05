@@ -179,18 +179,20 @@ extend-select = [
   "RUF"
 ]
 ignore = [
-  # https://docs.astral.sh/ruff/rules/ANN401
+  # https://docs.astral.sh/ruff/rules/any-type/
   "ANN401",
-  # https://docs.astral.sh/ruff/rules/ANN003
+  # https://docs.astral.sh/ruff/rules/missing-type-kwargs/
   "ANN003",
-  # https://docs.astral.sh/ruff/rules/D100
+  # https://docs.astral.sh/ruff/rules/undocumented-public-module/
   "D100",
-  # https://docs.astral.sh/ruff/rules/D104
+  # https://docs.astral.sh/ruff/rules/undocumented-public-package/
   "D104",
-  # https://docs.astral.sh/ruff/rules/D106
+  # https://docs.astral.sh/ruff/rules/undocumented-public-nested-class/
   "D106",
-  # https://docs.astral.sh/ruff/rules/D107
+  # https://docs.astral.sh/ruff/rules/undocumented-public-init/
   "D107",
+  # https://docs.astral.sh/ruff/rules/mutable-class-default/
+  "RUF012",
 ]
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = [

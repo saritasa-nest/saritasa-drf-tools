@@ -7,6 +7,7 @@ class ModelBaseSerializer(
     mixins.FieldMappingOverride,
     mixins.CleanValidationMixin,
     mixins.UserAndRequestFromContextMixin,
+    mixins.NestedFieldsMixin,
     serializers.ModelSerializer,
 ):
     """Model Serializer with common logic."""
