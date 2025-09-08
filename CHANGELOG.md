@@ -4,6 +4,8 @@ We follow [Semantic Versions](https://semver.org/).
 
 ## Unreleased
 
+## 0.2.0
+
 - Make `OrderingFilterBackend`/`SearchFilterBackend` show `action` with openapi warnings
 - Add `NestedFieldsMixin` for serializers
 - Add ability to add extra kwargs for ordering fields in `OrderingFilterBackend`.
