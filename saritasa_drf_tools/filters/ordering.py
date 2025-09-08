@@ -54,7 +54,13 @@ class OrderingFilterBackend(filters.OrderingFilter):
             {},
         )
         fields_from_extra_kwargs = set(ordering_fields_extra_kwargs.keys())
-        if unknown_fields := fields_from_extra_kwargs - ordering:
+        cleared_ordering_fields = {
+            field.removeprefix("-") for field in ordering
+        }
+        if (
+            unknown_fields := fields_from_extra_kwargs
+            - cleared_ordering_fields
+        ):
             view_action = getattr(view, "action", "list")
             warnings.warn(
                 f"Unknown ordering fields: {','.join(unknown_fields)}"

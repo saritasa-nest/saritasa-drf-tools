@@ -74,7 +74,13 @@ class NestedFieldsMixin:
                 extra_kwargs=extra_field_kwargs,
             )
             if isinstance(nested_field_class, str):
-                nested_field_class = import_string(nested_field_class)
+                try:
+                    nested_field_class = import_string(nested_field_class)
+                except ImportError as import_error:
+                    raise ValueError(
+                        "Could not import field class "
+                        f"'{nested_field_class}' for {self.__class__}",
+                    ) from import_error
             nested_fields[field_name] = nested_field_class(
                 source=nested_field,
                 **field_kwargs,
