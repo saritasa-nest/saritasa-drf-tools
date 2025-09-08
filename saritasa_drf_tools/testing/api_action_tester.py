@@ -120,9 +120,16 @@ class ApiActionTester[
         self,
         action: str,
         data: DjangoModel | dict[str, typing.Any],
-    ) -> rest_framework.serializers.ReturnDict:
+        many: bool = False,
+    ) -> (
+        rest_framework.serializers.ReturnDict
+        | rest_framework.serializers.ReturnList
+    ):
         """Serialize data by using view's action serializer."""
-        return self.get_serializer(action=action)(instance=data).data  # type: ignore
+        return self.get_serializer(action=action)(
+            instance=data,
+            many=many,
+        ).data
 
     def extract_errors_from_response(
         self,
