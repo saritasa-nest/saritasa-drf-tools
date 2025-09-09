@@ -4,6 +4,8 @@ We follow [Semantic Versions](https://semver.org/).
 
 ## Unreleased
 
+## 0.2.1
+
 - Fix order of ordering fields in `OrderingFilterBackend`.
 
 ## 0.2.0
