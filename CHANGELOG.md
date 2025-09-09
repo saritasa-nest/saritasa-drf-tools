@@ -4,6 +4,8 @@ We follow [Semantic Versions](https://semver.org/).
 
 ## Unreleased
 
+- Fix order of ordering fields in `OrderingFilterBackend`.
+
 ## 0.2.0
 
 - Make `OrderingFilterBackend`/`SearchFilterBackend` show `action` with openapi warnings

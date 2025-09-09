@@ -28,15 +28,14 @@ class OrderingFilterBackend(filters.OrderingFilter):
         Wrap ordering fields in `models.OrderBy` and pass extra ordering kwargs
 
         """
-        ordering = set(
+        ordering = (
             super().get_ordering(
                 request,
                 queryset,
                 view,
             )
-            or (),
+            or ()
         )
-
         is_null_first = getattr(
             settings,
             "SARITASA_DRF_ORDERING_IS_NULL_FIRST",
