@@ -99,7 +99,7 @@ pytest-sugar = "^1.0.0"
 pytest-lazy-fixtures = "^1.1.1"
 # This plugin produces coverage reports.
 # https://pytest-cov.readthedocs.io/en/latest/index.html
-pytest-cov = "^6.0.0"
+pytest-cov = ">=6,<8"
 # Django related stuff
 # Provides useful tools for testing Django apps
 # Docs https://pytest-django.readthedocs.io/en/latest/
