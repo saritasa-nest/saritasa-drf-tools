@@ -4,6 +4,8 @@ We follow [Semantic Versions](https://semver.org/).
 
 ## Unreleased
 
+## 0.2.2
+
 - Fix warnings in `OrderingFilterBackend`.
 
 ## 0.2.1

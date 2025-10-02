@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "saritasa-drf-tools"
-version = "0.2.1"
+version = "0.2.2"
 description = "Tools For DRF Used By Saritasa"
 authors = [
   "Saritasa <pypi@saritasa.com>",
@@ -32,6 +32,7 @@ classifiers = [
   "Framework :: Django :: 4.2",
   "Framework :: Django :: 5.0",
   "Framework :: Django :: 5.1",
+  "Framework :: Django :: 5.2",
   "Framework :: Pytest",
 ]
 
