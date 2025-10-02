@@ -324,10 +324,3 @@ exclude_also = [
 
 [tool.coverage.xml]
 output = "coverage.xml"
-
-# https://docformatter.readthedocs.io/en/latest/configuration.html#
-[tool.docformatter]
-wrap-descriptions=0
-in-place=true
-blank=true
-black=true
