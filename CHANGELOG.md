@@ -4,6 +4,8 @@ We follow [Semantic Versions](https://semver.org/).
 
 ## Unreleased
 
+- Confirm support for python 3.14
+
 ## 0.2.2
 
 - Fix warnings in `OrderingFilterBackend`.
