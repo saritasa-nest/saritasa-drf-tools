@@ -34,15 +34,11 @@ class OrderingFilterBackend(filters.OrderingFilter):
         Closed pr to change this in `django-rest-framework`:
         https://github.com/encode/django-rest-framework/pull/9109
         To fix this, we add "id" as the last ordering field if
-        `add_pk_to_ordering` is provided (otherwise applied by default).
-        If "id" will be already present in ordering, it won't be duplicated.
+        `add_pk_to_ordering` is provided (otherwise applied by default or you
+        can control via global setting). If "id" will be already present in
+        ordering, it won't be duplicated.
 
         """
-        add_pk_to_ordering: bool = getattr(
-            view,
-            "add_pk_to_ordering",
-            True,
-        )
         ordering = (
             super().get_ordering(
                 request,
@@ -50,6 +46,16 @@ class OrderingFilterBackend(filters.OrderingFilter):
                 view,
             )
             or ()
+        )
+        default_add_pk_to_ordering = getattr(
+            settings,
+            "SARITASA_DRF_ORDERING_ADD_PK_TO_ORDERING",
+            True,
+        )
+        add_pk_to_ordering = getattr(
+            view,
+            "add_pk_to_ordering",
+            default_add_pk_to_ordering,
         )
         is_null_first = getattr(
             settings,

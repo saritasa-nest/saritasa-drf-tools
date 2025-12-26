@@ -196,7 +196,13 @@ Needs `filters` and `openapi` to be included to work properly.
 
   ```python
   class MyView(views.APIView):
-      add_pk_to_ordering = True  # Default is `True`
+      add_pk_to_ordering = True
+  ```
+
+  By default, this option is enabled. You can either set this option globally in your settings:
+
+  ```python
+  SARITASA_DRF_ORDERING_ADD_PK_TO_ORDERING = True
   ```
 
 * `SearchFilterBackend`: Add supported fields to `search` param's description
