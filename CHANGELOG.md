@@ -5,6 +5,7 @@ We follow [Semantic Versions](https://semver.org/).
 ## Unreleased
 
 - Confirm support for python 3.14
+- Add secondary sorting feature for getting deterministic results in `OrderingFilterBackend` (and `SARITASA_DRF_ORDERING_ADD_PK_TO_ORDERING` setting)
 
 ## 0.2.2
 
