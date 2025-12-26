@@ -191,9 +191,8 @@ Needs `filters` and `openapi` to be included to work properly.
       }
   ```
 
-* `OrderingFilterBackendWithSecondarySorting`: Extends `OrderingFilterBackend` to add secondary sorting.
   If you have list of items ordered by non-unique fields only, this filter will add secondary sorting by `pk` to make sure that order of items with same non-unique values will be consistent across requests.
-  If you use this filter, you can enable secondary sorting via `add_pk_to_ordering` flag in your views:
+  You can enable secondary sorting via `add_pk_to_ordering` flag in your views:
 
   ```python
   class MyView(views.APIView):

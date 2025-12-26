@@ -27,7 +27,20 @@ class OrderingFilterBackend(filters.OrderingFilter):
 
         Wrap ordering fields in `models.OrderBy` and pass extra ordering kwargs
 
+        If we use PostgreSQL and sort by non-unique fields only, we get
+        non-deterministic results, because db doesn't guarantee particular
+        output ordering if we don't provide unique ordering fields
+        (https://www.postgresql.org/docs/current/queries-order.html).
+        To fix this, we add "id" as the last ordering field if
+        `add_pk_to_ordering` is provided (otherwise applied by default).
+        If "id" will be already present in ordering, it won't be duplicated.
+
         """
+        add_pk_to_ordering: bool = getattr(
+            view,
+            "add_pk_to_ordering",
+            True,
+        )
         ordering = (
             super().get_ordering(
                 request,
@@ -81,8 +94,18 @@ class OrderingFilterBackend(filters.OrderingFilter):
                     **order_by_kwargs,
                 ),
             )
-
-        return adjusted_ordering
+        if not add_pk_to_ordering:
+            return adjusted_ordering
+        return (
+            (
+                *tuple(adjusted_ordering),
+                models.OrderBy(
+                    expression=models.F("pk"),
+                ),
+            )
+            if adjusted_ordering
+            else ()
+        )
 
     def get_schema_operation_parameters(
         self,
@@ -146,40 +169,3 @@ class OrderingFilterBackend(filters.OrderingFilter):
                 f" or non-related fields for action {view_action}."
                 f" {error}",
             )
-
-
-class OrderingFilterBackendWithSecondarySorting(OrderingFilterBackend):
-    """Ordering filter with secondary sorting."""
-
-    def get_ordering(
-        self,
-        request: request.Request,
-        queryset: models.QuerySet,
-        view: views.APIView,
-    ) -> collections.abc.Sequence[models.OrderBy]:
-        """Adjust ordering params.
-
-        If we sort by non-unique fields only, we get non-deterministic results.
-        To fix this, we add "id" as the last ordering field
-        if `add_pk_to_ordering` is provided (otherwise applied by default).
-        If "id" will be already present in ordering, it will not be duplicated.
-
-        """
-        add_pk_to_ordering = getattr(
-            view,
-            "add_pk_to_ordering",
-            True,
-        )
-        adjusted_ordering = super().get_ordering(request, queryset, view)
-        if not add_pk_to_ordering:
-            return adjusted_ordering
-        return (
-            (
-                *tuple(adjusted_ordering),
-                models.OrderBy(
-                    expression=models.F("pk"),
-                ),
-            )
-            if adjusted_ordering
-            else ()
-        )
