@@ -28,6 +28,7 @@ class CRUDView(saritasa_drf_tools.views.CRUDViewSet):
         "text_field",
         "related_model__text_field",
     )
+    add_pk_to_ordering = True
     ordering_fields = (
         "id",
         "text_field",

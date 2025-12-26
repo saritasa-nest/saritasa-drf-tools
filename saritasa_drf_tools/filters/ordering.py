@@ -27,6 +27,17 @@ class OrderingFilterBackend(filters.OrderingFilter):
 
         Wrap ordering fields in `models.OrderBy` and pass extra ordering kwargs
 
+        If we use PostgreSQL and sort by non-unique fields only, we get
+        non-deterministic results, because db doesn't guarantee particular
+        output ordering if we don't provide unique ordering fields
+        (https://www.postgresql.org/docs/current/queries-order.html).
+        Closed pr to change this in `django-rest-framework`:
+        https://github.com/encode/django-rest-framework/pull/9109
+        To fix this, we add "id" as the last ordering field if
+        `add_pk_to_ordering` is provided (otherwise applied by default or you
+        can control via global setting). If "id" will be already present in
+        ordering, it won't be duplicated.
+
         """
         ordering = (
             super().get_ordering(
@@ -35,6 +46,16 @@ class OrderingFilterBackend(filters.OrderingFilter):
                 view,
             )
             or ()
+        )
+        default_add_pk_to_ordering = getattr(
+            settings,
+            "SARITASA_DRF_ORDERING_ADD_PK_TO_ORDERING",
+            True,
+        )
+        add_pk_to_ordering = getattr(
+            view,
+            "add_pk_to_ordering",
+            default_add_pk_to_ordering,
         )
         is_null_first = getattr(
             settings,
@@ -81,8 +102,14 @@ class OrderingFilterBackend(filters.OrderingFilter):
                     **order_by_kwargs,
                 ),
             )
-
-        return adjusted_ordering
+        if not add_pk_to_ordering or not adjusted_ordering:
+            return adjusted_ordering
+        return (
+            *tuple(adjusted_ordering),
+            models.OrderBy(
+                expression=models.F("pk"),
+            ),
+        )
 
     def get_schema_operation_parameters(
         self,
