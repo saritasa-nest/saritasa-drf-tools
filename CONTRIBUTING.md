@@ -13,7 +13,7 @@ poetry install
 To activate your `virtualenv` run command.
 
 ```bash
-poetry shell
+poetry env activate
 ```
 
 ## Base setup

@@ -5,6 +5,7 @@ We follow [Semantic Versions](https://semver.org/).
 ## Unreleased
 
 - Confirm support for python 3.14
+- Add `OrderingFilterBackendWithSecondarySorting` filter
 
 ## 0.2.2
 

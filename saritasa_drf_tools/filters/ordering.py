@@ -146,3 +146,40 @@ class OrderingFilterBackend(filters.OrderingFilter):
                 f" or non-related fields for action {view_action}."
                 f" {error}",
             )
+
+
+class OrderingFilterBackendWithSecondarySorting(OrderingFilterBackend):
+    """Ordering filter with secondary sorting."""
+
+    def get_ordering(
+        self,
+        request: request.Request,
+        queryset: models.QuerySet,
+        view: views.APIView,
+    ) -> collections.abc.Sequence[models.OrderBy]:
+        """Adjust ordering params.
+
+        If we sort by non-unique fields only, we get non-deterministic results.
+        To fix this, we add "id" as the last ordering field
+        if `add_pk_to_ordering` is provided (otherwise applied by default).
+        If "id" will be already present in ordering, it will not be duplicated.
+
+        """
+        add_pk_to_ordering = getattr(
+            view,
+            "add_pk_to_ordering",
+            True,
+        )
+        adjusted_ordering = super().get_ordering(request, queryset, view)
+        if not add_pk_to_ordering:
+            return adjusted_ordering
+        return (
+            (
+                *tuple(adjusted_ordering),
+                models.OrderBy(
+                    expression=models.F("pk"),
+                ),
+            )
+            if adjusted_ordering
+            else ()
+        )
