@@ -31,6 +31,8 @@ class OrderingFilterBackend(filters.OrderingFilter):
         non-deterministic results, because db doesn't guarantee particular
         output ordering if we don't provide unique ordering fields
         (https://www.postgresql.org/docs/current/queries-order.html).
+        Closed pr to change this in `django-rest-framework`:
+        https://github.com/encode/django-rest-framework/pull/9109
         To fix this, we add "id" as the last ordering field if
         `add_pk_to_ordering` is provided (otherwise applied by default).
         If "id" will be already present in ordering, it won't be duplicated.
@@ -94,17 +96,13 @@ class OrderingFilterBackend(filters.OrderingFilter):
                     **order_by_kwargs,
                 ),
             )
-        if not add_pk_to_ordering:
+        if not add_pk_to_ordering or not adjusted_ordering:
             return adjusted_ordering
         return (
-            (
-                *tuple(adjusted_ordering),
-                models.OrderBy(
-                    expression=models.F("pk"),
-                ),
-            )
-            if adjusted_ordering
-            else ()
+            *tuple(adjusted_ordering),
+            models.OrderBy(
+                expression=models.F("pk"),
+            ),
         )
 
     def get_schema_operation_parameters(
