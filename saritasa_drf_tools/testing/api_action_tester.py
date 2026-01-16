@@ -192,13 +192,14 @@ class ApiActionTester[
         expected_status: int | None = None,
         api_client: rest_framework.test.APIClient | None = None,
         user: DjangoModel | None = None,
+        capture_on_commit: bool = True,
         **kwargs,
     ) -> rest_framework.response.Response:
         """Make api request."""
         api_client = api_client or self.get_api_client()
         if user:
             api_client.force_authenticate(user)
-        with self.capture_on_commit(execute=True):
+        with self.capture_on_commit(execute=capture_on_commit):
             response: rest_framework.response.Response = getattr(
                 api_client,
                 method.lower(),
