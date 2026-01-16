@@ -46,7 +46,7 @@ python = "^3.12"
 django = "<7"
 # Django REST Framework
 # https://www.django-rest-framework.org/
-djangorestframework = "<4"
+djangorestframework = ">=3.15.2,<4"
 # Filter querysets dynamically
 # https://django-filter.readthedocs.io/en/stable/
 django-filter = {version = "<26", optional = true}

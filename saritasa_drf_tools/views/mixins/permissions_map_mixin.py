@@ -144,17 +144,6 @@ class ActionPermissionsMixin:
         self,
         permissions: PermissionsTypesSequence,
     ) -> list[permissions.BasePermission]:
-        """Return tuple of unique permissions with keeping original order.
-
-        TODO: use `dict.fromkeys()` when
-        https://github.com/encode/django-rest-framework/pull/9417
-        will be merged
-
-        """
-        unique_permissions = []
-
-        for permission in permissions:
-            if permission not in unique_permissions:
-                unique_permissions.append(permission)
-
+        """Return list of unique permissions with keeping original order."""
+        unique_permissions = list(dict.fromkeys(permissions))
         return [permission() for permission in unique_permissions]
