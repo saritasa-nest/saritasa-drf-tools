@@ -4,9 +4,11 @@ import typing
 
 import django.contrib.auth.models
 import django.db.models
+import django.test
 import django.urls
 import factory as factory_boy
 import pytest
+import pytest_django
 import rest_framework.generics
 import rest_framework.response
 import rest_framework.serializers
@@ -32,6 +34,9 @@ class ApiActionTester[
     user_model: user_model_type
     type api_view_type = type[RestAPIView]  # type: ignore
     api_view: api_view_type
+    capture_on_commit: pytest_django.DjangoCaptureOnCommitCallbacks = (
+        django.test.TestCase.captureOnCommitCallbacks
+    )
 
     @classmethod
     def init_subclass[
@@ -187,20 +192,22 @@ class ApiActionTester[
         expected_status: int | None = None,
         api_client: rest_framework.test.APIClient | None = None,
         user: DjangoModel | None = None,
+        capture_on_commit: bool = True,
         **kwargs,
     ) -> rest_framework.response.Response:
         """Make api request."""
         api_client = api_client or self.get_api_client()
         if user:
             api_client.force_authenticate(user)
-        response: rest_framework.response.Response = getattr(
-            api_client,
-            method.lower(),
-        )(
-            path=path,
-            data=data,
-            **kwargs,
-        )
+        with self.capture_on_commit(execute=capture_on_commit):
+            response: rest_framework.response.Response = getattr(
+                api_client,
+                method.lower(),
+            )(
+                path=path,
+                data=data,
+                **kwargs,
+            )
         if not expected_status and method == http.HTTPMethod.POST.lower():
             expected_status = rest_framework.status.HTTP_201_CREATED
         if not expected_status and method == http.HTTPMethod.DELETE.lower():
