@@ -1,3 +1,7 @@
+import typing
+
+from django.db import transaction
+
 import saritasa_drf_tools.serializers
 
 from .. import models
@@ -44,6 +48,28 @@ class TestModelDetailSerializer(
                 "example.app.api.serializers.RelatedTestModelSerializer"
             ),
         }
+
+    def update(
+        self,
+        instance: models.TestModel,
+        validated_data: dict[str, typing.Any],
+    ) -> models.TestModel:
+        """Extend update logic to add `on_commit` hook."""
+        instance = super().update(
+            instance=instance,
+            validated_data=validated_data,
+        )
+
+        def update_instance_text_field(instance: models.TestModel) -> None:
+            """Update instance text field after commit."""
+            instance.text_field = f"Updated {instance.id}"
+            instance.save()
+
+        transaction.on_commit(
+            lambda: update_instance_text_field(instance),
+        )
+
+        return instance
 
 
 class RelatedTestModelWithManyRelatedSerializer(
