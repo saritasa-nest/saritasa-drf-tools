@@ -5,6 +5,7 @@ We follow [Semantic Versions](https://semver.org/).
 ## Unreleased
 
 - Confirm support for python 3.14
+- Add `capture_on_commit` to `ApiActionTester`
 
 ## 0.2.2
 
