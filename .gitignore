@@ -161,5 +161,8 @@ cython_debug/
 # pyenv's file for specifying local Python version
 .python-version
 
+# File in MacOS that stores custom attributes of its containing folder
+.DS_Store
+
 # Ignore localstack volume files
 localstack_volume/
