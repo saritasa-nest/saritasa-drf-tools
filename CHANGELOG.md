@@ -4,6 +4,8 @@ We follow [Semantic Versions](https://semver.org/).
 
 ## Unreleased
 
+## 0.3.0
+
 - Confirm support for python 3.14
 - Add secondary sorting feature for getting deterministic results in `OrderingFilterBackend` (and `SARITASA_DRF_ORDERING_ADD_PK_TO_ORDERING` setting)
 - Add `capture_on_commit` to `ApiActionTester`
