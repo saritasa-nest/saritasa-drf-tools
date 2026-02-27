@@ -66,6 +66,8 @@ class ReadOnlyView(saritasa_drf_tools.views.ReadOnlyViewSet):
         "text_field",
         "related_model__text_field",
     )
+    pagination_default_limit = 1
+    pagination_max_limit = 3
 
 
 class ReadOnlyViewForRelatedModel(saritasa_drf_tools.views.ReadOnlyViewSet):

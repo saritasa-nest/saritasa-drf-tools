@@ -125,6 +125,8 @@ For examples and to just check it out in action you can use [example folder](/ex
 
 * `LimitOffsetPagination`: Customized paginator class to limit max objects in list APIs.
   Use `SARITASA_DRF_MAX_PAGINATION_SIZE` to set default max for whole project.
+  Also supports overriding pagination settings per view via
+  `pagination_default_limit` and `pagination_max_limit` attributes.
 
 ## Serializers
 

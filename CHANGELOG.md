@@ -4,6 +4,9 @@ We follow [Semantic Versions](https://semver.org/).
 
 ## Unreleased
 
+- `LimitOffsetPagination`: Now supports overriding pagination settings per
+  view via `pagination_default_limit` and `pagination_max_limit` attributes.
+
 ## 0.3.0
 
 - Confirm support for python 3.14
