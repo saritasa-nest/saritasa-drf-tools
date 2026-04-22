@@ -1,0 +1,9 @@
+# Answers what were given during boilerplate initialization
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+# https://copier.readthedocs.io/en/stable/configuring/#the-copier-answersyml-file
+_commit: 56ddfef
+_src_path: https://github.com/saritasa-nest/saritasa-python-boilerplate-open-source.git
+folder_name: saritasa_drf_tools
+min_python_version: 3.12
+package_description: Tools For DRF Used By Saritasa
+package_name: saritasa-drf-tools

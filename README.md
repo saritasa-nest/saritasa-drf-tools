@@ -1,7 +1,8 @@
 # saritasa-drf-tools
 
-![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/saritasa-nest/saritasa-drf-tools/checks.yaml)
-[![PyPI](https://img.shields.io/pypi/v/saritasa-drf-tools)](https://pypi.org/project/saritasa-drf-tools/)
+![GitHub last commit](https://img.shields.io/github/last-commit/saritasa-nest/saritasa-drf-tools)
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/saritasa-nest/saritasa-drf-tools/run_pre_commit.yaml)
+![PyPI](https://img.shields.io/pypi/v/saritasa-drf-tools)
 ![PyPI - Status](https://img.shields.io/pypi/status/saritasa-drf-tools)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/saritasa-drf-tools)
 ![PyPI - Django Version](https://img.shields.io/pypi/frameworkversions/django/saritasa-drf-tools)
@@ -13,16 +14,16 @@ Tools For [DRF](https://www.django-rest-framework.org/) Used By Saritasa
 
 ## Table of contents
 
-* [Installation](#installation)
-* [Features](#features)
-* [Optional dependencies](#optional-dependencies)
-* [Serializers](#serializers)
-* [Views](#views)
-* [Pagination](#pagination)
-* [Filters](#filters)
-* [Renderers](#renderers)
-* [OpenAPI](#openapi)
-* [Tester](#tester)
+- [Installation](#installation)
+- [Features](#features)
+- [Optional dependencies](#optional-dependencies)
+- [Serializers](#serializers)
+- [Views](#views)
+- [Pagination](#pagination)
+- [Filters](#filters)
+- [Renderers](#renderers)
+- [OpenAPI](#openapi)
+- [Tester](#tester)
 
 ## Installation
 
@@ -44,26 +45,26 @@ poetry add saritasa-drf-tools
 
 ## Features
 
-* Views - collection of mixins and viewsets classes
-* Serializers - collection of mixins and serializers classes
-* Filters - Custom filter backends that improve integration with
+- Views - collection of mixins and viewsets classes
+- Serializers - collection of mixins and serializers classes
+- Filters - Custom filter backends that improve integration with
   [drf-spectacular](https://github.com/tfranzel/drf-spectacular)
-* OpenAPI - tools for [drf-spectacular](https://github.com/tfranzel/drf-spectacular)
-* `pytest` - plugin which provides different `api_client` fixtures.
-* Testing classes(**Warning: Very experimental**) - Test class which contains shortcut to reduce boilerplate across tests.
+- OpenAPI - tools for [drf-spectacular](https://github.com/tfranzel/drf-spectacular)
+- `pytest` - plugin which provides different `api_client` fixtures.
+- Testing classes(**Warning: Very experimental**) - Test class which contains shortcut to reduce boilerplate across tests.
 
-For examples and to just check it out in action you can use [example folder](/example).
+For examples and to just check it out in action you can use `example` folder.
 
 ## Optional dependencies
 
-* `[filters]` - Add this to enable `django-filters` support
-* `[openapi]` - Add this to enable `drf-spectacular` support
+- `[filters]` - Add this to enable `django-filters` support
+- `[openapi]` - Add this to enable `drf-spectacular` support
 
 ## Views
 
 ### Views mixins
 
-* `ActionPermissionsMixin`: Mixin which allows to define specific permissions per actions
+- `ActionPermissionsMixin`: Mixin which allows to define specific permissions per actions
   For example you have:
 
   ```python
@@ -82,14 +83,14 @@ For examples and to just check it out in action you can use [example folder](/ex
     }
   ```
 
-  * `base_permission_classes` - Will be applied to any action (Usually you want this in base class of your project)
-  * `extra_permission_classes` - Will be added to `base_permission_classes`
-  * `extra_permission_map` - Will be added to (`base_permission_classes` + `extra_permission_classes`) on
+  - `base_permission_classes` - Will be applied to any action (Usually you want this in base class of your project)
+  - `extra_permission_classes` - Will be added to `base_permission_classes`
+  - `extra_permission_map` - Will be added to (`base_permission_classes` + `extra_permission_classes`) on
     action you specify in mapping
 
   To learn more read class docs.
 
-* `ActionSerializerMixin`: Mixin which allows to define specific serializers per action.
+- `ActionSerializerMixin`: Mixin which allows to define specific serializers per action.
   For example you have
 
   ```python
@@ -113,17 +114,17 @@ For examples and to just check it out in action you can use [example folder](/ex
 
   To learn more read class docs.
 
-* `UpdateModelWithoutPatchMixin`: Same as UpdateModelMixin but without patch method
+- `UpdateModelWithoutPatchMixin`: Same as UpdateModelMixin but without patch method
 
 ### Viewset classes
 
-* `BaseViewSet`: Viewset with `ActionPermissionsMixin` and `ActionSerializerMixin`
-* `CRUDViewSet`: Viewset with crud endpoint based on BaseViewSet
-* `ReadOnlyViewSet`: Viewset with read endpoint based on BaseViewSet
+- `BaseViewSet`: Viewset with `ActionPermissionsMixin` and `ActionSerializerMixin`
+- `CRUDViewSet`: Viewset with crud endpoint based on BaseViewSet
+- `ReadOnlyViewSet`: Viewset with read endpoint based on BaseViewSet
 
 ## Pagination
 
-* `LimitOffsetPagination`: Customized paginator class to limit max objects in list APIs.
+- `LimitOffsetPagination`: Customized paginator class to limit max objects in list APIs.
   Use `SARITASA_DRF_MAX_PAGINATION_SIZE` to set default max for whole project.
   Also supports overriding pagination settings per view via
   `pagination_default_limit` and `pagination_max_limit` attributes.
@@ -132,8 +133,8 @@ For examples and to just check it out in action you can use [example folder](/ex
 
 ### Serializers mixins
 
-* `CleanValidationMixin`: Enable model `clean` validation in serializer
-* `FieldMappingOverride`: Override or extend field mapping via `SARITASA_DRF_FIELD_MAPPING`.
+- `CleanValidationMixin`: Enable model `clean` validation in serializer
+- `FieldMappingOverride`: Override or extend field mapping via `SARITASA_DRF_FIELD_MAPPING`.
   For example you can set following in settings.
 
   ```python
@@ -145,14 +146,14 @@ For examples and to just check it out in action you can use [example folder](/ex
   And now all `TextField` of your models will have `CustomCharField` in
   serializers.
 
-* `UserAndRequestFromContextMixin`: Extracts user and request from context
+- `UserAndRequestFromContextMixin`: Extracts user and request from context
   and sets it as attr of serializer instance.
-* `NestedFieldsMixin`: Allows to define nested data fields for serializers via `Meta` class.
+- `NestedFieldsMixin`: Allows to define nested data fields for serializers via `Meta` class.
 
 ### Serializers classes
 
-* `BaseSerializer`: Serializer with `UserAndRequestFromContextMixin`
-* `ModelBaseSerializer`: ModelSerializer with `mixins.FieldMappingOverride`,
+- `BaseSerializer`: Serializer with `UserAndRequestFromContextMixin`
+- `ModelBaseSerializer`: ModelSerializer with `mixins.FieldMappingOverride`,
   `mixins.CleanValidationMixin`, `mixins.UserAndRequestFromContextMixin`,
   `mixins.NestedFieldsMixin`.
 
@@ -160,7 +161,7 @@ For examples and to just check it out in action you can use [example folder](/ex
 
 Needs `filters` and `openapi` to be included to work properly.
 
-* `OrderingFilterBackend`: Add supported fields to `ordering` param's description
+- `OrderingFilterBackend`: Add supported fields to `ordering` param's description
   in specs generated by [drf-spectacular](https://github.com/tfranzel/drf-spectacular). Will raise warning specs validation
   on empty `ordering_fields` or if queryset is unable to order itself using `ordering_fields`.
   Example of description:
@@ -193,7 +194,8 @@ Needs `filters` and `openapi` to be included to work properly.
       }
   ```
 
-  If you have list of items ordered by non-unique fields only (or without any ordering), this filter will add secondary sorting by `pk` to make sure that order of items will be consistent across requests.
+  If you have list of items ordered by non-unique fields only (or without any ordering), this filter will add secondary
+  sorting by `pk` to make sure that order of items will be consistent across requests.
   You can enable secondary sorting via `add_pk_to_ordering` flag in your views:
 
   ```python
@@ -207,7 +209,7 @@ Needs `filters` and `openapi` to be included to work properly.
   SARITASA_DRF_ORDERING_ADD_PK_TO_ORDERING = True
   ```
 
-* `SearchFilterBackend`: Add supported fields to `search` param's description
+- `SearchFilterBackend`: Add supported fields to `search` param's description
   in specs generated by [drf-spectacular](https://github.com/tfranzel/drf-spectacular). Will raise warning specs validation
   on empty `search_fields` or if queryset is unable to perform search using `search_fields`.
 
@@ -219,11 +221,11 @@ Needs `filters` and `openapi` to be included to work properly.
   Performed on this fields: text_field, related_model__text_field.
   ```
 
-* `DjangoFilterBackend`: Customized `DjangoFilterBackend` to reduce queries count when viewing api requests via browser
+- `DjangoFilterBackend`: Customized `DjangoFilterBackend` to reduce queries count when viewing api requests via browser
 
 ## Renderers
 
-* `BrowsableAPIRenderer`: Customization over drf's BrowsableAPIRenderer.
+- `BrowsableAPIRenderer`: Customization over drf's BrowsableAPIRenderer.
   With `SARITASA_DRF_BROWSABLE_API_ENABLE_HTML_FORM`(Default: `True`) or
   setting `enable_browsable_api_rendered_html_form`(If not present will use global setting)
   in view you can disable all extra forms which results in extra SQL queries.
@@ -232,20 +234,20 @@ Needs `filters` and `openapi` to be included to work properly.
 
 Needs `openapi` to be included to work properly.
 
-* `OpenApiSerializer`: Serializer that should be used for customizing open_api spec.
+- `OpenApiSerializer`: Serializer that should be used for customizing open_api spec.
   Made to avoid warnings about unimplemented methods.
-* `DetailSerializer`: To show in spec responses like this `{detail: text}`.
-* `fix_api_view_warning`: Fix warning `This is graceful fallback handling for APIViews`.
+- `DetailSerializer`: To show in spec responses like this `{detail: text}`.
+- `fix_api_view_warning`: Fix warning `This is graceful fallback handling for APIViews`.
 
 ## Pytest
 
 Plugin provides following fixtures:
 
-* `api_client_factory` - factory which generated `rest_framework.test.ApiClient` instance
-* `api_client` - uses `api_client_factory` to generate `rest_framework.test.ApiClient` instance
-* `user_api_client`(Needs `user` fixture) uses `api_client_factory` to generate `rest_framework.test.ApiClient` instance
+- `api_client_factory` - factory which generated `rest_framework.test.ApiClient` instance
+- `api_client` - uses `api_client_factory` to generate `rest_framework.test.ApiClient` instance
+- `user_api_client`(Needs `user` fixture) uses `api_client_factory` to generate `rest_framework.test.ApiClient` instance
   forces auth to `user`
-* `admin_api_client`(Needs `admin` fixture) uses `api_client_factory` to generate `rest_framework.test.ApiClient` instance
+- `admin_api_client`(Needs `admin` fixture) uses `api_client_factory` to generate `rest_framework.test.ApiClient` instance
   forces auth to `admin`
 
 ## Tester
@@ -271,7 +273,7 @@ class CRUDApiActionTester(
     """Tester for crud API."""
 ```
 
-Next you can write test just like this. (For more examples check this [folder](tests/test_crud_api))
+Next you can write test just like this. (For more examples check this folder: `tests/test_crud_api`)
 
 ```python
 class TestCRUD(tester.CRUDApiActionTester):
