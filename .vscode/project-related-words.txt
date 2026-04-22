@@ -1,0 +1,16 @@
+addopts
+argnames
+argvalues
+autouse
+browsable
+filterset
+isready
+junitxml
+keepdb
+Khlud
+norecursedirs
+pytrace
+Stanislav
+testrelatedmodel
+viewset
+viewsets

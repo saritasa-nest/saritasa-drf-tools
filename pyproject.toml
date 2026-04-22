@@ -1,15 +1,15 @@
-[tool.poetry]
+[project]
 name = "saritasa-drf-tools"
-version = "0.3.0"
+dynamic = [
+  "version",
+]
 description = "Tools For DRF Used By Saritasa"
 authors = [
-  "Saritasa <pypi@saritasa.com>",
+  {name = "Saritasa", email = "pypi@saritasa.com"}
 ]
 maintainers = [
-    "Stanislav Khlud <stanislav.khlud@saritasa.com>",
+  {name = "Stanislav Khlud", email = "stanislav.khlud@saritasa.com"}
 ]
-homepage = "https://pypi.org/project/saritasa-drf-tools/"
-repository = "https://github.com/saritasa-nest/saritasa-drf-tools/"
 keywords = [
   "python",
   "django",
@@ -17,17 +17,17 @@ keywords = [
 ]
 license = "MIT"
 readme = "README.md"
-packages = [
-  { include = "saritasa_drf_tools" },
-]
-
 classifiers = [
-  "Development Status :: 4 - Beta",
   "License :: OSI Approved :: MIT License",
   "Natural Language :: English",
   "Intended Audience :: Developers",
   "Operating System :: OS Independent",
   "Topic :: Software Development :: Libraries :: Python Modules",
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
   "Framework :: Django",
   "Framework :: Django :: 4.2",
   "Framework :: Django :: 5.0",
@@ -36,101 +36,128 @@ classifiers = [
   "Framework :: Django :: 6.0",
   "Framework :: Pytest",
 ]
+requires-python = ">=3.12"
+dependencies = [
+  # Django framework
+  # https://www.djangoproject.com/
+  "django>=4",
+  # Django REST Framework
+  # https://www.django-rest-framework.org/
+  "djangorestframework>=3.15",
+]
 
-[tool.poetry.plugins.pytest11]
-saritasa_drf_tools = "saritasa_drf_tools.pytest_plugin"
-
-[tool.poetry.dependencies]
-python = "^3.12"
-# Django framework
-# https://www.djangoproject.com/
-django = "<7"
-# Django REST Framework
-# https://www.django-rest-framework.org/
-djangorestframework = ">=3.15.2,<4"
-# Filter querysets dynamically
-# https://django-filter.readthedocs.io/en/stable/
-django-filter = {version = "<26", optional = true}
-# OpenApi auto specs generator
-# https://drf-spectacular.readthedocs.io/en/latest/
-drf-spectacular = {version = "<1", optional = true}
-
-[tool.poetry.extras]
+[project.optional-dependencies]
 filter = [
-  "django-filter",
+  # Filter querysets dynamically
+  # https://django-filter.readthedocs.io/en/stable/
+  "django-filter>=24",
 ]
 openapi = [
-  "drf-spectacular",
+  # OpenApi auto specs generator
+  # https://drf-spectacular.readthedocs.io/en/latest/
+  "drf-spectacular>=0.29",
 ]
 all = [
-  "django-filter",
-  "drf-spectacular",
+  "django-filter>=24",
+  "drf-spectacular>=0.29",
 ]
 
-[tool.poetry.group.dev.dependencies]
-# Exports functions to access the IPython debugger, which features tab completion, syntax highlighting, better tracebacks
-# https://github.com/gotcha/ipdb
-ipdb = "^0.13.13"
-# Provides a rich toolkit to help you make the most of using Python interactively
-# https://ipython.readthedocs.io/en/stable/
-ipython = "^9.0.2"
-# A framework for managing and maintaining multi-language pre-commit hooks.
-# https://pre-commit.com/
-pre-commit = "^4.2.0"
-# Collection of invoke commands used by Saritasa
-# Invoke is a Python (2.7 and 3.4+) task execution tool & library,
-# drawing inspiration from various sources to arrive at a powerful & clean feature set.
-# http://www.pyinvoke.org/
-# https://github.com/saritasa-nest/saritasa-python-invocations/
-saritasa_invocations = "^1.2.1"
+[dependency-groups]
+local = [
+  "ipython>0",
+  # Exports functions to access the IPython debugger, which features tab completion, syntax highlighting, better tracebacks
+  # https://github.com/gotcha/ipdb
+  "ipdb>0",
+  # A framework for managing and maintaining multi-language pre-commit hooks.
+  # https://pre-commit.com/
+  "pre-commit>0",
+  # Collection of invoke commands which used in Saritasa organization
+  # https://github.com/saritasa-nest/saritasa-python-invocations/
+  "saritasa-invocations[env_settings]>0",
+  # A library and CLI app for rendering project templates.
+  # https://copier.readthedocs.io/en/latest/
+  "copier>0",
+]
+linters = [
+  # Mypy is a static type checker for Python.
+  # https://mypy.readthedocs.io/en/stable/
+  "mypy>0",
+]
+docs = [
+  # Project documentation with Markdown.
+  # https://www.mkdocs.org/
+  "mkdocs>0",
+  # A powerful documentation framework on top of MkDocs
+  # https://squidfunk.github.io/mkdocs-material/
+  "mkdocs-material>0",
+  # Automatic documentation from sources, for MkDocs
+  # https://mkdocstrings.github.io/
+  "mkdocstrings[python]>0",
+  # Manage multiple versions of your MkDocs-powered documentation
+  # https://github.com/jimporter/mike
+  "mike>0",
+]
+test = [
+  # Makes it easy to write small tests, yet scales to support complex functional testing
+  # https://github.com/pytest-dev/pytest/
+  "pytest",
+  # To prettify pytest output
+  # https://github.com/Teemu/pytest-sugar
+  "pytest-sugar",
+  # Allows you to use fixtures in @pytest.mark.parametrize.
+  # https://pypi.org/project/pytest-lazy-fixtures/
+  "pytest-lazy-fixtures",
+  # This plugin produces coverage reports.
+  # https://pytest-cov.readthedocs.io/en/latest/index.html
+  "pytest-cov",
+  # Django related stuff
+  # Provides useful tools for testing Django apps
+  # Docs https://pytest-django.readthedocs.io/en/latest/
+  "pytest-django",
+  # Provide management command to check if primary database is ready to accept
+  # connections
+  # https://github.com/painless-software/django-probes
+  "django-probes",
+  # Different useful Django utils
+  # https://django-extensions.readthedocs.io/en/latest/
+  "django-extensions",
+  # Standardize DRF API error responses with drf-spectacular support
+  # https://drf-standardized-errors.readthedocs.io/en/latest/
+  "drf-standardized-errors",
+  # Psycopg 3 is a modern implementation of a PostgreSQL adapter for Python.
+  # https://psycopg.org/
+  "psycopg[binary]",
+  # Fast creating of model instances. May be used in tests
+  # https://factoryboy.readthedocs.io/en/stable/
+  "factory-boy",
+]
 
-[tool.poetry.group.linters.dependencies]
-# Mypy is a static type checker for Python.
-# https://mypy.readthedocs.io/en/stable/
-mypy = "^1.11.2"
+[project.urls]
+Documentation = "https://saritasa-nest.github.io/saritasa-drf-tools/latest/"
+Repository = "https://github.com/saritasa-nest/saritasa-drf-tools"
+Changelog = "https://saritasa-nest.github.io/saritasa-drf-tools/latest/changelog/"
+Releases = "https://github.com/saritasa-nest/saritasa-drf-tools/releases/"
+"Bug Tracker" = "https://github.com/saritasa-nest/saritasa-drf-tools/issues/"
+Contributing ="https://saritasa-nest.github.io/saritasa-drf-tools/latest/contributing/"
 
-[tool.poetry.group.test.dependencies]
-# Makes it easy to write small tests, yet scales to support complex functional testing
-# https://github.com/pytest-dev/pytest/
-pytest = ">=8.3.2,<10.0.0"
-# To prettify pytest output
-# https://github.com/Teemu/pytest-sugar
-pytest-sugar = "^1.0.0"
-# Allows you to use fixtures in @pytest.mark.parametrize.
-# https://pypi.org/project/pytest-lazy-fixtures/
-pytest-lazy-fixtures = "^1.1.1"
-# This plugin produces coverage reports.
-# https://pytest-cov.readthedocs.io/en/latest/index.html
-pytest-cov = ">=6,<8"
-# Django related stuff
-# Provides useful tools for testing Django apps
-# Docs https://pytest-django.readthedocs.io/en/latest/
-pytest-django = "^4.8.0"
-# Provide management command to check if primary database is ready to accept
-# connections
-# https://github.com/painless-software/django-probes
-django-probes = "^1.7.0"
-# Different useful Django utils
-# https://django-extensions.readthedocs.io/en/latest/
-django-extensions = ">=3.2.3,<5.0.0"
-# Standardize DRF API error responses with drf-spectacular support
-# https://drf-standardized-errors.readthedocs.io/en/latest/
-drf-standardized-errors = ">=0.14,<0.16"
-# Psycopg 3 is a modern implementation of a PostgreSQL adapter for Python.
-# https://psycopg.org/
-psycopg = {extras = ["binary"], version = "^3.2.6" }
-# Fast creating of model instances. May be used in tests
-# https://factoryboy.readthedocs.io/en/stable/
-factory-boy = "^3.3.1"
+[project.entry-points.pytest11]
+saritasa_drf_tools = "saritasa_drf_tools.pytest_plugin"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[tool.hatch.version]
+# https://regex101.com/r/b6WRcJ/1
+pattern = "(?<=^## )(?P<version>(\\d{1,2}\\.\\d{1,2}\\.\\d{1,3})).*$"
+path = "CHANGELOG.md"
+[tool.hatch.build.targets.wheel]
+packages = [
+  "saritasa_drf_tools"
+]
 
 [tool.ruff]
 line-length = 79
 indent-width = 4
-target-version = "py312"
 
 [tool.ruff.lint]
 extend-select = [
@@ -163,8 +190,6 @@ extend-select = [
   "DTZ",
   # https://docs.astral.sh/ruff/rules/#flake8-debugger-t10
   "T10",
-  # https://docs.astral.sh/ruff/rules/#flake8-django-dj
-  "DJ",
   # https://docs.astral.sh/ruff/rules/#flake8-print-t20
   "T20",
   # https://docs.astral.sh/ruff/rules/#flake8-pytest-style-pt
@@ -177,40 +202,56 @@ extend-select = [
   "TD",
   # https://docs.astral.sh/ruff/rules/#eradicate-era
   "ERA",
+  # https://docs.astral.sh/ruff/rules/#tryceratops-try
+  "TRY",
+  # https://docs.astral.sh/ruff/rules/#flynt-fly
+  "FLY",
+  # https://docs.astral.sh/ruff/rules/#perflint-perf
+  "PERF",
+  # https://docs.astral.sh/ruff/rules/#refurb-furb
+  "FURB",
+  # https://docs.astral.sh/ruff/rules/#flake8-pie-pie
+  "PIE",
+  # https://docs.astral.sh/ruff/rules/#flake8-async-async
+  "ASYNC",
   # https://docs.astral.sh/ruff/rules/#ruff-specific-rules-ruf
-  "RUF"
+  "RUF",
 ]
 ignore = [
-  # https://docs.astral.sh/ruff/rules/any-type/
+  # https://docs.astral.sh/ruff/rules/any-type
   "ANN401",
-  # https://docs.astral.sh/ruff/rules/missing-type-kwargs/
+  # https://docs.astral.sh/ruff/rules/missing-type-kwargs
   "ANN003",
-  # https://docs.astral.sh/ruff/rules/undocumented-public-module/
+  # https://docs.astral.sh/ruff/rules/undocumented-public-module
   "D100",
-  # https://docs.astral.sh/ruff/rules/undocumented-public-package/
+  # https://docs.astral.sh/ruff/rules/undocumented-public-package
   "D104",
-  # https://docs.astral.sh/ruff/rules/undocumented-public-nested-class/
+  # https://docs.astral.sh/ruff/rules/undocumented-public-nested-class
   "D106",
-  # https://docs.astral.sh/ruff/rules/undocumented-public-init/
+  # https://docs.astral.sh/ruff/rules/undocumented-public-init
   "D107",
-  # https://docs.astral.sh/ruff/rules/mutable-class-default/
+  # https://docs.astral.sh/ruff/rules/raise-vanilla-args
+  "TRY003",
+  # https://docs.astral.sh/ruff/rules/try-consider-else
+  "TRY300",
+  # https://docs.astral.sh/ruff/rules/mutable-class-default
   "RUF012",
 ]
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = [
-  # https://docs.astral.sh/ruff/rules/F401
+  # https://docs.astral.sh/ruff/rules/unused-import
   "F401",
 ]
 "**/tests/*" = [
-  # https://docs.astral.sh/ruff/rules/S101
+  # https://docs.astral.sh/ruff/rules/assert
   "S101",
-  # https://docs.astral.sh/ruff/rules/S106
+  # https://docs.astral.sh/ruff/rules/hardcoded-password-func-arg
   "S106",
-  # https://docs.astral.sh/ruff/rules/S311
+  # https://docs.astral.sh/ruff/rules/suspicious-non-cryptographic-random-usage
   "S311",
 ]
 "**/test_*" = [
-  # https://docs.astral.sh/ruff/rules/ANN201
+  # https://docs.astral.sh/ruff/rules/missing-return-type-undocumented-public-function
   "ANN201",
 ]
 "**/migrations/*" = [
@@ -223,18 +264,11 @@ ignore = [
 force-wrap-aliases = true
 split-on-trailing-comma = true
 section-order = [
-    "future",
-    "standard-library",
-    "third-party",
-    "boto3",
-    "first-party",
-    "local-folder",
-]
-[tool.ruff.lint.isort.sections]
-django = [
-  "django",
-  "rest_framework",
-  "django_filters",
+  "future",
+  "standard-library",
+  "third-party",
+  "first-party",
+  "local-folder",
 ]
 
 [tool.ruff.lint.flake8-pytest-style]
@@ -250,17 +284,13 @@ skip-magic-trailing-comma = false
 line-ending = "auto"
 
 [tool.mypy]
-plugins = []
 # https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
 ignore_missing_imports = true
 strict = false
 warn_no_return = false
 check_untyped_defs = true
 disallow_any_generics = true
-exclude = [
-  "venv",
-  ".venv",
-]
+exclude = "venv|/.venv"
 
 [[tool.mypy.overrides]]
 module = "tests/*"
@@ -290,17 +320,17 @@ ignore = [
 #   Extend pytest output
 # The last configs are for coverage
 addopts = [
-    "--reuse-db",
-    "--ff",
-    "--capture=no",
-    "--verbose",
-    "--cov-config=pyproject.toml",
-    "--junitxml=pytest.xml",
+  "--reuse-db",
+  "--ff",
+  "--capture=no",
+  "--verbose",
+  "--cov-config=pyproject.toml",
+  "--junitxml=pytest.xml",
 ]
 # skip all files inside following dirs
 norecursedirs = [
-    "venv",
-    ".venv",
+  "venv",
+  ".venv",
 ]
 # set Django settings
 DJANGO_SETTINGS_MODULE = "example.settings"
