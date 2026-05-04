@@ -1,0 +1,95 @@
+site_name: saritasa-drf-tools
+site_description: Tools For DRF Used By Saritasa
+site_url: https://saritasa-nest.github.io/saritasa-drf-tools/
+repo_url: https://github.com/saritasa-nest/saritasa-drf-tools/
+repo_name: saritasa-drf-tools
+theme:
+  name: material
+  favicon: _static/favicon.png
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      primary: custom
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+  features:
+    - search.suggest
+    - search.highlight
+    - search.share
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.path
+    - content.code.annotate
+    - content.code.copy
+    - content.tooltips
+extra_css:
+  - _static/custom_color.css
+plugins:
+  - search
+  - autorefs
+  - mkdocstrings
+markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.highlight:
+      use_pygments: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.emoji
+  - pymdownx.magiclink
+  - toc:
+      permalink: true
+nav:
+  - Home: index.md
+  - Changelog: changelog.md
+  - Contributing: contributing.md
+  - Reference:
+      - Renderers: reference/renderers.md
+      - Pagination: reference/pagination.md
+      - Pytest Plugin: reference/pytest_plugin.md
+      - Filters:
+          - Django Filters: reference/filters/django_filters.md
+          - Ordering: reference/filters/ordering.md
+          - Search: reference/filters/search.md
+      - Open API:
+          - Extend Schema: reference/open_api/extend_schema.md
+          - Serializers: reference/open_api/serializers.md
+      - Serializers:
+          - Base: reference/serializers/base.md
+          - Model Base: reference/serializers/model_base.md
+      - Mixins:
+          - Clean Validation Mixin: reference/serializers/mixins/clean_validation_mixin.md
+          - Field Mapping Override Mixin: reference/serializers/mixins/field_mapping_override_mixin.md
+          - Nested Fields Mixin: reference/serializers/mixins/nested_fields_mixin.md
+          - User And Request From Request Mixin: reference/serializers/mixins/user_and_request_from_request_mixin.md
+      - Testing:
+          - API Action Tester: reference/testing/api_action_tester.md
+          - DRF Standardized Errors: reference/testing/drf_standardized_errors.md
+      - Views:
+          - Base: reference/views/base.md
+          - CRUD: reference/views/crud.md
+          - Read Only: reference/views/read_only.md
+          - Mixins:
+              - Permissions Map Mixin: reference/views/mixins/permissions_map_mixin.md
+              - Serializers Map Mixin: reference/views/mixins/serializers_map_mixin.md
+              - Update Without Patch Mixin: reference/views/mixins/update_without_patch_mixin.md
+extra:
+  version:
+    provider: mike

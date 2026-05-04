@@ -6,11 +6,13 @@ We follow [Semantic Versions](https://semver.org/).
 
 - `LimitOffsetPagination`: Now supports overriding pagination settings per
   view via `pagination_default_limit` and `pagination_max_limit` attributes.
+- Set up docs generation with `mkdocs`
 
 ## 0.3.0
 
 - Confirm support for python 3.14
-- Add secondary sorting feature for getting deterministic results in `OrderingFilterBackend` (and `SARITASA_DRF_ORDERING_ADD_PK_TO_ORDERING` setting)
+- Add secondary sorting feature for getting deterministic results in `OrderingFilterBackend`
+(and `SARITASA_DRF_ORDERING_ADD_PK_TO_ORDERING` setting)
 - Add `capture_on_commit` to `ApiActionTester`
 
 ## 0.2.2
@@ -32,3 +34,7 @@ Also add new settings `SARITASA_DRF_ORDERING_IS_NULL_FIRST` and `SARITASA_DRF_OR
 ## 0.1.0
 
 - Beta release
+
+## 0.0.0
+
+- Start of package development
