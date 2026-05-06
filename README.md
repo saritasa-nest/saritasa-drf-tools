@@ -9,6 +9,9 @@
 ![PyPI - License](https://img.shields.io/pypi/l/saritasa-drf-tools)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/saritasa-drf-tools)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![prek](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/j178/prek/master/docs/assets/badge-v0.json)](https://github.com/j178/prek)
+
+Check out out other open-source [projects](https://github.com/orgs/saritasa-nest/repositories?q=visibility%3Apublic+archived%3Afalse+fork%3Afalse+language%3APython)
 
 Tools For [DRF](https://www.django-rest-framework.org/) Used By Saritasa
 
