@@ -2,102 +2,102 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/changelog/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/contributing/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/pagination/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/pytest_plugin/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/renderers/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/filters/django_filters/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/filters/ordering/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/filters/search/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/open_api/extend_schema/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/open_api/serializers/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/serializers/base/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/serializers/model_base/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/serializers/mixins/clean_validation_mixin/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/serializers/mixins/field_mapping_override_mixin/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/serializers/mixins/nested_fields_mixin/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/serializers/mixins/user_and_request_from_request_mixin/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/testing/api_action_tester/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/testing/drf_standardized_errors/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/views/base/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/views/crud/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/views/read_only/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/views/mixins/permissions_map_mixin/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/views/mixins/serializers_map_mixin/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://saritasa-nest.github.io/saritasa-drf-tools/latest/reference/views/mixins/update_without_patch_mixin/</loc>
-         <lastmod>2026-05-04</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
 </urlset>
