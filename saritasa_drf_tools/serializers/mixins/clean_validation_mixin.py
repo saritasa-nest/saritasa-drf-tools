@@ -12,15 +12,15 @@ class CleanValidationMixin:
         attrs: dict[str, typing.Any],
     ) -> typing.Any:
         """Get instance depending on request."""
-        if self.instance:  # type: ignore
+        if self.instance is not None:  # type: ignore
             # if it's update request
             return copy.deepcopy(self.instance)  # type: ignore
+        model = self.Meta.model  # type: ignore
         # If attrs have `id` data, get instance form db
         # if it is a create request, we return empty instance
-        instance_id = attrs.get("id")
-        model = self.Meta.model  # type: ignore
-        instance = model.objects.filter(pk=instance_id).first() or model()
-        return instance
+        if instance_id := attrs.get("id"):
+            return model.objects.filter(pk=instance_id).first() or model()
+        return model()
 
     def prepare_instance(
         self,

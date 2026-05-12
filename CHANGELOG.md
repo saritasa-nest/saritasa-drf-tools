@@ -7,6 +7,7 @@ We follow [Semantic Versions](https://semver.org/).
 - `LimitOffsetPagination`: Now supports overriding pagination settings per
   view via `pagination_default_limit` and `pagination_max_limit` attributes.
 - Set up docs generation with `mkdocs`
+- Fix extra query on instance creation in `CleanValidationMixin`
 
 ## 0.3.0
 
