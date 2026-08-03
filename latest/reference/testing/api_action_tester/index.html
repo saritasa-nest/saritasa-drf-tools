@@ -2277,15 +2277,15 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class helper for testing api.&quot;&quot;&quot;</span>
 
     <span class="n">url_basename</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="nb">type</span> <span class="n">factory_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">[</span>
+    <span class="nb">type</span> <span class="n">factory_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">[</span>  <span class="c1"># noqa: PYI042</span>
         <span class="n">factory_boy</span><span class="o">.</span><span class="n">django</span><span class="o">.</span><span class="n">DjangoModelFactory</span><span class="p">[</span><span class="n">DjangoModel</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
     <span class="p">]</span>
     <span class="n">factory</span><span class="p">:</span> <span class="n">factory_type</span>
-    <span class="nb">type</span> <span class="n">model_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">[</span><span class="n">DjangoModel</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
+    <span class="nb">type</span> <span class="n">model_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">[</span><span class="n">DjangoModel</span><span class="p">]</span>  <span class="c1"># type: ignore  # noqa: PYI042</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">model_type</span>
-    <span class="nb">type</span> <span class="n">user_model_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">[</span><span class="n">DjangoUserModel</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
+    <span class="nb">type</span> <span class="n">user_model_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">[</span><span class="n">DjangoUserModel</span><span class="p">]</span>  <span class="c1"># type: ignore  # noqa: PYI042</span>
     <span class="n">user_model</span><span class="p">:</span> <span class="n">user_model_type</span>
-    <span class="nb">type</span> <span class="n">api_view_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">[</span><span class="n">RestAPIView</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
+    <span class="nb">type</span> <span class="n">api_view_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">[</span><span class="n">RestAPIView</span><span class="p">]</span>  <span class="c1"># type: ignore  # noqa: PYI042</span>
     <span class="n">api_view</span><span class="p">:</span> <span class="n">api_view_type</span>
     <span class="n">capture_on_commit</span><span class="p">:</span> <span class="n">pytest_django</span><span class="o">.</span><span class="n">DjangoCaptureOnCommitCallbacks</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">django</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">TestCase</span><span class="o">.</span><span class="n">captureOnCommitCallbacks</span>
