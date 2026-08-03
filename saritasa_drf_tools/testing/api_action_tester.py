@@ -24,15 +24,15 @@ class ApiActionTester[
     """Class helper for testing api."""
 
     url_basename: str
-    type factory_type = type[
+    type factory_type = type[  # noqa: PYI042
         factory_boy.django.DjangoModelFactory[DjangoModel]  # type: ignore
     ]
     factory: factory_type
-    type model_type = type[DjangoModel]  # type: ignore
+    type model_type = type[DjangoModel]  # type: ignore  # noqa: PYI042
     model: model_type
-    type user_model_type = type[DjangoUserModel]  # type: ignore
+    type user_model_type = type[DjangoUserModel]  # type: ignore  # noqa: PYI042
     user_model: user_model_type
-    type api_view_type = type[RestAPIView]  # type: ignore
+    type api_view_type = type[RestAPIView]  # type: ignore  # noqa: PYI042
     api_view: api_view_type
     capture_on_commit: pytest_django.DjangoCaptureOnCommitCallbacks = (
         django.test.TestCase.captureOnCommitCallbacks
