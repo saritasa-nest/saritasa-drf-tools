@@ -1861,12 +1861,12 @@ class DogViewSet(BaseViewset):
     # `IsAuthenticated` permission from
     # `BaseViewset.base_permission_classes`
     extra_permissions_map = {
-        &quot;bark&quot;: (
+        "bark": (
             CanSayWoof,
         ),
         # Only permissions from `base_permission_classes` will be used for
         # this action
-        &quot;sit&quot;: (),
+        "sit": (),
     }
     # For all actions which were not found in `extra_permissions_map`
     # will be used permissions from `base_permission_classes` +
@@ -2022,7 +2022,7 @@ class DogViewSet(BaseViewset):
 <span class="normal">147</span>
 <span class="normal">148</span>
 <span class="normal">149</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ActionPermissionsMixin</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mixin which allows to define specific permissions per actions.</span>
+<span class="w">    </span><span class="sd">"""Mixin which allows to define specific permissions per actions.</span>
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
@@ -2070,12 +2070,12 @@ class DogViewSet(BaseViewset):
 <span class="sd">        # `IsAuthenticated` permission from</span>
 <span class="sd">        # `BaseViewset.base_permission_classes`</span>
 <span class="sd">        extra_permissions_map = {</span>
-<span class="sd">            &quot;bark&quot;: (</span>
+<span class="sd">            "bark": (</span>
 <span class="sd">                CanSayWoof,</span>
 <span class="sd">            ),</span>
 <span class="sd">            # Only permissions from `base_permission_classes` will be used for</span>
 <span class="sd">            # this action</span>
-<span class="sd">            &quot;sit&quot;: (),</span>
+<span class="sd">            "sit": (),</span>
 <span class="sd">        }</span>
 <span class="sd">        # For all actions which were not found in `extra_permissions_map`</span>
 <span class="sd">        # will be used permissions from `base_permission_classes` +</span>
@@ -2085,7 +2085,7 @@ class DogViewSet(BaseViewset):
 <span class="sd">        )</span>
 <span class="sd">    ```</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">action</span><span class="p">:</span> <span class="nb">str</span>
 
@@ -2102,30 +2102,30 @@ class DogViewSet(BaseViewset):
     <span class="n">permission_classes</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Final</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_permissions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">permissions</span><span class="o">.</span><span class="n">BasePermission</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return permissions list for current `.action` attribute value.</span>
+<span class="w">        </span><span class="sd">"""Return permissions list for current `.action` attribute value.</span>
 
 <span class="sd">        It returns permission from `base_permission_classes` +</span>
-<span class="sd">        permissions list from `extra_permissions_map` using view&#39;s action as</span>
+<span class="sd">        permissions list from `extra_permissions_map` using view's action as</span>
 <span class="sd">        key.</span>
-<span class="sd">        If view doesn&#39;t have `extra_permissions_map` just return</span>
+<span class="sd">        If view doesn't have `extra_permissions_map` just return</span>
 <span class="sd">        `base_permission_classes` + `extra_permission_classes`</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">            All permissions for the action</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;permission_classes&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"permission_classes"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">ImproperlyConfigured</span><span class="p">(</span>
-                <span class="s2">&quot;`permission_classes` is not supported.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;Use `base_permission_classes` + `extra_permission_classes` &quot;</span>
-                <span class="s2">&quot;or `base_permission_classes` + `extra_permissions_map` &quot;</span>
-                <span class="s2">&quot;instead.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;Check `ActionPermissionsMixin` docs for additional &quot;</span>
-                <span class="s2">&quot;information&quot;</span><span class="p">,</span>
+                <span class="s2">"`permission_classes` is not supported.</span><span class="se">\n</span><span class="s2">"</span>
+                <span class="s2">"Use `base_permission_classes` + `extra_permission_classes` "</span>
+                <span class="s2">"or `base_permission_classes` + `extra_permissions_map` "</span>
+                <span class="s2">"instead.</span><span class="se">\n</span><span class="s2">"</span>
+                <span class="s2">"Check `ActionPermissionsMixin` docs for additional "</span>
+                <span class="s2">"information"</span><span class="p">,</span>
             <span class="p">)</span>
 
-        <span class="n">action</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;action&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"action"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="n">action_extra_permission_classes</span> <span class="o">=</span> <span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">get_action_extra_permission_classes</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="n">action</span><span class="p">)</span>
         <span class="p">)</span>
@@ -2141,21 +2141,21 @@ class DogViewSet(BaseViewset):
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">action</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PermissionsTypesSequence</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return extra permissions for the action.</span>
+<span class="w">        </span><span class="sd">"""Return extra permissions for the action.</span>
 
 <span class="sd">        If the action is provided in `extra_permissions_map` then return</span>
 <span class="sd">        permissions for this action, otherwise return just all permissions from</span>
 <span class="sd">        `extra_permission_classes`.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">extra_permissions_map</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;extra_permissions_map&quot;</span><span class="p">,</span> <span class="p">{})</span>
+<span class="sd">        """</span>
+        <span class="n">extra_permissions_map</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"extra_permissions_map"</span><span class="p">,</span> <span class="p">{})</span>
         <span class="k">return</span> <span class="n">extra_permissions_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">extra_permission_classes</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_unique_permissions</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">permissions</span><span class="p">:</span> <span class="n">PermissionsTypesSequence</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">permissions</span><span class="o">.</span><span class="n">BasePermission</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return list of unique permissions with keeping original order.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Return list of unique permissions with keeping original order."""</span>
         <span class="n">unique_permissions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">permissions</span><span class="p">))</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">permission</span><span class="p">()</span> <span class="k">for</span> <span class="n">permission</span> <span class="ow">in</span> <span class="n">unique_permissions</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>
@@ -2209,14 +2209,14 @@ permissions for this action, otherwise return just all permissions from
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">action</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PermissionsTypesSequence</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return extra permissions for the action.</span>
+<span class="w">    </span><span class="sd">"""Return extra permissions for the action.</span>
 
 <span class="sd">    If the action is provided in `extra_permissions_map` then return</span>
 <span class="sd">    permissions for this action, otherwise return just all permissions from</span>
 <span class="sd">    `extra_permission_classes`.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">extra_permissions_map</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;extra_permissions_map&quot;</span><span class="p">,</span> <span class="p">{})</span>
+<span class="sd">    """</span>
+    <span class="n">extra_permissions_map</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"extra_permissions_map"</span><span class="p">,</span> <span class="p">{})</span>
     <span class="k">return</span> <span class="n">extra_permissions_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">extra_permission_classes</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -2283,30 +2283,30 @@ If view doesn't have <code>extra_permissions_map</code> just return
 <span class="normal">125</span>
 <span class="normal">126</span>
 <span class="normal">127</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_permissions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">permissions</span><span class="o">.</span><span class="n">BasePermission</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return permissions list for current `.action` attribute value.</span>
+<span class="w">    </span><span class="sd">"""Return permissions list for current `.action` attribute value.</span>
 
 <span class="sd">    It returns permission from `base_permission_classes` +</span>
-<span class="sd">    permissions list from `extra_permissions_map` using view&#39;s action as</span>
+<span class="sd">    permissions list from `extra_permissions_map` using view's action as</span>
 <span class="sd">    key.</span>
-<span class="sd">    If view doesn&#39;t have `extra_permissions_map` just return</span>
+<span class="sd">    If view doesn't have `extra_permissions_map` just return</span>
 <span class="sd">    `base_permission_classes` + `extra_permission_classes`</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">        All permissions for the action</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;permission_classes&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"permission_classes"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">ImproperlyConfigured</span><span class="p">(</span>
-            <span class="s2">&quot;`permission_classes` is not supported.</span><span class="se">\n</span><span class="s2">&quot;</span>
-            <span class="s2">&quot;Use `base_permission_classes` + `extra_permission_classes` &quot;</span>
-            <span class="s2">&quot;or `base_permission_classes` + `extra_permissions_map` &quot;</span>
-            <span class="s2">&quot;instead.</span><span class="se">\n</span><span class="s2">&quot;</span>
-            <span class="s2">&quot;Check `ActionPermissionsMixin` docs for additional &quot;</span>
-            <span class="s2">&quot;information&quot;</span><span class="p">,</span>
+            <span class="s2">"`permission_classes` is not supported.</span><span class="se">\n</span><span class="s2">"</span>
+            <span class="s2">"Use `base_permission_classes` + `extra_permission_classes` "</span>
+            <span class="s2">"or `base_permission_classes` + `extra_permissions_map` "</span>
+            <span class="s2">"instead.</span><span class="se">\n</span><span class="s2">"</span>
+            <span class="s2">"Check `ActionPermissionsMixin` docs for additional "</span>
+            <span class="s2">"information"</span><span class="p">,</span>
         <span class="p">)</span>
 
-    <span class="n">action</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;action&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">action</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"action"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">action_extra_permission_classes</span> <span class="o">=</span> <span class="p">(</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_action_extra_permission_classes</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="n">action</span><span class="p">)</span>
     <span class="p">)</span>
@@ -2349,7 +2349,7 @@ If view doesn't have <code>extra_permissions_map</code> just return
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">permissions</span><span class="p">:</span> <span class="n">PermissionsTypesSequence</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">permissions</span><span class="o">.</span><span class="n">BasePermission</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return list of unique permissions with keeping original order.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Return list of unique permissions with keeping original order."""</span>
     <span class="n">unique_permissions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">permissions</span><span class="p">))</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">permission</span><span class="p">()</span> <span class="k">for</span> <span class="n">permission</span> <span class="ow">in</span> <span class="n">unique_permissions</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>

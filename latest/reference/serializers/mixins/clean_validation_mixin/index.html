@@ -1854,20 +1854,20 @@
 <span class="normal">104</span>
 <span class="normal">105</span>
 <span class="normal">106</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">CleanValidationMixin</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enable model clean validation in serializer.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Enable model clean validation in serializer."""</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_instance</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">attrs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get instance depending on request.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Get instance depending on request."""</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">instance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
-            <span class="c1"># if it&#39;s update request</span>
+            <span class="c1"># if it's update request</span>
             <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instance</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
         <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">model</span>  <span class="c1"># type: ignore</span>
         <span class="c1"># If attrs have `id` data, get instance form db</span>
         <span class="c1"># if it is a create request, we return empty instance</span>
-        <span class="k">if</span> <span class="n">instance_id</span> <span class="o">:=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">instance_id</span> <span class="o">:=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"id"</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">instance_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">or</span> <span class="n">model</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">model</span><span class="p">()</span>
 
@@ -1875,13 +1875,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">attrs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Prepare instance depending on create/update.</span>
+<span class="w">        </span><span class="sd">"""Prepare instance depending on create/update.</span>
 
-<span class="sd">        If `create` used, create empty instance and set fields&#39; values with</span>
+<span class="sd">        If `create` used, create empty instance and set fields' values with</span>
 <span class="sd">        received data. If `update` used, update existing instance with received</span>
 <span class="sd">        data.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="c1"># Prepare instance depending on create/update</span>
         <span class="n">instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_instance</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 
@@ -1899,7 +1899,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">attrs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Call model&#39;s `.clean()` method during validation.</span>
+<span class="w">        </span><span class="sd">"""Call model's `.clean()` method during validation.</span>
 
 <span class="sd">        Create:</span>
 <span class="sd">            Just create model instance using provided data.</span>
@@ -1907,7 +1907,7 @@
 <span class="sd">            `self.instance` contains instance with new data. We apply passed</span>
 <span class="sd">            data to it and then call `clean` method for this temp instance.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">attrs</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
 
         <span class="n">instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prepare_instance</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
@@ -1917,7 +1917,7 @@
         <span class="k">return</span> <span class="n">attrs</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_relations_fields_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Extract fields with relations before validation.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Extract fields with relations before validation."""</span>
         <span class="n">relations</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
         <span class="c1"># Remove related fields from validated data for future manipulations</span>
@@ -1925,8 +1925,8 @@
             <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">read_only</span><span class="p">:</span>
                 <span class="k">continue</span>
 
-            <span class="k">if</span> <span class="s2">&quot;.&quot;</span> <span class="ow">in</span> <span class="n">field</span><span class="o">.</span><span class="n">source</span><span class="p">:</span>
-                <span class="n">source_attr</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="s2">"."</span> <span class="ow">in</span> <span class="n">field</span><span class="o">.</span><span class="n">source</span><span class="p">:</span>
+                <span class="n">source_attr</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"."</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
                 <span class="n">relations</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">source_attr</span><span class="p">)</span>
                 <span class="k">continue</span>
 
@@ -2002,14 +2002,14 @@
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">attrs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get instance depending on request.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Get instance depending on request."""</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">instance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
-        <span class="c1"># if it&#39;s update request</span>
+        <span class="c1"># if it's update request</span>
         <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instance</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
     <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">model</span>  <span class="c1"># type: ignore</span>
     <span class="c1"># If attrs have `id` data, get instance form db</span>
     <span class="c1"># if it is a create request, we return empty instance</span>
-    <span class="k">if</span> <span class="n">instance_id</span> <span class="o">:=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">instance_id</span> <span class="o">:=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"id"</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">instance_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">or</span> <span class="n">model</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">model</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
@@ -2063,13 +2063,13 @@ data.</p>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">attrs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prepare instance depending on create/update.</span>
+<span class="w">    </span><span class="sd">"""Prepare instance depending on create/update.</span>
 
-<span class="sd">    If `create` used, create empty instance and set fields&#39; values with</span>
+<span class="sd">    If `create` used, create empty instance and set fields' values with</span>
 <span class="sd">    received data. If `update` used, update existing instance with received</span>
 <span class="sd">    data.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1"># Prepare instance depending on create/update</span>
     <span class="n">instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_instance</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 
@@ -2135,7 +2135,7 @@ data.</p>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">attrs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Call model&#39;s `.clean()` method during validation.</span>
+<span class="w">    </span><span class="sd">"""Call model's `.clean()` method during validation.</span>
 
 <span class="sd">    Create:</span>
 <span class="sd">        Just create model instance using provided data.</span>
@@ -2143,7 +2143,7 @@ data.</p>
 <span class="sd">        `self.instance` contains instance with new data. We apply passed</span>
 <span class="sd">        data to it and then call `clean` method for this temp instance.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">attrs</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
 
     <span class="n">instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prepare_instance</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>

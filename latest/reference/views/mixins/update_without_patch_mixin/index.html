@@ -1708,13 +1708,13 @@ But <code>PATCH</code> allows bypassing <code>required</code> restriction.</p>
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">UpdateModelWithoutPatchMixin</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Same as UpdateModelMixin but without patch method.</span>
+<span class="w">    </span><span class="sd">"""Same as UpdateModelMixin but without patch method.</span>
 
-<span class="sd">    Disables `PATCH` methods. Frontend usually doesn&#39;t use it, we write</span>
+<span class="sd">    Disables `PATCH` methods. Frontend usually doesn't use it, we write</span>
 <span class="sd">    serializers expecting to have all data we need to do the thing.</span>
 <span class="sd">    But `PATCH` allows bypassing `required` restriction.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">update</span> <span class="o">=</span> <span class="n">mixins</span><span class="o">.</span><span class="n">UpdateModelMixin</span><span class="o">.</span><span class="n">update</span>
     <span class="n">perform_update</span> <span class="o">=</span> <span class="n">mixins</span><span class="o">.</span><span class="n">UpdateModelMixin</span><span class="o">.</span><span class="n">perform_update</span>

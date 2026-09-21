@@ -1747,13 +1747,13 @@
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ApiViewFix</span><span class="p">(</span><span class="n">OpenApiViewExtension</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fixes warning `This is graceful fallback handling for APIViews`.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Fixes warning `This is graceful fallback handling for APIViews`."""</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">view_replacement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># noqa: ANN201</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate replacement.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Generate replacement."""</span>
 
         <span class="k">class</span><span class="w"> </span><span class="nc">Fixed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_class</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
-<span class="w">            </span><span class="sd">&quot;&quot;&quot;Add needed properties.&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">"""Add needed properties."""</span>
 
             <span class="n">serializer_class</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="n">queryset</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1801,10 +1801,10 @@
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">view_replacement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># noqa: ANN201</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate replacement.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Generate replacement."""</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">Fixed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_class</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add needed properties.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Add needed properties."""</span>
 
         <span class="n">serializer_class</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">queryset</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1850,12 +1850,12 @@
 <span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fix_api_view_warning</span><span class="p">(</span><span class="n">class_to_fix</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">APIView</span><span class="p">]):</span>  <span class="c1"># noqa: ANN201</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fix warning `This is graceful fallback handling for APIViews`.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Fix warning `This is graceful fallback handling for APIViews`."""</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">FixedApiView</span><span class="p">(</span><span class="n">ApiViewFix</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generated fixed class.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Generated fixed class."""</span>
 
-        <span class="n">target_class</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">class_to_fix</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">class_to_fix</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">target_class</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">class_to_fix</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">class_to_fix</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">"</span>
 
     <span class="k">return</span> <span class="n">FixedApiView</span>
 </code></pre></div></td></tr></table></div>

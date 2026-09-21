@@ -1739,7 +1739,7 @@
 <span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">DjangoFilterBackend</span><span class="p">(</span><span class="n">rest_framework</span><span class="o">.</span><span class="n">DjangoFilterBackend</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Customized DjangoFilterBackend to reduce queries count.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Customized DjangoFilterBackend to reduce queries count."""</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">to_html</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -1747,7 +1747,7 @@
         <span class="n">queryset</span><span class="p">,</span>  <span class="c1"># noqa: ANN001</span>
         <span class="n">view</span><span class="p">,</span>  <span class="c1"># noqa: ANN001</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert ModelChoiceField&#39;s widget to TextInput.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Convert ModelChoiceField's widget to TextInput."""</span>
         <span class="n">filterset</span><span class="p">:</span> <span class="n">rest_framework</span><span class="o">.</span><span class="n">FilterSet</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_filterset</span><span class="p">(</span>
             <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">,</span>
             <span class="n">queryset</span><span class="o">=</span><span class="n">queryset</span><span class="p">,</span>
@@ -1762,7 +1762,7 @@
                 <span class="n">field</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">()</span>
         <span class="n">template</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="n">template_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="p">)</span>
         <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="n">filterset</span><span class="p">,</span>
+            <span class="s2">"filter"</span><span class="p">:</span> <span class="n">filterset</span><span class="p">,</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -1826,7 +1826,7 @@
     <span class="n">queryset</span><span class="p">,</span>  <span class="c1"># noqa: ANN001</span>
     <span class="n">view</span><span class="p">,</span>  <span class="c1"># noqa: ANN001</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert ModelChoiceField&#39;s widget to TextInput.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Convert ModelChoiceField's widget to TextInput."""</span>
     <span class="n">filterset</span><span class="p">:</span> <span class="n">rest_framework</span><span class="o">.</span><span class="n">FilterSet</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_filterset</span><span class="p">(</span>
         <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">,</span>
         <span class="n">queryset</span><span class="o">=</span><span class="n">queryset</span><span class="p">,</span>
@@ -1841,7 +1841,7 @@
             <span class="n">field</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">()</span>
     <span class="n">template</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="n">template_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="p">)</span>
     <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="n">filterset</span><span class="p">,</span>
+        <span class="s2">"filter"</span><span class="p">:</span> <span class="n">filterset</span><span class="p">,</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>

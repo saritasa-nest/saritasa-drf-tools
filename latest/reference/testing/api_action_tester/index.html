@@ -2274,7 +2274,7 @@
     <span class="n">DjangoUserModel</span><span class="p">:</span> <span class="n">django</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">AbstractBaseUser</span><span class="p">,</span>
     <span class="n">RestAPIView</span><span class="p">:</span> <span class="n">rest_framework</span><span class="o">.</span><span class="n">generics</span><span class="o">.</span><span class="n">GenericAPIView</span><span class="p">,</span>
 <span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class helper for testing api.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Class helper for testing api."""</span>
 
     <span class="n">url_basename</span><span class="p">:</span> <span class="nb">str</span>
     <span class="nb">type</span> <span class="n">factory_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">[</span>  <span class="c1"># noqa: PYI042</span>
@@ -2298,12 +2298,12 @@
         <span class="n">RestAPIViewInit</span><span class="p">:</span> <span class="n">rest_framework</span><span class="o">.</span><span class="n">generics</span><span class="o">.</span><span class="n">GenericAPIView</span><span class="p">,</span>
     <span class="p">](</span>
         <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span>
-<span class="w">            </span><span class="sd">&quot;&quot;&quot;ApiActionTester[</span>
+<span class="w">            </span><span class="sd">"""ApiActionTester[</span>
 <span class="sd">                typing.Any,</span>
 <span class="sd">                typing.Any,</span>
 <span class="sd">                typing.Any</span>
 <span class="sd">            ]</span>
-<span class="sd">            &quot;&quot;&quot;</span>
+<span class="sd">            """</span>
         <span class="p">],</span>
         <span class="n">factory</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">factory_boy</span><span class="o">.</span><span class="n">django</span><span class="o">.</span><span class="n">DjangoModelFactory</span><span class="p">[</span><span class="n">DjangoModelInit</span><span class="p">]],</span>
         <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">DjangoModelInit</span><span class="p">],</span>
@@ -2312,19 +2312,19 @@
         <span class="n">url_basename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">mixins</span><span class="p">:</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">type</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">[</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;ApiActionTester[</span>
+<span class="w">        </span><span class="sd">"""ApiActionTester[</span>
 <span class="sd">            DjangoModelInit,</span>
 <span class="sd">            DjangoUserModelInit,</span>
 <span class="sd">            RestAPIViewInit</span>
 <span class="sd">        ]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Init subclass.</span>
+<span class="w">        </span><span class="sd">"""Init subclass.</span>
 
 <span class="sd">        A more simple and parametrized way to create sub class. It allows for</span>
 <span class="sd">        more generics specification</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">cls_factory</span> <span class="o">=</span> <span class="n">factory</span>
         <span class="n">cls_model</span> <span class="o">=</span> <span class="n">model</span>
         <span class="n">cls_user_model</span> <span class="o">=</span> <span class="n">user_model</span>
@@ -2350,18 +2350,18 @@
         <span class="bp">cls</span><span class="p">,</span>
         <span class="n">url_basename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set up api action tester class.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Set up api action tester class."""</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">url_basename</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="bp">cls</span><span class="o">.</span><span class="n">url_basename</span> <span class="o">=</span> <span class="n">url_basename</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">lazy_url</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">action</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">action</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get lazy url to action.&quot;&quot;&quot;</span>
-        <span class="n">viewname</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url_basename</span><span class="p">,</span> <span class="n">action</span><span class="p">)))</span>
+<span class="w">        </span><span class="sd">"""Get lazy url to action."""</span>
+        <span class="n">viewname</span> <span class="o">=</span> <span class="s2">"-"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url_basename</span><span class="p">,</span> <span class="n">action</span><span class="p">)))</span>
         <span class="k">return</span> <span class="n">django</span><span class="o">.</span><span class="n">urls</span><span class="o">.</span><span class="n">reverse_lazy</span><span class="p">(</span>
             <span class="n">viewname</span><span class="o">=</span><span class="n">viewname</span><span class="p">,</span>
             <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span>
@@ -2371,7 +2371,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">action</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">[</span><span class="n">rest_framework</span><span class="o">.</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get serializer for api view.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Get serializer for api view."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">api_view</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="n">action</span><span class="p">)</span><span class="o">.</span><span class="n">get_serializer_class</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">serialize_data</span><span class="p">(</span>
@@ -2383,7 +2383,7 @@
         <span class="n">rest_framework</span><span class="o">.</span><span class="n">serializers</span><span class="o">.</span><span class="n">ReturnDict</span>
         <span class="o">|</span> <span class="n">rest_framework</span><span class="o">.</span><span class="n">serializers</span><span class="o">.</span><span class="n">ReturnList</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Serialize data by using view&#39;s action serializer.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Serialize data by using view's action serializer."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_serializer</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="n">action</span><span class="p">)(</span>
             <span class="n">instance</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
             <span class="n">many</span><span class="o">=</span><span class="n">many</span><span class="p">,</span>
@@ -2394,7 +2394,7 @@
         <span class="n">response</span><span class="p">:</span> <span class="n">rest_framework</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">Response</span><span class="p">,</span>
         <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Extract errors from response.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Extract errors from response."""</span>
         <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># noqa: S101</span>
         <span class="k">assert</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># noqa: S101</span>
         <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">field</span><span class="p">]</span>
@@ -2405,7 +2405,7 @@
         <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">expected_errors</span><span class="p">:</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Extract errors and check that expected errors are present.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Extract errors and check that expected errors are present."""</span>
         <span class="n">errors</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">extract_errors_from_response</span><span class="p">(</span>
                 <span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
@@ -2415,11 +2415,11 @@
         <span class="k">assert</span> <span class="n">errors</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">expected_errors</span><span class="p">),</span> <span class="n">errors</span> <span class="o">^</span> <span class="nb">set</span><span class="p">(</span><span class="n">expected_errors</span><span class="p">)</span>  <span class="c1"># noqa: S101</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">invoke_factory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DjangoModel</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate instance.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Generate instance."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">invoke_factory_build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DjangoModel</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build instance.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Build instance."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">invoke_factory_batch</span><span class="p">(</span>
@@ -2427,14 +2427,14 @@
         <span class="n">size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">DjangoModel</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate instances.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Generate instances."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">create_batch</span><span class="p">(</span>
             <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
             <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
         <span class="p">)</span>  <span class="c1"># type: ignore</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_api_client</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">rest_framework</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">APIClient</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get api client for requests.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Get api client for requests."""</span>
         <span class="k">return</span> <span class="n">rest_framework</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">APIClient</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">make_request</span><span class="p">(</span>
@@ -2448,7 +2448,7 @@
         <span class="n">capture_on_commit</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">rest_framework</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Make api request.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Make api request."""</span>
         <span class="n">api_client</span> <span class="o">=</span> <span class="n">api_client</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_api_client</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">user</span><span class="p">:</span>
             <span class="n">api_client</span><span class="o">.</span><span class="n">force_authenticate</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
@@ -2475,7 +2475,7 @@
 
     <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">instance_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get kwargs for instance generation.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Get kwargs for instance generation."""</span>
         <span class="k">return</span> <span class="p">{}</span>
 
     <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
@@ -2483,12 +2483,12 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">instance_kwargs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DjangoModel</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate instance.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Generate instance."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">factory</span><span class="p">(</span><span class="o">**</span><span class="n">instance_kwargs</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
 
     <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">instance_batch_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get kwargs for instance batch generation.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Get kwargs for instance batch generation."""</span>
         <span class="k">return</span> <span class="p">{}</span>
 
     <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
@@ -2496,8 +2496,8 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">instance_batch_kwargs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">DjangoModel</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create instances batch for testing.&quot;&quot;&quot;</span>
-        <span class="n">instance_batch_kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">"""Create instances batch for testing."""</span>
+        <span class="n">instance_batch_kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">"size"</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">create_batch</span><span class="p">(</span><span class="o">**</span><span class="n">instance_batch_kwargs</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
               </details>
@@ -2542,7 +2542,7 @@
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">url_basename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set up api action tester class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Set up api action tester class."""</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">url_basename</span><span class="p">:</span>
         <span class="k">return</span>
     <span class="bp">cls</span><span class="o">.</span><span class="n">url_basename</span> <span class="o">=</span> <span class="n">url_basename</span>
@@ -2587,7 +2587,7 @@
     <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">expected_errors</span><span class="p">:</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract errors and check that expected errors are present.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Extract errors and check that expected errors are present."""</span>
     <span class="n">errors</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">extract_errors_from_response</span><span class="p">(</span>
             <span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
@@ -2630,7 +2630,7 @@
     <span class="n">response</span><span class="p">:</span> <span class="n">rest_framework</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">Response</span><span class="p">,</span>
     <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract errors from response.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Extract errors from response."""</span>
     <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># noqa: S101</span>
     <span class="k">assert</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># noqa: S101</span>
     <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">field</span><span class="p">]</span>
@@ -2659,7 +2659,7 @@
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">183</span>
 <span class="normal">184</span>
 <span class="normal">185</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_api_client</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">rest_framework</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">APIClient</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get api client for requests.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Get api client for requests."""</span>
     <span class="k">return</span> <span class="n">rest_framework</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">APIClient</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -2692,7 +2692,7 @@
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">action</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">[</span><span class="n">rest_framework</span><span class="o">.</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get serializer for api view.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Get serializer for api view."""</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">api_view</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="n">action</span><span class="p">)</span><span class="o">.</span><span class="n">get_serializer_class</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -2782,12 +2782,12 @@ more generics specification</p>
     <span class="n">RestAPIViewInit</span><span class="p">:</span> <span class="n">rest_framework</span><span class="o">.</span><span class="n">generics</span><span class="o">.</span><span class="n">GenericAPIView</span><span class="p">,</span>
 <span class="p">](</span>
     <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;ApiActionTester[</span>
+<span class="w">        </span><span class="sd">"""ApiActionTester[</span>
 <span class="sd">            typing.Any,</span>
 <span class="sd">            typing.Any,</span>
 <span class="sd">            typing.Any</span>
 <span class="sd">        ]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="p">],</span>
     <span class="n">factory</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">factory_boy</span><span class="o">.</span><span class="n">django</span><span class="o">.</span><span class="n">DjangoModelFactory</span><span class="p">[</span><span class="n">DjangoModelInit</span><span class="p">]],</span>
     <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">DjangoModelInit</span><span class="p">],</span>
@@ -2796,19 +2796,19 @@ more generics specification</p>
     <span class="n">url_basename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">mixins</span><span class="p">:</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">type</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">[</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;ApiActionTester[</span>
+<span class="w">    </span><span class="sd">"""ApiActionTester[</span>
 <span class="sd">        DjangoModelInit,</span>
 <span class="sd">        DjangoUserModelInit,</span>
 <span class="sd">        RestAPIViewInit</span>
 <span class="sd">    ]</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 <span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Init subclass.</span>
+<span class="w">    </span><span class="sd">"""Init subclass.</span>
 
 <span class="sd">    A more simple and parametrized way to create sub class. It allows for</span>
 <span class="sd">    more generics specification</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">cls_factory</span> <span class="o">=</span> <span class="n">factory</span>
     <span class="n">cls_model</span> <span class="o">=</span> <span class="n">model</span>
     <span class="n">cls_user_model</span> <span class="o">=</span> <span class="n">user_model</span>
@@ -2862,7 +2862,7 @@ more generics specification</p>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">instance_kwargs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DjangoModel</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate instance.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Generate instance."""</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">factory</span><span class="p">(</span><span class="o">**</span><span class="n">instance_kwargs</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -2898,8 +2898,8 @@ more generics specification</p>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">instance_batch_kwargs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">DjangoModel</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create instances batch for testing.&quot;&quot;&quot;</span>
-    <span class="n">instance_batch_kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">"""Create instances batch for testing."""</span>
+    <span class="n">instance_batch_kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">"size"</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">create_batch</span><span class="p">(</span><span class="o">**</span><span class="n">instance_batch_kwargs</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -2928,7 +2928,7 @@ more generics specification</p>
 <span class="normal">238</span>
 <span class="normal">239</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">instance_batch_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get kwargs for instance batch generation.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Get kwargs for instance batch generation."""</span>
     <span class="k">return</span> <span class="p">{}</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -2957,7 +2957,7 @@ more generics specification</p>
 <span class="normal">225</span>
 <span class="normal">226</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">instance_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get kwargs for instance generation.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Get kwargs for instance generation."""</span>
     <span class="k">return</span> <span class="p">{}</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -2984,7 +2984,7 @@ more generics specification</p>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">164</span>
 <span class="normal">165</span>
 <span class="normal">166</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">invoke_factory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DjangoModel</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate instance.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Generate instance."""</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -3022,7 +3022,7 @@ more generics specification</p>
     <span class="n">size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">DjangoModel</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate instances.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Generate instances."""</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">create_batch</span><span class="p">(</span>
         <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
@@ -3052,7 +3052,7 @@ more generics specification</p>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">168</span>
 <span class="normal">169</span>
 <span class="normal">170</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">invoke_factory_build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DjangoModel</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Build instance.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Build instance."""</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -3064,7 +3064,7 @@ more generics specification</p>
 
 
 <h3 id="saritasa_drf_tools.testing.api_action_tester.ApiActionTester.lazy_url" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">lazy_url</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">lazy_url</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
 
 <a href="#saritasa_drf_tools.testing.api_action_tester.ApiActionTester.lazy_url" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -3088,11 +3088,11 @@ more generics specification</p>
 <span class="normal">114</span>
 <span class="normal">115</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">lazy_url</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
-    <span class="n">action</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="n">action</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get lazy url to action.&quot;&quot;&quot;</span>
-    <span class="n">viewname</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url_basename</span><span class="p">,</span> <span class="n">action</span><span class="p">)))</span>
+<span class="w">    </span><span class="sd">"""Get lazy url to action."""</span>
+    <span class="n">viewname</span> <span class="o">=</span> <span class="s2">"-"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url_basename</span><span class="p">,</span> <span class="n">action</span><span class="p">)))</span>
     <span class="k">return</span> <span class="n">django</span><span class="o">.</span><span class="n">urls</span><span class="o">.</span><span class="n">reverse_lazy</span><span class="p">(</span>
         <span class="n">viewname</span><span class="o">=</span><span class="n">viewname</span><span class="p">,</span>
         <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span>
@@ -3164,7 +3164,7 @@ more generics specification</p>
     <span class="n">capture_on_commit</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">rest_framework</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Make api request.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Make api request."""</span>
     <span class="n">api_client</span> <span class="o">=</span> <span class="n">api_client</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_api_client</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">user</span><span class="p">:</span>
         <span class="n">api_client</span><span class="o">.</span><span class="n">force_authenticate</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
@@ -3232,7 +3232,7 @@ more generics specification</p>
     <span class="n">rest_framework</span><span class="o">.</span><span class="n">serializers</span><span class="o">.</span><span class="n">ReturnDict</span>
     <span class="o">|</span> <span class="n">rest_framework</span><span class="o">.</span><span class="n">serializers</span><span class="o">.</span><span class="n">ReturnList</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Serialize data by using view&#39;s action serializer.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Serialize data by using view's action serializer."""</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_serializer</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="n">action</span><span class="p">)(</span>
         <span class="n">instance</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
         <span class="n">many</span><span class="o">=</span><span class="n">many</span><span class="p">,</span>

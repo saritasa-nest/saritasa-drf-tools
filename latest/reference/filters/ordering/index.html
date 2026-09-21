@@ -1903,13 +1903,13 @@
 <span class="normal">174</span>
 <span class="normal">175</span>
 <span class="normal">176</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OrderingFilterBackend</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">OrderingFilter</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Custom OrderingFilter with additional features.</span>
+<span class="w">    </span><span class="sd">"""Custom OrderingFilter with additional features.</span>
 
 <span class="sd">    Provides:</span>
 <span class="sd">    - Better support of openapi via drf-spectacular.</span>
 <span class="sd">    - Extra kwargs for ordering fields.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_ordering</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -1917,23 +1917,23 @@
         <span class="n">queryset</span><span class="p">:</span> <span class="n">models</span><span class="o">.</span><span class="n">QuerySet</span><span class="p">,</span>
         <span class="n">view</span><span class="p">:</span> <span class="n">views</span><span class="o">.</span><span class="n">APIView</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">OrderBy</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adjust ordering params.</span>
+<span class="w">        </span><span class="sd">"""Adjust ordering params.</span>
 
 <span class="sd">        Wrap ordering fields in `models.OrderBy` and pass extra ordering kwargs</span>
 
 <span class="sd">        When using PostgreSQL and sorting by non-unique fields only (or without</span>
 <span class="sd">        any ordering), non-deterministic results may occur, because the db</span>
-<span class="sd">        doesn&#39;t guarantee particular output ordering without unique ordering</span>
+<span class="sd">        doesn't guarantee particular output ordering without unique ordering</span>
 <span class="sd">        fields</span>
 <span class="sd">        (https://www.postgresql.org/docs/current/queries-order.html).</span>
 <span class="sd">        Closed PR to change this in `django-rest-framework`:</span>
 <span class="sd">        https://github.com/encode/django-rest-framework/pull/9109</span>
-<span class="sd">        To fix this, &quot;id&quot; is added as the last ordering field if</span>
+<span class="sd">        To fix this, "id" is added as the last ordering field if</span>
 <span class="sd">        `add_pk_to_ordering` is provided (otherwise applied by default or</span>
-<span class="sd">        controlled via global setting). If &quot;id&quot; is already present in</span>
-<span class="sd">        ordering, it won&#39;t be duplicated.</span>
+<span class="sd">        controlled via global setting). If "id" is already present in</span>
+<span class="sd">        ordering, it won't be duplicated.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">ordering</span> <span class="o">=</span> <span class="p">(</span>
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_ordering</span><span class="p">(</span>
                 <span class="n">request</span><span class="p">,</span>
@@ -1944,49 +1944,49 @@
         <span class="p">)</span>
         <span class="n">default_add_pk_to_ordering</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
             <span class="n">settings</span><span class="p">,</span>
-            <span class="s2">&quot;SARITASA_DRF_ORDERING_ADD_PK_TO_ORDERING&quot;</span><span class="p">,</span>
+            <span class="s2">"SARITASA_DRF_ORDERING_ADD_PK_TO_ORDERING"</span><span class="p">,</span>
             <span class="kc">True</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">add_pk_to_ordering</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
             <span class="n">view</span><span class="p">,</span>
-            <span class="s2">&quot;add_pk_to_ordering&quot;</span><span class="p">,</span>
+            <span class="s2">"add_pk_to_ordering"</span><span class="p">,</span>
             <span class="n">default_add_pk_to_ordering</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">is_null_first</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
             <span class="n">settings</span><span class="p">,</span>
-            <span class="s2">&quot;SARITASA_DRF_ORDERING_IS_NULL_FIRST&quot;</span><span class="p">,</span>
+            <span class="s2">"SARITASA_DRF_ORDERING_IS_NULL_FIRST"</span><span class="p">,</span>
             <span class="kc">None</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">is_null_last</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
             <span class="n">settings</span><span class="p">,</span>
-            <span class="s2">&quot;SARITASA_DRF_ORDERING_IS_NULL_LAST&quot;</span><span class="p">,</span>
+            <span class="s2">"SARITASA_DRF_ORDERING_IS_NULL_LAST"</span><span class="p">,</span>
             <span class="kc">None</span><span class="p">,</span>
         <span class="p">)</span>
 
         <span class="n">ordering_fields_extra_kwargs</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
             <span class="n">view</span><span class="p">,</span>
-            <span class="s2">&quot;ordering_fields_extra_kwargs&quot;</span><span class="p">,</span>
+            <span class="s2">"ordering_fields_extra_kwargs"</span><span class="p">,</span>
             <span class="p">{},</span>
         <span class="p">)</span>
         <span class="n">fields_from_extra_kwargs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">ordering_fields_extra_kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
         <span class="n">ordering_fields</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span>
-            <span class="nb">getattr</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="s2">&quot;ordering_fields&quot;</span><span class="p">,</span> <span class="nb">set</span><span class="p">()),</span>
+            <span class="nb">getattr</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="s2">"ordering_fields"</span><span class="p">,</span> <span class="nb">set</span><span class="p">()),</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="n">unknown_fields</span> <span class="o">:=</span> <span class="n">fields_from_extra_kwargs</span> <span class="o">-</span> <span class="n">ordering_fields</span><span class="p">:</span>
-            <span class="n">view_action</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="s2">&quot;action&quot;</span><span class="p">,</span> <span class="s2">&quot;list&quot;</span><span class="p">)</span>
+            <span class="n">view_action</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="s2">"action"</span><span class="p">,</span> <span class="s2">"list"</span><span class="p">)</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Unknown ordering fields: </span><span class="si">{</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">unknown_fields</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-                <span class="sa">f</span><span class="s2">&quot; defined(ordering_fields_extra_kwargs) in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">&quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">view_action</span><span class="si">}</span><span class="s2">).&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">"Unknown ordering fields: </span><span class="si">{</span><span class="s1">','</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">unknown_fields</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+                <span class="sa">f</span><span class="s2">" defined(ordering_fields_extra_kwargs) in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">"</span>
+                <span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">view_action</span><span class="si">}</span><span class="s2">)."</span><span class="p">,</span>
                 <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="n">adjusted_ordering</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">OrderBy</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">order_field</span> <span class="ow">in</span> <span class="n">ordering</span><span class="p">:</span>
-            <span class="n">cleared_order_field</span> <span class="o">=</span> <span class="n">order_field</span><span class="o">.</span><span class="n">removeprefix</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+            <span class="n">cleared_order_field</span> <span class="o">=</span> <span class="n">order_field</span><span class="o">.</span><span class="n">removeprefix</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)</span>
             <span class="n">order_by_kwargs</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s2">&quot;descending&quot;</span><span class="p">:</span> <span class="n">order_field</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span>
-                <span class="s2">&quot;nulls_first&quot;</span><span class="p">:</span> <span class="n">is_null_first</span><span class="p">,</span>
-                <span class="s2">&quot;nulls_last&quot;</span><span class="p">:</span> <span class="n">is_null_last</span><span class="p">,</span>
+                <span class="s2">"descending"</span><span class="p">:</span> <span class="n">order_field</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"-"</span><span class="p">),</span>
+                <span class="s2">"nulls_first"</span><span class="p">:</span> <span class="n">is_null_first</span><span class="p">,</span>
+                <span class="s2">"nulls_last"</span><span class="p">:</span> <span class="n">is_null_last</span><span class="p">,</span>
             <span class="p">}</span>
             <span class="n">order_by_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
                 <span class="n">ordering_fields_extra_kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cleared_order_field</span><span class="p">,</span> <span class="p">{}),</span>
@@ -2002,7 +2002,7 @@
         <span class="k">return</span> <span class="p">(</span>
             <span class="o">*</span><span class="nb">tuple</span><span class="p">(</span><span class="n">adjusted_ordering</span><span class="p">),</span>
             <span class="n">models</span><span class="o">.</span><span class="n">OrderBy</span><span class="p">(</span>
-                <span class="n">expression</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;pk&quot;</span><span class="p">),</span>
+                <span class="n">expression</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">F</span><span class="p">(</span><span class="s2">"pk"</span><span class="p">),</span>
             <span class="p">),</span>
         <span class="p">)</span>
 
@@ -2010,45 +2010,45 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">view</span><span class="p">:</span> <span class="n">views</span><span class="o">.</span><span class="n">APIView</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Prepare parameters for openapi schema.</span>
+<span class="w">        </span><span class="sd">"""Prepare parameters for openapi schema.</span>
 
 <span class="sd">        Check that view has `ordering_fields`.</span>
 
 <span class="sd">        Check that `ordering_fields` contains valid set of fields. Actually,</span>
 <span class="sd">        this check may perform some SQL queries during spec generation. Also,</span>
 <span class="sd">        spec generation is not the best place for checking of source code</span>
-<span class="sd">        (comparing to linters/django system checks/tests), but DRF doesn&#39;t</span>
+<span class="sd">        (comparing to linters/django system checks/tests), but DRF doesn't</span>
 <span class="sd">        validate `ordering_fields` for views while backend running.</span>
 
 <span class="sd">        Extend view description with list of `ordering_fields`.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">operation_parameters</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_schema_operation_parameters</span><span class="p">(</span>
             <span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="c1"># Not using get_valid_fields since it is requires additional params</span>
         <span class="n">ordering_fields</span><span class="p">:</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
             <span class="n">view</span><span class="p">,</span>
-            <span class="s2">&quot;ordering_fields&quot;</span><span class="p">,</span>
+            <span class="s2">"ordering_fields"</span><span class="p">,</span>
             <span class="kc">None</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">ordering_fields</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
             <span class="kn">from</span><span class="w"> </span><span class="nn">drf_spectacular</span><span class="w"> </span><span class="kn">import</span> <span class="n">drainage</span>
 
             <span class="n">drainage</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;`ordering_fields` are not set up for </span><span class="si">{</span><span class="n">view</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">"`ordering_fields` are not set up for </span><span class="si">{</span><span class="n">view</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="k">return</span> <span class="n">operation_parameters</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_ordering_fields</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
 
-        <span class="n">formatted_fields</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">`&quot;</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">ordering_fields</span><span class="p">)</span>
-        <span class="n">operation_parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="s2">&quot;Which fields to use when ordering the results. A list &quot;</span>
-            <span class="s2">&quot;fields separated by `,`. Example: `field1,field2`</span><span class="se">\n\n</span><span class="s2">&quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;Supported fields: </span><span class="si">{</span><span class="n">formatted_fields</span><span class="si">}</span><span class="s2">.</span><span class="se">\n\n</span><span class="s2">&quot;</span>
-            <span class="s2">&quot;To reverse order just add `-` to field. Example:&quot;</span>
-            <span class="s2">&quot;`field` -&gt; `-field`&quot;</span>
+        <span class="n">formatted_fields</span> <span class="o">=</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"`</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">`"</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">ordering_fields</span><span class="p">)</span>
+        <span class="n">operation_parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"description"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s2">"Which fields to use when ordering the results. A list "</span>
+            <span class="s2">"fields separated by `,`. Example: `field1,field2`</span><span class="se">\n\n</span><span class="s2">"</span>
+            <span class="sa">f</span><span class="s2">"Supported fields: </span><span class="si">{</span><span class="n">formatted_fields</span><span class="si">}</span><span class="s2">.</span><span class="se">\n\n</span><span class="s2">"</span>
+            <span class="s2">"To reverse order just add `-` to field. Example:"</span>
+            <span class="s2">"`field` -&gt; `-field`"</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">operation_parameters</span>
 
@@ -2056,17 +2056,17 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">view</span><span class="p">:</span> <span class="n">views</span><span class="o">.</span><span class="n">APIView</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate `ordering_fields` in view.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Validate `ordering_fields` in view."""</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">view</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="o">*</span><span class="n">view</span><span class="o">.</span><span class="n">ordering_fields</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
         <span class="k">except</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">FieldError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
             <span class="kn">from</span><span class="w"> </span><span class="nn">drf_spectacular</span><span class="w"> </span><span class="kn">import</span> <span class="n">drainage</span>
 
-            <span class="n">view_action</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="s2">&quot;action&quot;</span><span class="p">,</span> <span class="s2">&quot;list&quot;</span><span class="p">)</span>
+            <span class="n">view_action</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="s2">"action"</span><span class="p">,</span> <span class="s2">"list"</span><span class="p">)</span>
             <span class="n">drainage</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                <span class="s2">&quot;`ordering_fields` contains non-existent&quot;</span>
-                <span class="sa">f</span><span class="s2">&quot; or non-related fields for action </span><span class="si">{</span><span class="n">view_action</span><span class="si">}</span><span class="s2">.&quot;</span>
-                <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">"`ordering_fields` contains non-existent"</span>
+                <span class="sa">f</span><span class="s2">" or non-related fields for action </span><span class="si">{</span><span class="n">view_action</span><span class="si">}</span><span class="s2">."</span>
+                <span class="sa">f</span><span class="s2">" </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
             <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
               </details>
@@ -2211,23 +2211,23 @@ ordering, it won't be duplicated.</p>
     <span class="n">queryset</span><span class="p">:</span> <span class="n">models</span><span class="o">.</span><span class="n">QuerySet</span><span class="p">,</span>
     <span class="n">view</span><span class="p">:</span> <span class="n">views</span><span class="o">.</span><span class="n">APIView</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">OrderBy</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adjust ordering params.</span>
+<span class="w">    </span><span class="sd">"""Adjust ordering params.</span>
 
 <span class="sd">    Wrap ordering fields in `models.OrderBy` and pass extra ordering kwargs</span>
 
 <span class="sd">    When using PostgreSQL and sorting by non-unique fields only (or without</span>
 <span class="sd">    any ordering), non-deterministic results may occur, because the db</span>
-<span class="sd">    doesn&#39;t guarantee particular output ordering without unique ordering</span>
+<span class="sd">    doesn't guarantee particular output ordering without unique ordering</span>
 <span class="sd">    fields</span>
 <span class="sd">    (https://www.postgresql.org/docs/current/queries-order.html).</span>
 <span class="sd">    Closed PR to change this in `django-rest-framework`:</span>
 <span class="sd">    https://github.com/encode/django-rest-framework/pull/9109</span>
-<span class="sd">    To fix this, &quot;id&quot; is added as the last ordering field if</span>
+<span class="sd">    To fix this, "id" is added as the last ordering field if</span>
 <span class="sd">    `add_pk_to_ordering` is provided (otherwise applied by default or</span>
-<span class="sd">    controlled via global setting). If &quot;id&quot; is already present in</span>
-<span class="sd">    ordering, it won&#39;t be duplicated.</span>
+<span class="sd">    controlled via global setting). If "id" is already present in</span>
+<span class="sd">    ordering, it won't be duplicated.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">ordering</span> <span class="o">=</span> <span class="p">(</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_ordering</span><span class="p">(</span>
             <span class="n">request</span><span class="p">,</span>
@@ -2238,49 +2238,49 @@ ordering, it won't be duplicated.</p>
     <span class="p">)</span>
     <span class="n">default_add_pk_to_ordering</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
         <span class="n">settings</span><span class="p">,</span>
-        <span class="s2">&quot;SARITASA_DRF_ORDERING_ADD_PK_TO_ORDERING&quot;</span><span class="p">,</span>
+        <span class="s2">"SARITASA_DRF_ORDERING_ADD_PK_TO_ORDERING"</span><span class="p">,</span>
         <span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">add_pk_to_ordering</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
         <span class="n">view</span><span class="p">,</span>
-        <span class="s2">&quot;add_pk_to_ordering&quot;</span><span class="p">,</span>
+        <span class="s2">"add_pk_to_ordering"</span><span class="p">,</span>
         <span class="n">default_add_pk_to_ordering</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">is_null_first</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
         <span class="n">settings</span><span class="p">,</span>
-        <span class="s2">&quot;SARITASA_DRF_ORDERING_IS_NULL_FIRST&quot;</span><span class="p">,</span>
+        <span class="s2">"SARITASA_DRF_ORDERING_IS_NULL_FIRST"</span><span class="p">,</span>
         <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">is_null_last</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
         <span class="n">settings</span><span class="p">,</span>
-        <span class="s2">&quot;SARITASA_DRF_ORDERING_IS_NULL_LAST&quot;</span><span class="p">,</span>
+        <span class="s2">"SARITASA_DRF_ORDERING_IS_NULL_LAST"</span><span class="p">,</span>
         <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="n">ordering_fields_extra_kwargs</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
         <span class="n">view</span><span class="p">,</span>
-        <span class="s2">&quot;ordering_fields_extra_kwargs&quot;</span><span class="p">,</span>
+        <span class="s2">"ordering_fields_extra_kwargs"</span><span class="p">,</span>
         <span class="p">{},</span>
     <span class="p">)</span>
     <span class="n">fields_from_extra_kwargs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">ordering_fields_extra_kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
     <span class="n">ordering_fields</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span>
-        <span class="nb">getattr</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="s2">&quot;ordering_fields&quot;</span><span class="p">,</span> <span class="nb">set</span><span class="p">()),</span>
+        <span class="nb">getattr</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="s2">"ordering_fields"</span><span class="p">,</span> <span class="nb">set</span><span class="p">()),</span>
     <span class="p">)</span>
     <span class="k">if</span> <span class="n">unknown_fields</span> <span class="o">:=</span> <span class="n">fields_from_extra_kwargs</span> <span class="o">-</span> <span class="n">ordering_fields</span><span class="p">:</span>
-        <span class="n">view_action</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="s2">&quot;action&quot;</span><span class="p">,</span> <span class="s2">&quot;list&quot;</span><span class="p">)</span>
+        <span class="n">view_action</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="s2">"action"</span><span class="p">,</span> <span class="s2">"list"</span><span class="p">)</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Unknown ordering fields: </span><span class="si">{</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">unknown_fields</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-            <span class="sa">f</span><span class="s2">&quot; defined(ordering_fields_extra_kwargs) in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">&quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">view_action</span><span class="si">}</span><span class="s2">).&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">"Unknown ordering fields: </span><span class="si">{</span><span class="s1">','</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">unknown_fields</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+            <span class="sa">f</span><span class="s2">" defined(ordering_fields_extra_kwargs) in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">"</span>
+            <span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">view_action</span><span class="si">}</span><span class="s2">)."</span><span class="p">,</span>
             <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
         <span class="p">)</span>
     <span class="n">adjusted_ordering</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">OrderBy</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">order_field</span> <span class="ow">in</span> <span class="n">ordering</span><span class="p">:</span>
-        <span class="n">cleared_order_field</span> <span class="o">=</span> <span class="n">order_field</span><span class="o">.</span><span class="n">removeprefix</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+        <span class="n">cleared_order_field</span> <span class="o">=</span> <span class="n">order_field</span><span class="o">.</span><span class="n">removeprefix</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)</span>
         <span class="n">order_by_kwargs</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;descending&quot;</span><span class="p">:</span> <span class="n">order_field</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">),</span>
-            <span class="s2">&quot;nulls_first&quot;</span><span class="p">:</span> <span class="n">is_null_first</span><span class="p">,</span>
-            <span class="s2">&quot;nulls_last&quot;</span><span class="p">:</span> <span class="n">is_null_last</span><span class="p">,</span>
+            <span class="s2">"descending"</span><span class="p">:</span> <span class="n">order_field</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"-"</span><span class="p">),</span>
+            <span class="s2">"nulls_first"</span><span class="p">:</span> <span class="n">is_null_first</span><span class="p">,</span>
+            <span class="s2">"nulls_last"</span><span class="p">:</span> <span class="n">is_null_last</span><span class="p">,</span>
         <span class="p">}</span>
         <span class="n">order_by_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
             <span class="n">ordering_fields_extra_kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cleared_order_field</span><span class="p">,</span> <span class="p">{}),</span>
@@ -2296,7 +2296,7 @@ ordering, it won't be duplicated.</p>
     <span class="k">return</span> <span class="p">(</span>
         <span class="o">*</span><span class="nb">tuple</span><span class="p">(</span><span class="n">adjusted_ordering</span><span class="p">),</span>
         <span class="n">models</span><span class="o">.</span><span class="n">OrderBy</span><span class="p">(</span>
-            <span class="n">expression</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;pk&quot;</span><span class="p">),</span>
+            <span class="n">expression</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">F</span><span class="p">(</span><span class="s2">"pk"</span><span class="p">),</span>
         <span class="p">),</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2376,45 +2376,45 @@ validate <code>ordering_fields</code> for views while backend running.</p>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">view</span><span class="p">:</span> <span class="n">views</span><span class="o">.</span><span class="n">APIView</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prepare parameters for openapi schema.</span>
+<span class="w">    </span><span class="sd">"""Prepare parameters for openapi schema.</span>
 
 <span class="sd">    Check that view has `ordering_fields`.</span>
 
 <span class="sd">    Check that `ordering_fields` contains valid set of fields. Actually,</span>
 <span class="sd">    this check may perform some SQL queries during spec generation. Also,</span>
 <span class="sd">    spec generation is not the best place for checking of source code</span>
-<span class="sd">    (comparing to linters/django system checks/tests), but DRF doesn&#39;t</span>
+<span class="sd">    (comparing to linters/django system checks/tests), but DRF doesn't</span>
 <span class="sd">    validate `ordering_fields` for views while backend running.</span>
 
 <span class="sd">    Extend view description with list of `ordering_fields`.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">operation_parameters</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_schema_operation_parameters</span><span class="p">(</span>
         <span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="c1"># Not using get_valid_fields since it is requires additional params</span>
     <span class="n">ordering_fields</span><span class="p">:</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
         <span class="n">view</span><span class="p">,</span>
-        <span class="s2">&quot;ordering_fields&quot;</span><span class="p">,</span>
+        <span class="s2">"ordering_fields"</span><span class="p">,</span>
         <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">ordering_fields</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
         <span class="kn">from</span><span class="w"> </span><span class="nn">drf_spectacular</span><span class="w"> </span><span class="kn">import</span> <span class="n">drainage</span>
 
         <span class="n">drainage</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;`ordering_fields` are not set up for </span><span class="si">{</span><span class="n">view</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">"`ordering_fields` are not set up for </span><span class="si">{</span><span class="n">view</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">operation_parameters</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">_validate_ordering_fields</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
 
-    <span class="n">formatted_fields</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">`&quot;</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">ordering_fields</span><span class="p">)</span>
-    <span class="n">operation_parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s2">&quot;Which fields to use when ordering the results. A list &quot;</span>
-        <span class="s2">&quot;fields separated by `,`. Example: `field1,field2`</span><span class="se">\n\n</span><span class="s2">&quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;Supported fields: </span><span class="si">{</span><span class="n">formatted_fields</span><span class="si">}</span><span class="s2">.</span><span class="se">\n\n</span><span class="s2">&quot;</span>
-        <span class="s2">&quot;To reverse order just add `-` to field. Example:&quot;</span>
-        <span class="s2">&quot;`field` -&gt; `-field`&quot;</span>
+    <span class="n">formatted_fields</span> <span class="o">=</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"`</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">`"</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">ordering_fields</span><span class="p">)</span>
+    <span class="n">operation_parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"description"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s2">"Which fields to use when ordering the results. A list "</span>
+        <span class="s2">"fields separated by `,`. Example: `field1,field2`</span><span class="se">\n\n</span><span class="s2">"</span>
+        <span class="sa">f</span><span class="s2">"Supported fields: </span><span class="si">{</span><span class="n">formatted_fields</span><span class="si">}</span><span class="s2">.</span><span class="se">\n\n</span><span class="s2">"</span>
+        <span class="s2">"To reverse order just add `-` to field. Example:"</span>
+        <span class="s2">"`field` -&gt; `-field`"</span>
     <span class="p">)</span>
     <span class="k">return</span> <span class="n">operation_parameters</span>
 </code></pre></div></td></tr></table></div>

@@ -1779,7 +1779,7 @@
 <span class="normal">49</span>
 <span class="normal">50</span>
 <span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">LimitOffsetPagination</span><span class="p">(</span><span class="n">pagination</span><span class="o">.</span><span class="n">LimitOffsetPagination</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Customized paginator class to limit max objects in list APIs.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Customized paginator class to limit max objects in list APIs."""</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">paginate_queryset</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -1787,36 +1787,36 @@
         <span class="n">request</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">,</span>
         <span class="n">view</span><span class="p">:</span> <span class="n">views</span><span class="o">.</span><span class="n">APIView</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set view for pagination.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Set view for pagination."""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">view</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">paginate_queryset</span><span class="p">(</span><span class="n">queryset</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">view</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">max_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get limit for page.</span>
+<span class="w">        </span><span class="sd">"""Get limit for page.</span>
 
 <span class="sd">        Will become deprecated once this is merged</span>
 <span class="sd">        https://github.com/encode/django-rest-framework/pull/9107</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">max_limit_from_view</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">,</span>
-            <span class="s2">&quot;pagination_max_limit&quot;</span><span class="p">,</span>
+            <span class="s2">"pagination_max_limit"</span><span class="p">,</span>
             <span class="kc">None</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">max_limit_from_settings</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
             <span class="n">settings</span><span class="p">,</span>
-            <span class="s2">&quot;SARITASA_DRF_MAX_PAGINATION_SIZE&quot;</span><span class="p">,</span>
+            <span class="s2">"SARITASA_DRF_MAX_PAGINATION_SIZE"</span><span class="p">,</span>
             <span class="kc">None</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">max_limit_from_view</span> <span class="ow">or</span> <span class="n">max_limit_from_settings</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">default_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get default limit for page.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Get default limit for page."""</span>
         <span class="n">default_limit_from_view</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">,</span>
-            <span class="s2">&quot;pagination_default_limit&quot;</span><span class="p">,</span>
+            <span class="s2">"pagination_default_limit"</span><span class="p">,</span>
             <span class="kc">None</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">default_limit_from_settings</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">api_settings</span><span class="o">.</span><span class="n">PAGE_SIZE</span>  <span class="c1"># type: ignore</span>
@@ -1913,7 +1913,7 @@
     <span class="n">request</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">,</span>
     <span class="n">view</span><span class="p">:</span> <span class="n">views</span><span class="o">.</span><span class="n">APIView</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set view for pagination.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Set view for pagination."""</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">view</span>
     <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">paginate_queryset</span><span class="p">(</span><span class="n">queryset</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">view</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>

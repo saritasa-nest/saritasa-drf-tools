@@ -1757,13 +1757,13 @@
 <span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">FieldMappingOverride</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Override or extend field mapping via SARITASA_DRF_FIELD_MAPPING.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Override or extend field mapping via SARITASA_DRF_FIELD_MAPPING."""</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">serializer_field_mapping</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">Field</span><span class="p">],</span> <span class="nb">type</span><span class="p">[</span><span class="n">serializers</span><span class="o">.</span><span class="n">Field</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Extend serializer mapping with custom fields.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Extend serializer mapping with custom fields."""</span>
         <span class="n">serializer_field_mapping</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">serializer_field_mapping</span>  <span class="c1"># type: ignore</span>
         <span class="k">for</span> <span class="p">(</span>
             <span class="n">django_field</span><span class="p">,</span>
@@ -1775,8 +1775,8 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">extract_serializer_field_mapping_from_settings</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">Field</span><span class="p">],</span> <span class="nb">type</span><span class="p">[</span><span class="n">serializers</span><span class="o">.</span><span class="n">Field</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Extract field mapping from settings.&quot;&quot;&quot;</span>
-        <span class="n">import_mapping</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s2">&quot;SARITASA_DRF_FIELD_MAPPING&quot;</span><span class="p">,</span> <span class="p">{})</span>
+<span class="w">        </span><span class="sd">"""Extract field mapping from settings."""</span>
+        <span class="n">import_mapping</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s2">"SARITASA_DRF_FIELD_MAPPING"</span><span class="p">,</span> <span class="p">{})</span>
         <span class="k">return</span> <span class="p">{</span>
             <span class="n">import_string</span><span class="p">(</span><span class="n">django_field</span><span class="p">):</span> <span class="n">import_string</span><span class="p">(</span><span class="n">drf_field</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">django_field</span><span class="p">,</span> <span class="n">drf_field</span> <span class="ow">in</span> <span class="n">import_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
@@ -1846,8 +1846,8 @@
 <span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">extract_serializer_field_mapping_from_settings</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">Field</span><span class="p">],</span> <span class="nb">type</span><span class="p">[</span><span class="n">serializers</span><span class="o">.</span><span class="n">Field</span><span class="p">]]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract field mapping from settings.&quot;&quot;&quot;</span>
-    <span class="n">import_mapping</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s2">&quot;SARITASA_DRF_FIELD_MAPPING&quot;</span><span class="p">,</span> <span class="p">{})</span>
+<span class="w">    </span><span class="sd">"""Extract field mapping from settings."""</span>
+    <span class="n">import_mapping</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s2">"SARITASA_DRF_FIELD_MAPPING"</span><span class="p">,</span> <span class="p">{})</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="n">import_string</span><span class="p">(</span><span class="n">django_field</span><span class="p">):</span> <span class="n">import_string</span><span class="p">(</span><span class="n">drf_field</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">django_field</span><span class="p">,</span> <span class="n">drf_field</span> <span class="ow">in</span> <span class="n">import_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>

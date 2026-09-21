@@ -1816,7 +1816,7 @@ Examples:
 <span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ActionSerializerMixin</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mixin which allows to define specific serializers per action.</span>
+<span class="w">    </span><span class="sd">"""Mixin which allows to define specific serializers per action.</span>
 
 <span class="sd">    It requires a filled ``serializers_map`` attribute</span>
 <span class="sd">    It should be used for ``ModelViewSet``</span>
@@ -1825,17 +1825,17 @@ Examples:
 <span class="sd">            queryset = Note.objects.all()</span>
 <span class="sd">            serializer_class = NoteSerializer</span>
 <span class="sd">            serializers_map = {</span>
-<span class="sd">                &quot;update&quot;: serializers.UpdateNoteSerializer,</span>
-<span class="sd">                &quot;partial_update&quot;: serializers.UpdateNoteSerializer,</span>
+<span class="sd">                "update": serializers.UpdateNoteSerializer,</span>
+<span class="sd">                "partial_update": serializers.UpdateNoteSerializer,</span>
 <span class="sd">            }</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">action</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">serializers_map</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">type</span><span class="p">[</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_serializer_class</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">[</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get serializer for view&#39;s action.</span>
+<span class="w">        </span><span class="sd">"""Get serializer for view's action.</span>
 
 <span class="sd">        First we try to find corresponding `action` in `serializer_map` and</span>
 <span class="sd">        in case if current method is absent in `serializer_map` we return</span>
@@ -1845,12 +1845,12 @@ Examples:
 <span class="sd">        Example:</span>
 <span class="sd">        -------</span>
 <span class="sd">            serializer_map = {</span>
-<span class="sd">                &quot;update&quot;: serializers.UpdateLeadSerializer,</span>
-<span class="sd">                &quot;partial_update&quot;: serializers.UpdateLeadSerializer,</span>
+<span class="sd">                "update": serializers.UpdateLeadSerializer,</span>
+<span class="sd">                "partial_update": serializers.UpdateLeadSerializer,</span>
 <span class="sd">            }</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">default_serializer_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serializers_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="n">default_serializer_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serializers_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"default"</span><span class="p">)</span>
         <span class="n">action_serializer_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serializers_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">,</span>
             <span class="n">default_serializer_class</span><span class="p">,</span>
@@ -1891,8 +1891,8 @@ in case if current method is absent in <code>serializer_map</code> we return
 serializer_class from <code>super().get_serializer_class()</code>).</p>
 <h5 id="saritasa_drf_tools.views.mixins.serializers_map_mixin.ActionSerializerMixin.get_serializer_class--example">Example:<a class="headerlink" href="#saritasa_drf_tools.views.mixins.serializers_map_mixin.ActionSerializerMixin.get_serializer_class--example" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code>serializer_map = {
-    &quot;update&quot;: serializers.UpdateLeadSerializer,
-    &quot;partial_update&quot;: serializers.UpdateLeadSerializer,
+    "update": serializers.UpdateLeadSerializer,
+    "partial_update": serializers.UpdateLeadSerializer,
 }
 </code></pre></div>
 
@@ -1922,7 +1922,7 @@ serializer_class from <code>super().get_serializer_class()</code>).</p>
 <span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_serializer_class</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">[</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get serializer for view&#39;s action.</span>
+<span class="w">    </span><span class="sd">"""Get serializer for view's action.</span>
 
 <span class="sd">    First we try to find corresponding `action` in `serializer_map` and</span>
 <span class="sd">    in case if current method is absent in `serializer_map` we return</span>
@@ -1932,12 +1932,12 @@ serializer_class from <code>super().get_serializer_class()</code>).</p>
 <span class="sd">    Example:</span>
 <span class="sd">    -------</span>
 <span class="sd">        serializer_map = {</span>
-<span class="sd">            &quot;update&quot;: serializers.UpdateLeadSerializer,</span>
-<span class="sd">            &quot;partial_update&quot;: serializers.UpdateLeadSerializer,</span>
+<span class="sd">            "update": serializers.UpdateLeadSerializer,</span>
+<span class="sd">            "partial_update": serializers.UpdateLeadSerializer,</span>
 <span class="sd">        }</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">default_serializer_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serializers_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="n">default_serializer_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serializers_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"default"</span><span class="p">)</span>
     <span class="n">action_serializer_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serializers_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">,</span>
         <span class="n">default_serializer_class</span><span class="p">,</span>

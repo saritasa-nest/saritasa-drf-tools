@@ -1762,8 +1762,8 @@
 <span class="normal">42</span>
 <span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">admin</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get admin user.&quot;&quot;&quot;</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Set up `admin` fixture&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">"""Get admin user."""</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Set up `admin` fixture"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -1799,7 +1799,7 @@
     <span class="n">api_client_factory</span><span class="p">,</span>  <span class="c1"># noqa: ANN001</span>
     <span class="n">admin</span><span class="p">,</span>  <span class="c1"># noqa: ANN001</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create api client.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Create api client."""</span>
     <span class="n">api_client</span> <span class="o">=</span> <span class="n">api_client_factory</span><span class="p">()</span>
     <span class="n">api_client</span><span class="o">.</span><span class="n">force_authenticate</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">admin</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">api_client</span>
@@ -1830,7 +1830,7 @@
 <span class="normal">19</span>
 <span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">api_client</span><span class="p">(</span><span class="n">api_client_factory</span><span class="p">):</span>  <span class="c1"># noqa: ANN001, ANN201</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create api client.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Create api client."""</span>
     <span class="k">return</span> <span class="n">api_client_factory</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -1864,7 +1864,7 @@
 <span class="normal">13</span>
 <span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">api_client_factory</span><span class="p">():</span>  <span class="c1"># noqa: ANN201</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create factory which will generate api clients.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Create factory which will generate api clients."""</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_create_api_client</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">test</span><span class="o">.</span><span class="n">APIClient</span><span class="p">:</span>
@@ -1898,8 +1898,8 @@
 <span class="normal">25</span>
 <span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">user</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get ordinary user.&quot;&quot;&quot;</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Set up `user` fixture&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">"""Get ordinary user."""</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Set up `user` fixture"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -1935,7 +1935,7 @@
     <span class="n">api_client_factory</span><span class="p">,</span>  <span class="c1"># noqa: ANN001</span>
     <span class="n">user</span><span class="p">,</span>  <span class="c1"># noqa: ANN001</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create api client.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Create api client."""</span>
     <span class="n">api_client</span> <span class="o">=</span> <span class="n">api_client_factory</span><span class="p">()</span>
     <span class="n">api_client</span><span class="o">.</span><span class="n">force_authenticate</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">api_client</span>

@@ -1843,10 +1843,10 @@ generated names).</p>
 <span class="normal">86</span>
 <span class="normal">87</span>
 <span class="normal">88</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">NestedFieldsMixin</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mixin which can set up nested fields for related fields.</span>
+<span class="w">    </span><span class="sd">"""Mixin which can set up nested fields for related fields.</span>
 
-<span class="sd">    By adding `nested_fields` attribute to serializer&#39;s Meta class, you can</span>
-<span class="sd">    set up serializer for a field. It will be added with suffix `_data`. It&#39;s</span>
+<span class="sd">    By adding `nested_fields` attribute to serializer's Meta class, you can</span>
+<span class="sd">    set up serializer for a field. It will be added with suffix `_data`. It's</span>
 <span class="sd">    simplifies definition of nested fields in serializers while making them</span>
 <span class="sd">    more consistent with specs generation tools like drf-spectacular. Also it</span>
 <span class="sd">    helps to avoid import cycles by allowing to use string notation for</span>
@@ -1856,18 +1856,18 @@ generated names).</p>
 <span class="sd">    class Meta:</span>
 <span class="sd">        model = models.User</span>
 <span class="sd">        fields = (</span>
-<span class="sd">            &quot;id&quot;,</span>
-<span class="sd">            &quot;created&quot;,</span>
-<span class="sd">            &quot;modified&quot;,</span>
-<span class="sd">            &quot;username&quot;,</span>
-<span class="sd">            &quot;email&quot;,</span>
-<span class="sd">            &quot;country&quot;,</span>
-<span class="sd">            &quot;supervisors&quot;,</span>
+<span class="sd">            "id",</span>
+<span class="sd">            "created",</span>
+<span class="sd">            "modified",</span>
+<span class="sd">            "username",</span>
+<span class="sd">            "email",</span>
+<span class="sd">            "country",</span>
+<span class="sd">            "supervisors",</span>
 <span class="sd">        )</span>
 <span class="sd">        # There two ways to define serializer class: directly or via string.</span>
 <span class="sd">        nested_fields = {</span>
-<span class="sd">            &quot;country&quot;: CountrySerializer,</span>
-<span class="sd">            &quot;supervisors&quot;: &quot;apps.users.api.serializers.SimpleUserSerializer&quot;,</span>
+<span class="sd">            "country": CountrySerializer,</span>
+<span class="sd">            "supervisors": "apps.users.api.serializers.SimpleUserSerializer",</span>
 <span class="sd">        }</span>
 
 <span class="sd">    Would result in serializer with the following fields: fields from meta plus</span>
@@ -1875,31 +1875,31 @@ generated names).</p>
 <span class="sd">    other params could be customized via `extra_kwargs`(Note: you need to use</span>
 <span class="sd">    generated names).</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_fields</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span> <span class="o">|</span> <span class="n">serializers</span><span class="o">.</span><span class="n">Field</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get fields.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Get fields."""</span>
         <span class="k">return</span> <span class="p">{</span>
             <span class="o">**</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_fields</span><span class="p">(),</span>  <span class="c1"># type: ignore</span>
             <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">get_nested_fields</span><span class="p">(),</span>
         <span class="p">}</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_nested_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set up data fields.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Set up data fields."""</span>
         <span class="n">meta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Meta</span>  <span class="c1"># type: ignore</span>
         <span class="n">info</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">model_meta</span><span class="o">.</span><span class="n">get_field_info</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
         <span class="n">extra_kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_extra_kwargs</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
         <span class="n">meta_nested_fields</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
             <span class="n">meta</span><span class="p">,</span>
-            <span class="s2">&quot;nested_fields&quot;</span><span class="p">,</span>
+            <span class="s2">"nested_fields"</span><span class="p">,</span>
             <span class="p">{},</span>
         <span class="p">)</span>
-        <span class="n">nested_fields_suffix</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="s2">&quot;nested_fields_suffix&quot;</span><span class="p">,</span> <span class="s2">&quot;_data&quot;</span><span class="p">)</span>
+        <span class="n">nested_fields_suffix</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="s2">"nested_fields_suffix"</span><span class="p">,</span> <span class="s2">"_data"</span><span class="p">)</span>
         <span class="n">nested_fields</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">nested_field</span><span class="p">,</span> <span class="n">nested_field_class</span> <span class="ow">in</span> <span class="n">meta_nested_fields</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">field_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nested_field</span><span class="si">}{</span><span class="n">nested_fields_suffix</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">field_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">nested_field</span><span class="si">}{</span><span class="n">nested_fields_suffix</span><span class="si">}</span><span class="s2">"</span>
             <span class="n">extra_field_kwargs</span> <span class="o">=</span> <span class="n">extra_kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">field_name</span><span class="p">,</span> <span class="p">{})</span>
             <span class="n">_</span><span class="p">,</span> <span class="n">field_kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_field</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
                 <span class="n">field_name</span><span class="o">=</span><span class="n">nested_field</span><span class="p">,</span>
@@ -1907,8 +1907,8 @@ generated names).</p>
                 <span class="n">model_class</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
                 <span class="n">nested_depth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
             <span class="p">)</span>
-            <span class="n">field_kwargs</span><span class="p">[</span><span class="s2">&quot;read_only&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="n">field_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;queryset&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">field_kwargs</span><span class="p">[</span><span class="s2">"read_only"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">field_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"queryset"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
             <span class="n">field_kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">include_extra_kwargs</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
                 <span class="n">kwargs</span><span class="o">=</span><span class="n">field_kwargs</span><span class="p">,</span>
                 <span class="n">extra_kwargs</span><span class="o">=</span><span class="n">extra_field_kwargs</span><span class="p">,</span>
@@ -1918,8 +1918,8 @@ generated names).</p>
                     <span class="n">nested_field_class</span> <span class="o">=</span> <span class="n">import_string</span><span class="p">(</span><span class="n">nested_field_class</span><span class="p">)</span>
                 <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">import_error</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                        <span class="s2">&quot;Could not import field class &quot;</span>
-                        <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">nested_field_class</span><span class="si">}</span><span class="s2">&#39; for </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                        <span class="s2">"Could not import field class "</span>
+                        <span class="sa">f</span><span class="s2">"'</span><span class="si">{</span><span class="n">nested_field_class</span><span class="si">}</span><span class="s2">' for </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
                     <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">import_error</span>
             <span class="n">nested_fields</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">nested_field_class</span><span class="p">(</span>
                 <span class="n">source</span><span class="o">=</span><span class="n">nested_field</span><span class="p">,</span>
@@ -1968,7 +1968,7 @@ generated names).</p>
 <span class="normal">47</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_fields</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span> <span class="o">|</span> <span class="n">serializers</span><span class="o">.</span><span class="n">Field</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get fields.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Get fields."""</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="o">**</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_fields</span><span class="p">(),</span>  <span class="c1"># type: ignore</span>
         <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">get_nested_fields</span><span class="p">(),</span>
@@ -2035,19 +2035,19 @@ generated names).</p>
 <span class="normal">86</span>
 <span class="normal">87</span>
 <span class="normal">88</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_nested_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set up data fields.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Set up data fields."""</span>
     <span class="n">meta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Meta</span>  <span class="c1"># type: ignore</span>
     <span class="n">info</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">model_meta</span><span class="o">.</span><span class="n">get_field_info</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
     <span class="n">extra_kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_extra_kwargs</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
     <span class="n">meta_nested_fields</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
         <span class="n">meta</span><span class="p">,</span>
-        <span class="s2">&quot;nested_fields&quot;</span><span class="p">,</span>
+        <span class="s2">"nested_fields"</span><span class="p">,</span>
         <span class="p">{},</span>
     <span class="p">)</span>
-    <span class="n">nested_fields_suffix</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="s2">&quot;nested_fields_suffix&quot;</span><span class="p">,</span> <span class="s2">&quot;_data&quot;</span><span class="p">)</span>
+    <span class="n">nested_fields_suffix</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="s2">"nested_fields_suffix"</span><span class="p">,</span> <span class="s2">"_data"</span><span class="p">)</span>
     <span class="n">nested_fields</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">nested_field</span><span class="p">,</span> <span class="n">nested_field_class</span> <span class="ow">in</span> <span class="n">meta_nested_fields</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">field_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nested_field</span><span class="si">}{</span><span class="n">nested_fields_suffix</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">field_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">nested_field</span><span class="si">}{</span><span class="n">nested_fields_suffix</span><span class="si">}</span><span class="s2">"</span>
         <span class="n">extra_field_kwargs</span> <span class="o">=</span> <span class="n">extra_kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">field_name</span><span class="p">,</span> <span class="p">{})</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">field_kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_field</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
             <span class="n">field_name</span><span class="o">=</span><span class="n">nested_field</span><span class="p">,</span>
@@ -2055,8 +2055,8 @@ generated names).</p>
             <span class="n">model_class</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
             <span class="n">nested_depth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="n">field_kwargs</span><span class="p">[</span><span class="s2">&quot;read_only&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="n">field_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;queryset&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">field_kwargs</span><span class="p">[</span><span class="s2">"read_only"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">field_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"queryset"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="n">field_kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">include_extra_kwargs</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
             <span class="n">kwargs</span><span class="o">=</span><span class="n">field_kwargs</span><span class="p">,</span>
             <span class="n">extra_kwargs</span><span class="o">=</span><span class="n">extra_field_kwargs</span><span class="p">,</span>
@@ -2066,8 +2066,8 @@ generated names).</p>
                 <span class="n">nested_field_class</span> <span class="o">=</span> <span class="n">import_string</span><span class="p">(</span><span class="n">nested_field_class</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">import_error</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="s2">&quot;Could not import field class &quot;</span>
-                    <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">nested_field_class</span><span class="si">}</span><span class="s2">&#39; for </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                    <span class="s2">"Could not import field class "</span>
+                    <span class="sa">f</span><span class="s2">"'</span><span class="si">{</span><span class="n">nested_field_class</span><span class="si">}</span><span class="s2">' for </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
                 <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">import_error</span>
         <span class="n">nested_fields</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">nested_field_class</span><span class="p">(</span>
             <span class="n">source</span><span class="o">=</span><span class="n">nested_field</span><span class="p">,</span>

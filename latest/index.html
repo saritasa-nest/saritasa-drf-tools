@@ -1951,13 +1951,13 @@
   <span class="n">ActionMixins</span><span class="p">,</span> <span class="c1"># Anything you need</span>
   <span class="n">GenericViewSet</span><span class="p">,</span>
 <span class="p">):</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;CRUD view.&quot;&quot;&quot;</span>
+<span class="w">  </span><span class="sd">"""CRUD view."""</span>
   <span class="n">base_permission_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">permissions</span><span class="o">.</span><span class="n">AllowAny</span><span class="p">,)</span>
   <span class="n">extra_permission_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">permissions</span><span class="o">.</span><span class="n">IsAuthenticated</span><span class="p">,)</span>
   <span class="n">extra_permissions_map</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="s2">&quot;create&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">permissions</span><span class="o">.</span><span class="n">IsAdminUser</span><span class="p">,),</span>
-      <span class="s2">&quot;update&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">permissions</span><span class="o">.</span><span class="n">IsAdminUser</span><span class="p">,),</span>
-      <span class="s2">&quot;destroy&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">permissions</span><span class="o">.</span><span class="n">IsAdminUser</span><span class="p">,),</span>
+      <span class="s2">"create"</span><span class="p">:</span> <span class="p">(</span><span class="n">permissions</span><span class="o">.</span><span class="n">IsAdminUser</span><span class="p">,),</span>
+      <span class="s2">"update"</span><span class="p">:</span> <span class="p">(</span><span class="n">permissions</span><span class="o">.</span><span class="n">IsAdminUser</span><span class="p">,),</span>
+      <span class="s2">"destroy"</span><span class="p">:</span> <span class="p">(</span><span class="n">permissions</span><span class="o">.</span><span class="n">IsAdminUser</span><span class="p">,),</span>
   <span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -1976,12 +1976,12 @@
   <span class="n">ActionMixins</span><span class="p">,</span> <span class="c1"># Anything you need</span>
   <span class="n">GenericViewSet</span><span class="p">,</span>
 <span class="p">):</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;CRUD view.&quot;&quot;&quot;</span>
+<span class="w">  </span><span class="sd">"""CRUD view."""</span>
 
-  <span class="n">queryset</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TestModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s2">&quot;related_model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+  <span class="n">queryset</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TestModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s2">"related_model"</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
   <span class="n">serializers_map</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="n">serializers</span><span class="o">.</span><span class="n">TestModelDetailSerializer</span><span class="p">,</span>
-      <span class="s2">&quot;list&quot;</span><span class="p">:</span> <span class="n">serializers</span><span class="o">.</span><span class="n">TestModelListSerializer</span><span class="p">,</span>
+      <span class="s2">"default"</span><span class="p">:</span> <span class="n">serializers</span><span class="o">.</span><span class="n">TestModelDetailSerializer</span><span class="p">,</span>
+      <span class="s2">"list"</span><span class="p">:</span> <span class="n">serializers</span><span class="o">.</span><span class="n">TestModelListSerializer</span><span class="p">,</span>
   <span class="p">}</span>
 </code></pre></div>
 <p>That means that on <code>list</code> view will use <code>TestModelListSerializer</code>, but on any other
@@ -2012,7 +2012,7 @@
   For example you can set following in settings.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="n">SARITASA_DRF_FIELD_MAPPING</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">&quot;django.db.models.TextField&quot;</span><span class="p">:</span> <span class="s2">&quot;example.app.api.fields.CustomCharField&quot;</span><span class="p">,</span>
+  <span class="s2">"django.db.models.TextField"</span><span class="p">:</span> <span class="s2">"example.app.api.fields.CustomCharField"</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>And now all <code>TextField</code> of your models will have <code>CustomCharField</code> in
@@ -2051,9 +2051,9 @@ To reverse order just add - to field. Example:field -&gt; -field
 <p>Or you can set them per view:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MyView</span><span class="p">(</span><span class="n">views</span><span class="o">.</span><span class="n">APIView</span><span class="p">):</span>
     <span class="n">ordering_fields_extra_kwargs</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;my_field&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;nulls_first&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-            <span class="s2">&quot;nulls_last&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">"my_field"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"nulls_first"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">"nulls_last"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
         <span class="p">},</span>
     <span class="p">}</span>
 </code></pre></div>
@@ -2116,19 +2116,19 @@ In this file declare new class which inherits <code>ApiActionTester</code>.</p>
         <span class="n">user_model</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">User</span><span class="p">,</span> <span class="c1"># Model of user used across project</span>
         <span class="n">factory</span><span class="o">=</span><span class="n">factories</span><span class="o">.</span><span class="n">TestModelFactory</span><span class="p">,</span> <span class="c1"># Factory which is used to generate instances for model</span>
         <span class="n">api_view</span><span class="o">=</span><span class="n">api</span><span class="o">.</span><span class="n">views</span><span class="o">.</span><span class="n">CRUDView</span><span class="p">,</span> <span class="c1"># Class of viewset against which we will be writing tests</span>
-        <span class="n">url_basename</span><span class="o">=</span><span class="s2">&quot;crud-api&quot;</span><span class="p">,</span> <span class="c1"># Base name of urls of viewset. {url_basename}-{action}</span>
+        <span class="n">url_basename</span><span class="o">=</span><span class="s2">"crud-api"</span><span class="p">,</span> <span class="c1"># Base name of urls of viewset. {url_basename}-{action}</span>
     <span class="p">),</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tester for crud API.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Tester for crud API."""</span>
 </code></pre></div>
 <p>Next you can write test just like this. (For more examples check this folder: <code>tests/test_crud_api</code>)</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">TestCRUD</span><span class="p">(</span><span class="n">tester</span><span class="o">.</span><span class="n">CRUDApiActionTester</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Define tests.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Define tests."""</span>
 
     <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span>
         <span class="n">argnames</span><span class="o">=</span><span class="p">[</span>
-            <span class="s2">&quot;parametrize_user&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;status_code&quot;</span><span class="p">,</span>
+            <span class="s2">"parametrize_user"</span><span class="p">,</span>
+            <span class="s2">"status_code"</span><span class="p">,</span>
         <span class="p">],</span>
         <span class="n">argvalues</span><span class="o">=</span><span class="p">[</span>
             <span class="p">[</span>
@@ -2136,11 +2136,11 @@ In this file declare new class which inherits <code>ApiActionTester</code>.</p>
                 <span class="n">status</span><span class="o">.</span><span class="n">HTTP_403_FORBIDDEN</span><span class="p">,</span>
             <span class="p">],</span>
             <span class="p">[</span>
-                <span class="n">pytest_lazy_fixtures</span><span class="o">.</span><span class="n">lf</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">),</span>
+                <span class="n">pytest_lazy_fixtures</span><span class="o">.</span><span class="n">lf</span><span class="p">(</span><span class="s2">"user"</span><span class="p">),</span>
                 <span class="n">status</span><span class="o">.</span><span class="n">HTTP_403_FORBIDDEN</span><span class="p">,</span>
             <span class="p">],</span>
             <span class="p">[</span>
-                <span class="n">pytest_lazy_fixtures</span><span class="o">.</span><span class="n">lf</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">),</span>
+                <span class="n">pytest_lazy_fixtures</span><span class="o">.</span><span class="n">lf</span><span class="p">(</span><span class="s2">"admin"</span><span class="p">),</span>
                 <span class="n">status</span><span class="o">.</span><span class="n">HTTP_201_CREATED</span><span class="p">,</span>
             <span class="p">],</span>
         <span class="p">],</span>
@@ -2151,13 +2151,13 @@ In this file declare new class which inherits <code>ApiActionTester</code>.</p>
         <span class="n">parametrize_user</span><span class="p">:</span> <span class="n">tester</span><span class="o">.</span><span class="n">CRUDApiActionTester</span><span class="o">.</span><span class="n">user_model</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">status_code</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test that create action will properly handle permissions.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Test that create action will properly handle permissions."""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">make_request</span><span class="p">(</span>
-            <span class="n">method</span><span class="o">=</span><span class="s2">&quot;post&quot;</span><span class="p">,</span>
+            <span class="n">method</span><span class="o">=</span><span class="s2">"post"</span><span class="p">,</span>
             <span class="n">user</span><span class="o">=</span><span class="n">parametrize_user</span><span class="p">,</span>
             <span class="n">expected_status</span><span class="o">=</span><span class="n">status_code</span><span class="p">,</span>
-            <span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">lazy_url</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;list&quot;</span><span class="p">),</span>
-            <span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">serialize_data</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;create&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">instance</span><span class="p">),</span>
+            <span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">lazy_url</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"list"</span><span class="p">),</span>
+            <span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">serialize_data</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"create"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">instance</span><span class="p">),</span>
         <span class="p">)</span>
 </code></pre></div>
 

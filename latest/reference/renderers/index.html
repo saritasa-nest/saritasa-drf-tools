@@ -1744,12 +1744,12 @@ if needed.</p>
 <span class="normal">53</span>
 <span class="normal">54</span>
 <span class="normal">55</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BrowsableAPIRenderer</span><span class="p">(</span><span class="n">renderers</span><span class="o">.</span><span class="n">BrowsableAPIRenderer</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Customization over drf&#39;s BrowsableAPIRenderer.</span>
+<span class="w">    </span><span class="sd">"""Customization over drf's BrowsableAPIRenderer.</span>
 
 <span class="sd">    Custom renderer to remove all extra forms which results in extra queries</span>
 <span class="sd">    if needed.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_rendered_html_form</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -1758,21 +1758,21 @@ if needed.</p>
         <span class="n">method</span><span class="p">,</span>  <span class="c1"># noqa: ANN001</span>
         <span class="n">request</span><span class="p">,</span>  <span class="c1"># noqa: ANN001</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Customize `get_rendered_html_form` logic.</span>
+<span class="w">        </span><span class="sd">"""Customize `get_rendered_html_form` logic.</span>
 
 <span class="sd">        Depending on settings show forms just for `DELETE` and `OPTIONS`</span>
 <span class="sd">        method. Useful if you have a lot of custom serializers fields,</span>
 <span class="sd">        which does not support well form inputs. Also lowers sql queries count.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">enable_rendered_html_form_setting</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
             <span class="n">settings</span><span class="p">,</span>
-            <span class="s2">&quot;SARITASA_DRF_BROWSABLE_API_ENABLE_HTML_FORM&quot;</span><span class="p">,</span>
+            <span class="s2">"SARITASA_DRF_BROWSABLE_API_ENABLE_HTML_FORM"</span><span class="p">,</span>
             <span class="kc">True</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span>
             <span class="n">view</span><span class="p">,</span>
-            <span class="s2">&quot;enable_browsable_api_rendered_html_form&quot;</span><span class="p">,</span>
+            <span class="s2">"enable_browsable_api_rendered_html_form"</span><span class="p">,</span>
             <span class="n">enable_rendered_html_form_setting</span><span class="p">,</span>
         <span class="p">):</span>
             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_rendered_html_form</span><span class="p">(</span>
@@ -1790,8 +1790,8 @@ if needed.</p>
             <span class="p">):</span>
                 <span class="k">return</span> <span class="kc">None</span>
 
-            <span class="k">if</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;DELETE&quot;</span><span class="p">,</span> <span class="s2">&quot;OPTIONS&quot;</span><span class="p">):</span>
-                <span class="k">return</span> <span class="kc">True</span>  <span class="c1"># Don&#39;t actually need to return a form</span>
+            <span class="k">if</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"DELETE"</span><span class="p">,</span> <span class="s2">"OPTIONS"</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">True</span>  <span class="c1"># Don't actually need to return a form</span>
         <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
               </details>
@@ -1876,21 +1876,21 @@ which does not support well form inputs. Also lowers sql queries count.</p>
     <span class="n">method</span><span class="p">,</span>  <span class="c1"># noqa: ANN001</span>
     <span class="n">request</span><span class="p">,</span>  <span class="c1"># noqa: ANN001</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Customize `get_rendered_html_form` logic.</span>
+<span class="w">    </span><span class="sd">"""Customize `get_rendered_html_form` logic.</span>
 
 <span class="sd">    Depending on settings show forms just for `DELETE` and `OPTIONS`</span>
 <span class="sd">    method. Useful if you have a lot of custom serializers fields,</span>
 <span class="sd">    which does not support well form inputs. Also lowers sql queries count.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">enable_rendered_html_form_setting</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
         <span class="n">settings</span><span class="p">,</span>
-        <span class="s2">&quot;SARITASA_DRF_BROWSABLE_API_ENABLE_HTML_FORM&quot;</span><span class="p">,</span>
+        <span class="s2">"SARITASA_DRF_BROWSABLE_API_ENABLE_HTML_FORM"</span><span class="p">,</span>
         <span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span>
         <span class="n">view</span><span class="p">,</span>
-        <span class="s2">&quot;enable_browsable_api_rendered_html_form&quot;</span><span class="p">,</span>
+        <span class="s2">"enable_browsable_api_rendered_html_form"</span><span class="p">,</span>
         <span class="n">enable_rendered_html_form_setting</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_rendered_html_form</span><span class="p">(</span>
@@ -1908,8 +1908,8 @@ which does not support well form inputs. Also lowers sql queries count.</p>
         <span class="p">):</span>
             <span class="k">return</span> <span class="kc">None</span>
 
-        <span class="k">if</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;DELETE&quot;</span><span class="p">,</span> <span class="s2">&quot;OPTIONS&quot;</span><span class="p">):</span>
-            <span class="k">return</span> <span class="kc">True</span>  <span class="c1"># Don&#39;t actually need to return a form</span>
+        <span class="k">if</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"DELETE"</span><span class="p">,</span> <span class="s2">"OPTIONS"</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>  <span class="c1"># Don't actually need to return a form</span>
     <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
             </details>

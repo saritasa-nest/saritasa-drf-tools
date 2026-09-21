@@ -1728,20 +1728,20 @@
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">DRFStandardizedErrorsMixin</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add support for drf_standardized_errors package.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Add support for drf_standardized_errors package."""</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">extract_errors_from_response</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">response</span><span class="p">:</span> <span class="n">rest_framework</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">Response</span><span class="p">,</span>
         <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Extract errors from response.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Extract errors from response."""</span>
         <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># noqa: S101</span>
-        <span class="k">assert</span> <span class="s2">&quot;errors&quot;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># noqa: S101</span>
+        <span class="k">assert</span> <span class="s2">"errors"</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># noqa: S101</span>
         <span class="n">field_errors</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">error</span><span class="p">[</span><span class="s2">&quot;detail&quot;</span><span class="p">]</span>
-            <span class="k">for</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;errors&quot;</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">error</span><span class="p">[</span><span class="s2">&quot;attr&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">field</span>
+            <span class="n">error</span><span class="p">[</span><span class="s2">"detail"</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">"errors"</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">error</span><span class="p">[</span><span class="s2">"attr"</span><span class="p">]</span> <span class="o">==</span> <span class="n">field</span>
         <span class="p">]</span>
         <span class="k">assert</span> <span class="n">field_errors</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># noqa: S101</span>
         <span class="k">return</span> <span class="n">field_errors</span>
@@ -1796,13 +1796,13 @@
     <span class="n">response</span><span class="p">:</span> <span class="n">rest_framework</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">Response</span><span class="p">,</span>
     <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract errors from response.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Extract errors from response."""</span>
     <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># noqa: S101</span>
-    <span class="k">assert</span> <span class="s2">&quot;errors&quot;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># noqa: S101</span>
+    <span class="k">assert</span> <span class="s2">"errors"</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># noqa: S101</span>
     <span class="n">field_errors</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">error</span><span class="p">[</span><span class="s2">&quot;detail&quot;</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;errors&quot;</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">error</span><span class="p">[</span><span class="s2">&quot;attr&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">field</span>
+        <span class="n">error</span><span class="p">[</span><span class="s2">"detail"</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">"errors"</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">error</span><span class="p">[</span><span class="s2">"attr"</span><span class="p">]</span> <span class="o">==</span> <span class="n">field</span>
     <span class="p">]</span>
     <span class="k">assert</span> <span class="n">field_errors</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># noqa: S101</span>
     <span class="k">return</span> <span class="n">field_errors</span>

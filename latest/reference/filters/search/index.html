@@ -1781,47 +1781,47 @@
 <span class="normal">74</span>
 <span class="normal">75</span>
 <span class="normal">76</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SearchFilterBackend</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">SearchFilter</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Custom SearchFilter for better support of openapi.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Custom SearchFilter for better support of openapi."""</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_schema_operation_parameters</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">view</span><span class="p">:</span> <span class="n">views</span><span class="o">.</span><span class="n">APIView</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Prepare parameters for openapi schema.</span>
+<span class="w">        </span><span class="sd">"""Prepare parameters for openapi schema.</span>
 
 <span class="sd">        Check that view has `search_fields`.</span>
 
 <span class="sd">        Check that `search_fields` contains valid set of fields. Actually,</span>
 <span class="sd">        this check may perform some SQL queries during spec generation. Also,</span>
 <span class="sd">        spec generation is not the best place for checking of source code</span>
-<span class="sd">        (comparing to linters/django system checks/tests), but DRF doesn&#39;t</span>
+<span class="sd">        (comparing to linters/django system checks/tests), but DRF doesn't</span>
 <span class="sd">        validate `search_fields` for views while backend running.</span>
 
 <span class="sd">        Extend view description with list of `search_fields`.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">operation_parameters</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_schema_operation_parameters</span><span class="p">(</span>
             <span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="c1"># Not using get_search_fields since it is requires additional params</span>
         <span class="n">search_fields</span><span class="p">:</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
             <span class="n">view</span><span class="p">,</span>
-            <span class="s2">&quot;search_fields&quot;</span><span class="p">,</span>
+            <span class="s2">"search_fields"</span><span class="p">,</span>
             <span class="kc">None</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">search_fields</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
             <span class="kn">from</span><span class="w"> </span><span class="nn">drf_spectacular</span><span class="w"> </span><span class="kn">import</span> <span class="n">drainage</span>
 
             <span class="n">drainage</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;`search_fields` are not set up for </span><span class="si">{</span><span class="n">view</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">"`search_fields` are not set up for </span><span class="si">{</span><span class="n">view</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="k">return</span> <span class="n">operation_parameters</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_search_fields</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
 
-        <span class="n">formatted_fields</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">`&quot;</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">search_fields</span><span class="p">)</span>
-        <span class="n">operation_parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;A search term.</span><span class="se">\n\n</span><span class="s2">Performed on this fields: </span><span class="si">{</span><span class="n">formatted_fields</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="n">formatted_fields</span> <span class="o">=</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"`</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">`"</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">search_fields</span><span class="p">)</span>
+        <span class="n">operation_parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"description"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"A search term.</span><span class="se">\n\n</span><span class="s2">Performed on this fields: </span><span class="si">{</span><span class="n">formatted_fields</span><span class="si">}</span><span class="s2">."</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">operation_parameters</span>
 
@@ -1829,7 +1829,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">view</span><span class="p">:</span> <span class="n">views</span><span class="o">.</span><span class="n">APIView</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate `search_fields` in view.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Validate `search_fields` in view."""</span>
         <span class="n">queryset</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">search_dict</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1838,16 +1838,16 @@
                     <span class="nb">str</span><span class="p">(</span><span class="n">search_field</span><span class="p">),</span>
                     <span class="n">queryset</span><span class="o">=</span><span class="n">queryset</span><span class="p">,</span>
                 <span class="p">)</span>
-                <span class="n">search_dict</span><span class="p">[</span><span class="n">search_arg</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
+                <span class="n">search_dict</span><span class="p">[</span><span class="n">search_arg</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"test"</span>
             <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">**</span><span class="n">search_dict</span><span class="p">)</span>
         <span class="k">except</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">FieldError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
             <span class="kn">from</span><span class="w"> </span><span class="nn">drf_spectacular</span><span class="w"> </span><span class="kn">import</span> <span class="n">drainage</span>
 
-            <span class="n">view_action</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="s2">&quot;action&quot;</span><span class="p">,</span> <span class="s2">&quot;list&quot;</span><span class="p">)</span>
+            <span class="n">view_action</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="s2">"action"</span><span class="p">,</span> <span class="s2">"list"</span><span class="p">)</span>
             <span class="n">drainage</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                <span class="s2">&quot;`search_fields` contains non-existent or&quot;</span>
-                <span class="sa">f</span><span class="s2">&quot; non-related fields for action </span><span class="si">{</span><span class="n">view_action</span><span class="si">}</span><span class="s2">.&quot;</span>
-                <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">"`search_fields` contains non-existent or"</span>
+                <span class="sa">f</span><span class="s2">" non-related fields for action </span><span class="si">{</span><span class="n">view_action</span><span class="si">}</span><span class="s2">."</span>
+                <span class="sa">f</span><span class="s2">" </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
             <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
               </details>
@@ -1932,41 +1932,41 @@ validate <code>search_fields</code> for views while backend running.</p>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">view</span><span class="p">:</span> <span class="n">views</span><span class="o">.</span><span class="n">APIView</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prepare parameters for openapi schema.</span>
+<span class="w">    </span><span class="sd">"""Prepare parameters for openapi schema.</span>
 
 <span class="sd">    Check that view has `search_fields`.</span>
 
 <span class="sd">    Check that `search_fields` contains valid set of fields. Actually,</span>
 <span class="sd">    this check may perform some SQL queries during spec generation. Also,</span>
 <span class="sd">    spec generation is not the best place for checking of source code</span>
-<span class="sd">    (comparing to linters/django system checks/tests), but DRF doesn&#39;t</span>
+<span class="sd">    (comparing to linters/django system checks/tests), but DRF doesn't</span>
 <span class="sd">    validate `search_fields` for views while backend running.</span>
 
 <span class="sd">    Extend view description with list of `search_fields`.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">operation_parameters</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_schema_operation_parameters</span><span class="p">(</span>
         <span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="c1"># Not using get_search_fields since it is requires additional params</span>
     <span class="n">search_fields</span><span class="p">:</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
         <span class="n">view</span><span class="p">,</span>
-        <span class="s2">&quot;search_fields&quot;</span><span class="p">,</span>
+        <span class="s2">"search_fields"</span><span class="p">,</span>
         <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">search_fields</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
         <span class="kn">from</span><span class="w"> </span><span class="nn">drf_spectacular</span><span class="w"> </span><span class="kn">import</span> <span class="n">drainage</span>
 
         <span class="n">drainage</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;`search_fields` are not set up for </span><span class="si">{</span><span class="n">view</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">"`search_fields` are not set up for </span><span class="si">{</span><span class="n">view</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">operation_parameters</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">_validate_search_fields</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
 
-    <span class="n">formatted_fields</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">`&quot;</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">search_fields</span><span class="p">)</span>
-    <span class="n">operation_parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;A search term.</span><span class="se">\n\n</span><span class="s2">Performed on this fields: </span><span class="si">{</span><span class="n">formatted_fields</span><span class="si">}</span><span class="s2">.&quot;</span>
+    <span class="n">formatted_fields</span> <span class="o">=</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"`</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">`"</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">search_fields</span><span class="p">)</span>
+    <span class="n">operation_parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"description"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="sa">f</span><span class="s2">"A search term.</span><span class="se">\n\n</span><span class="s2">Performed on this fields: </span><span class="si">{</span><span class="n">formatted_fields</span><span class="si">}</span><span class="s2">."</span>
     <span class="p">)</span>
     <span class="k">return</span> <span class="n">operation_parameters</span>
 </code></pre></div></td></tr></table></div>
