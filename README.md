@@ -72,18 +72,19 @@ For examples and to just check it out in action you can use `example` folder.
 
   ```python
   class CRUDView(
-    ActionPermissionsMixin,
-    ActionMixins, # Anything you need
-    GenericViewSet,
+      ActionPermissionsMixin,
+      ActionMixins,  # Anything you need
+      GenericViewSet,
   ):
-    """CRUD view."""
-    base_permission_classes = (permissions.AllowAny,)
-    extra_permission_classes = (permissions.IsAuthenticated,)
-    extra_permissions_map = {
-        "create": (permissions.IsAdminUser,),
-        "update": (permissions.IsAdminUser,),
-        "destroy": (permissions.IsAdminUser,),
-    }
+      """CRUD view."""
+
+      base_permission_classes = (permissions.AllowAny,)
+      extra_permission_classes = (permissions.IsAuthenticated,)
+      extra_permissions_map = {
+          "create": (permissions.IsAdminUser,),
+          "update": (permissions.IsAdminUser,),
+          "destroy": (permissions.IsAdminUser,),
+      }
   ```
 
   - `base_permission_classes` - Will be applied to any action (Usually you want this in base class of your project)
@@ -98,17 +99,17 @@ For examples and to just check it out in action you can use `example` folder.
 
   ```python
   class CRUDView(
-    ActionPermissionsMixin,
-    ActionMixins, # Anything you need
-    GenericViewSet,
+      ActionPermissionsMixin,
+      ActionMixins,  # Anything you need
+      GenericViewSet,
   ):
-    """CRUD view."""
+      """CRUD view."""
 
-    queryset = models.TestModel.objects.select_related("related_model").all()
-    serializers_map = {
-        "default": serializers.TestModelDetailSerializer,
-        "list": serializers.TestModelListSerializer,
-    }
+      queryset = models.TestModel.objects.select_related("related_model").all()
+      serializers_map = {
+          "default": serializers.TestModelDetailSerializer,
+          "list": serializers.TestModelListSerializer,
+      }
   ```
 
   That means that on `list` view will use `TestModelListSerializer`, but on any other
@@ -142,7 +143,7 @@ For examples and to just check it out in action you can use `example` folder.
 
   ```python
   SARITASA_DRF_FIELD_MAPPING = {
-    "django.db.models.TextField": "example.app.api.fields.CustomCharField",
+      "django.db.models.TextField": "example.app.api.fields.CustomCharField",
   }
   ```
 
@@ -266,11 +267,11 @@ In this file declare new class which inherits `ApiActionTester`.
 ```python
 class CRUDApiActionTester(
     saritasa_drf_tools.testing.ApiActionTester.init_subclass(
-        model=models.TestModel, # Model of queryset in viewset
-        user_model=models.User, # Model of user used across project
-        factory=factories.TestModelFactory, # Factory which is used to generate instances for model
-        api_view=api.views.CRUDView, # Class of viewset against which we will be writing tests
-        url_basename="crud-api", # Base name of urls of viewset. {url_basename}-{action}
+        model=models.TestModel,  # Model of queryset in viewset
+        user_model=models.User,  # Model of user used across project
+        factory=factories.TestModelFactory,  # Factory which is used to generate instances for model
+        api_view=api.views.CRUDView,  # Class of viewset against which we will be writing tests
+        url_basename="crud-api",  # Base name of urls of viewset. {url_basename}-{action}
     ),
 ):
     """Tester for crud API."""
