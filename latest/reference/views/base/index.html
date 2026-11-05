@@ -1266,6 +1266,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="BaseViewSet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#saritasa_drf_tools.views.base.BaseViewSet.get_serializer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_serializer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1533,6 +1550,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="BaseViewSet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#saritasa_drf_tools.views.base.BaseViewSet.get_serializer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_serializer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1683,12 +1717,28 @@
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BaseViewSet</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BaseViewSet</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
     <span class="n">mixins</span><span class="o">.</span><span class="n">ActionPermissionsMixin</span><span class="p">,</span>
     <span class="n">mixins</span><span class="o">.</span><span class="n">ActionSerializerMixin</span><span class="p">,</span>
-    <span class="n">GenericViewSet</span><span class="p">,</span>
+    <span class="n">viewsets</span><span class="o">.</span><span class="n">GenericViewSet</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Base viewset for api."""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_serializer</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="n">args</span><span class="p">,</span>  <span class="c1"># noqa: ANN002</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Get serializer instance for view's action."""</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_serializer</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
               </details>
 
@@ -1704,6 +1754,41 @@
 
 
 
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="saritasa_drf_tools.views.base.BaseViewSet.get_serializer" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_serializer</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+<a href="#saritasa_drf_tools.views.base.BaseViewSet.get_serializer" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Get serializer instance for view's action.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>saritasa_drf_tools/views/base.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_serializer</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="o">*</span><span class="n">args</span><span class="p">,</span>  <span class="c1"># noqa: ANN002</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Get serializer instance for view's action."""</span>
+    <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_serializer</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
 
 
 

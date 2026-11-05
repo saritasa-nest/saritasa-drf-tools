@@ -1663,7 +1663,7 @@
 
     <div class="doc doc-contents ">
             <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-internal" title="&lt;code&gt;UserAndRequestFromContextMixin&lt;/code&gt; (&lt;code&gt;saritasa_drf_tools.serializers.mixins.UserAndRequestFromContextMixin&lt;/code&gt;)" href="../mixins/user_and_request_from_request_mixin/#saritasa_drf_tools.serializers.mixins.user_and_request_from_request_mixin.UserAndRequestFromContextMixin">UserAndRequestFromContextMixin</a></code>, <code><span title="rest_framework.serializers.Serializer">Serializer</span></code></p>
+              Bases: <code><a class="autorefs autorefs-internal" title="&lt;code&gt;UserAndRequestFromContextMixin&lt;/code&gt; (&lt;code&gt;saritasa_drf_tools.serializers.mixins.UserAndRequestFromContextMixin&lt;/code&gt;)" href="../mixins/user_and_request_from_request_mixin/#saritasa_drf_tools.serializers.mixins.user_and_request_from_request_mixin.UserAndRequestFromContextMixin">UserAndRequestFromContextMixin</a>[<span title="saritasa_drf_tools.serializers.base.BaseSerializer[User]">User</span>]</code>, <code><span title="rest_framework.serializers.Serializer">Serializer</span></code></p>
 
 
 
@@ -1678,12 +1678,12 @@
 
               <details class="mkdocstrings-source">
                 <summary>Source code in <code>saritasa_drf_tools/serializers/base.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 6</span>
-<span class="normal"> 7</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BaseSerializer</span><span class="p">(</span>
-    <span class="n">mixins</span><span class="o">.</span><span class="n">UserAndRequestFromContextMixin</span><span class="p">,</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BaseSerializer</span><span class="p">[</span><span class="n">User</span><span class="p">:</span> <span class="n">auth_models</span><span class="o">.</span><span class="n">AbstractBaseUser</span><span class="p">](</span>
+    <span class="n">mixins</span><span class="o">.</span><span class="n">UserAndRequestFromContextMixin</span><span class="p">[</span><span class="n">User</span><span class="p">],</span>
     <span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Serializer with common logic."""</span>
