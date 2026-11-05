@@ -4,6 +4,7 @@ We follow [Semantic Versions](https://semver.org/).
 
 ## Unreleased
 
+- Confirm support for python 3.15
 - Improve typing `get_serializer` for `BaseViewSet`.
 - Improve typing for `_user` in `UserAndRequestFromContextMixin` to support `Generics`
 - Improve typing for `BaseSerializer` and `ModelBaseSerializer` to support `Generics`
