@@ -4,6 +4,10 @@ We follow [Semantic Versions](https://semver.org/).
 
 ## Unreleased
 
+- Improve typing `get_serializer` for `BaseViewSet`.
+- Improve typing for `_user` in `UserAndRequestFromContextMixin` to support `Generics`
+- Improve typing for `BaseSerializer` and `ModelBaseSerializer` to support `Generics`
+
 ## 0.4.0
 
 - `LimitOffsetPagination`: Now supports overriding pagination settings per

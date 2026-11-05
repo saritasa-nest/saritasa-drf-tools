@@ -8,7 +8,10 @@ from .. import models
 
 
 class TestModelListSerializer(
-    saritasa_drf_tools.serializers.ModelBaseSerializer,
+    saritasa_drf_tools.serializers.ModelBaseSerializer[
+        models.User,
+        models.TestModel,
+    ],
 ):
     """List Serializer."""
 
@@ -22,7 +25,10 @@ class TestModelListSerializer(
 
 
 class RelatedTestModelSerializer(
-    saritasa_drf_tools.serializers.ModelBaseSerializer,
+    saritasa_drf_tools.serializers.ModelBaseSerializer[
+        models.User,
+        models.TestModel,
+    ],
 ):
     """Serializer for related model."""
 
@@ -32,7 +38,10 @@ class RelatedTestModelSerializer(
 
 
 class TestModelDetailSerializer(
-    saritasa_drf_tools.serializers.ModelBaseSerializer,
+    saritasa_drf_tools.serializers.ModelBaseSerializer[
+        models.User,
+        models.TestModel,
+    ],
 ):
     """Detail Serializer."""
 
@@ -62,7 +71,7 @@ class TestModelDetailSerializer(
 
         def update_instance_text_field(instance: models.TestModel) -> None:
             """Update instance text field after commit."""
-            instance.text_field = f"Updated {instance.id}"
+            instance.text_field = f"Updated {instance.pk}"
             instance.save()
 
         transaction.on_commit(
@@ -73,7 +82,10 @@ class TestModelDetailSerializer(
 
 
 class RelatedTestModelWithManyRelatedSerializer(
-    saritasa_drf_tools.serializers.ModelBaseSerializer,
+    saritasa_drf_tools.serializers.ModelBaseSerializer[
+        models.User,
+        models.TestRelatedModel,
+    ],
 ):
     """Serializer for related mode with list of test models."""
 
